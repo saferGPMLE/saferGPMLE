@@ -1,6 +1,6 @@
 # BSD 3-Clause License
 
-_Copyright (c) 2021, CentraleSupélec_
+_Copyright (c) 2021, CentraleSupélec_  
 _All rights reserved._
 
 Redistribution and use in source and binary forms, with or without
