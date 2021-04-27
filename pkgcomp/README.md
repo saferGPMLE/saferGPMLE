@@ -1,10 +1,10 @@
 ## PythonGP
 
-A wrapper of the python libraries implementing GP Regression
+A wrapper over python packages implementing GP Regression
 
-### Toolboxes :
+### Packages :
 
-Sklearn, Shogun, GPy, GPyflow, GPytorch, Openturns
+Sklearn, GPy, GPytorch, GPyflow, Openturns
 
 ### To run :
 
@@ -15,4 +15,4 @@ python3 tbxcomp.py
 
 ### Features :
 
-- Comapares GPR fitting using EMRMSE, PMRMSE for different toolboxes 
+- Comapares GPR fitting using EMRMSE for different python packages
