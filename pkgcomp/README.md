@@ -10,7 +10,7 @@ Sklearn, GPy, GPytorch, GPyflow, Openturns
 
 Syntax:
 ```
-python3 tbxcomp.py
+python3 pkgcomp.py
 ```
 
 ### Features :
