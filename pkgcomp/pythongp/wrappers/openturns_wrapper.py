@@ -83,7 +83,7 @@ class openturns_wrapper():
             self.model = 'No model'
 
         self.nugget = noise
-        self.model = ot.KrigingAlgorithm(self.x_train, self.z_train, self.kernel_function, self.mean_function, False)
+        self.model = ot.KrigingAlgorithm(self.x_train, self.z_train, self.kernel_function, self.mean_function)
         self.model.setNoise([self.nugget]*len(self.x_train))
 
 
