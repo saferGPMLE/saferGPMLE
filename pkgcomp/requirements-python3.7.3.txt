@@ -35,7 +35,7 @@ more-itertools==8.6.0
 multipledispatch==0.6.0
 numpy==1.18.2
 oauthlib==3.1.0
-openturns==1.13
+openturns==1.16
 opt-einsum==3.3.0
 packaging==20.8
 pandas==1.0.3
