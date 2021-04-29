@@ -31,10 +31,11 @@ In addition, a presentation of this work is available on Zenodo:
 
 ## Directory layout
 
-There are two (currently empty) subdirectories in this repository:
+There are two subdirectories in this repository:
 
-* `pkgcomp` will provide a framework for comparing several Python toolboxes,
+* `pkgcomp` provides a framework for comparing several Python toolboxes,
   as exemplified by Table 1 in the article.
 
-* `safergpy` will provide a framework for producing the other results of the
-  article, and in particular the results presented in Section 5.
+* `safergpy` (currently empty) will provide a framework for producing
+  the other results of the article, and in particular the results
+  presented in Section 5.
