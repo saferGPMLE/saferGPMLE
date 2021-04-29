@@ -9,6 +9,8 @@ all_packages = ['Sklearn', 'GPy', 'GPytorch', 'GPflow', 'ot']
 parser = argparse.ArgumentParser()
 parser.add_argument('--pkg', choices=all_packages + ['all'], default='all',
                     help='Choose one package to be used, or all of them')
+parser.add_argument('--n_train', default='50', type=int)
+parser.add_argument('--filename', default='branin_uniform.csv')
 args = parser.parse_args()
 
 # List of packages to be tested
@@ -18,10 +20,13 @@ else:
     package_list = [args.pkg]
 
 # Import data
-data = pd.read_csv('branin_uniform.csv')
+filename = args.filename
+print('filename =', filename)
+data = pd.read_csv(filename)
 
 # Train/test split
-n_train = 50
+n_train = args.n_train
+print('n_train =', n_train)
 
 
 ######################################################
