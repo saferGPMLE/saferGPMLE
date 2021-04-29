@@ -1,17 +1,33 @@
 import numpy as np
 import pandas as pd
+import argparse
 from pythongp import pythongp_init
 
-np.random.seed(0)
+all_packages = ['Sklearn', 'GPy', 'GPytorch', 'GPflow', 'ot']
+
+# Parse input
+parser = argparse.ArgumentParser()
+parser.add_argument('--pkg', choices=all_packages + ['all'], default='all',
+                    help='Choose one package to be used, or all of them')
+args = parser.parse_args()
+
+# List of packages to be tested
+if args.pkg == 'all':
+    package_list = all_packages
+else:
+    package_list = [args.pkg]
 
 # Import data
 data = pd.read_csv('branin_uniform.csv')
 
-# List of libraries to be tested
-libraries = ['Sklearn', 'GPy', 'GPytorch', 'GPflow', 'ot']
-
 # Train/test split
 n_train = 50
+
+
+######################################################
+##  A function to compute some metrics              ##
+##     for a given package, using a given data set  ##
+######################################################
 
 def compute_metrics(pgp, data, n_train):
     '''
@@ -57,9 +73,14 @@ def compute_metrics(pgp, data, n_train):
     print("EMRMSE", emrmse)
 
 
-# Compute metrics for all libraries
-for lib in libraries:
-    print("\n\nPython toolbox: ", lib)
-    pgp = pythongp_init.select_library(lib)
+####################################################
+##  Compute metrics for all packages in the list  ##
+####################################################
+
+np.random.seed(0)
+
+for pkg in package_list:
+    print("\n\nPython toolbox: ", pkg)
+    pgp = pythongp_init.select_library(pkg)
     compute_metrics(pgp, data, n_train)
 
