@@ -3,7 +3,7 @@ import pandas as pd
 import argparse
 from pythongp import pythongp_init
 
-all_packages = ['Sklearn', 'GPy', 'GPytorch', 'GPflow', 'ot']
+all_packages = ['scikit-learn', 'gpy', 'gpytorch', 'gpflow', 'openturns']
 
 # Parse input
 parser = argparse.ArgumentParser()

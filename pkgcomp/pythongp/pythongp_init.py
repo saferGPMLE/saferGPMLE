@@ -2,7 +2,7 @@ def select_package(pkg):
 
     pkg = pkg.lower()
 
-    if (pkg == 'scikit-learn') or (pkg == 'sklearn'):
+    if pkg == 'scikit-learn':
         from pythongp.wrappers import sklearn_wrapper
         pgp = sklearn_wrapper.sklearn_wrapper()
     elif pkg == 'gpy':
@@ -14,7 +14,7 @@ def select_package(pkg):
     elif pkg == 'gpytorch':
         from pythongp.wrappers import gpytorch_wrapper
         pgp = gpytorch_wrapper.gpytorch_wrapper()
-    elif (pkg == 'openturns') or (pkg == 'ot'):
+    elif pkg == 'openturns':
         from pythongp.wrappers import openturns_wrapper
         pgp = openturns_wrapper.openturns_wrapper()    
     else:
