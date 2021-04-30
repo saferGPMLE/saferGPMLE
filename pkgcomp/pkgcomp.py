@@ -86,6 +86,6 @@ np.random.seed(0)
 
 for pkg in package_list:
     print("\n\nPython toolbox: ", pkg)
-    pgp = pythongp_init.select_library(pkg)
+    pgp = pythongp_init.select_package(pkg)
     compute_metrics(pgp, data, n_train)
 
