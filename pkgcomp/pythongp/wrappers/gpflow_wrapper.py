@@ -33,7 +33,6 @@ class gpflow_wrapper():
         self.z_postmean = None
         self.z_postvar = None
 
-
     def load_data(self, x_train, z_train):
         '''
         This function re-configures the training data according to the library requirement
@@ -41,7 +40,6 @@ class gpflow_wrapper():
         self.z_train = np.reshape(z_train,(len(z_train),1))
         self.x_train = x_train
         self.input_dim = x_train.shape[1]
-
 
     def set_kernel(self, kernel, ard=True):
         '''
@@ -72,7 +70,6 @@ class gpflow_wrapper():
         else:
             self.kernel_function = "This library does not support the specified kernel function"
 
-
     def set_mean(self, mean):
         '''
         This function constructs the mean function
@@ -84,7 +81,6 @@ class gpflow_wrapper():
             self.mean_function = gpflow.mean_functions.Zero()
         else:
             self.mean_function = "Not sure whether this library supports the specified mean function"
-
 
     def init_model(self, noise):
         '''
@@ -106,7 +102,6 @@ class gpflow_wrapper():
 
             print(self.model.as_pandas_table())
 
-
     def optimize(self, param_opt, itr):
 
             if param_opt == 'MLE':
@@ -116,7 +111,6 @@ class gpflow_wrapper():
             elif param_opt != 'Not_optimize':
                 return ("Not sure whether this library supports the specified Parameter optimizer")
             print(self.model.as_pandas_table())
-
 
     def predict(self, x_test):
         '''

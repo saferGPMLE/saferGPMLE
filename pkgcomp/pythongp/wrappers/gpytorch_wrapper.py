@@ -37,7 +37,6 @@ class gpytorch_wrapper():
         self.z_postmean = None
         self.z_postvar = None
 
-
     def load_data(self, x_train, z_train):
         '''
         This function re-configures the training data according to the library requirement
@@ -45,7 +44,6 @@ class gpytorch_wrapper():
         self.z_train = torch.tensor(z_train, dtype=torch.float32)
         self.x_train = torch.tensor(x_train, dtype=torch.float32)
         self.input_dim = x_train.shape[1]
-
 
     def set_kernel(self, kernel, ard=True):
         '''
@@ -81,7 +79,6 @@ class gpytorch_wrapper():
         else:
             self.kernel_function = "This library does not support the specified kernel function"
 
-
     def set_mean(self, mean):
         '''
         This function constructs the mean function
@@ -94,7 +91,6 @@ class gpytorch_wrapper():
             self.mean_function = gpytorch.means.ZeroMean()
         else:
             self.mean_function = "Not sure whether this library supports the specified mean function"
-
 
     def init_model(self, noise):
         '''
@@ -126,7 +122,6 @@ class gpytorch_wrapper():
             def __init__(self, train_x, train_y, likelihood):
                 super(KISSGPRegressionModel, self).__init__(train_x, train_y, likelihood)
 
-
                 self.mean_module = mean_proxy
                 self.covar_module = kernel_proxy
             def forward(self, x):
@@ -146,7 +141,6 @@ class gpytorch_wrapper():
             self.model = KISSGPRegressionModel(self.x_train, self.z_train, self.likelihood)
 
         self.model.likelihood.initialize(noise=noise)
-
 
     def optimize(self, param_opt, itr):
 
@@ -207,7 +201,6 @@ class gpytorch_wrapper():
             print('Optimized likelihood: ', loss.item())
 
         self.model = reg_model
-
 
     def predict(self, x_test):
         '''

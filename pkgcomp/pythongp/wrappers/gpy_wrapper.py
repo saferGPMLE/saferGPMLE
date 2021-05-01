@@ -34,7 +34,6 @@ class gpy_wrapper():
         self.z_postmean = None
         self.z_postvar = None
 
-
     def load_data(self, x_train, z_train):
         '''
         This function re-configures the training data according to the library requirement
@@ -42,7 +41,6 @@ class gpy_wrapper():
         self.z_train = np.reshape(z_train,(len(z_train),1))
         self.x_train = x_train
         self.input_dim = x_train.shape[1]
-
 
     def set_kernel(self, kernel, ard=True):
         '''
@@ -69,7 +67,6 @@ class gpy_wrapper():
         else:
             self.kernel_function = "This library does not support the specified kernel function"
 
-
     def set_mean(self, mean):
         '''
         This function constructs the mean function
@@ -79,7 +76,6 @@ class gpy_wrapper():
             self.mean_function = GPy.mappings.constant.Constant(input_dim=self.x_train.shape[1], output_dim=1, value=0.0)
         elif mean != 'zero':
             self.mean_function = "Not sure whether this library supports the specified mean function"
-
 
     def init_model(self, noise):
         '''
@@ -101,7 +97,6 @@ class gpy_wrapper():
                 self.model.sum.constant.variance.fix()
 
         print('\nBefore optimization : \n',self.model)
-
 
     def optimize(self, param_opt, itr):
 
@@ -164,7 +159,6 @@ class gpy_wrapper():
 
         elif param_opt != 'Not_optimize':
             return ("Not sure whether this library supports the specified Parameter optimizer")
-
 
     def predict(self, x_test):
         '''

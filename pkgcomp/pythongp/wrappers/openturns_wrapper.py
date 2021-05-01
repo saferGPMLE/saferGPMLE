@@ -35,7 +35,6 @@ class openturns_wrapper():
         self.z_postmean = None
         self.z_postvar = None
 
-
     def load_data(self, x_train, z_train):
         '''
         This function re-configures the training data according to the library requirement
@@ -43,7 +42,6 @@ class openturns_wrapper():
         self.x_train = ot.Sample(x_train)
         self.z_train = ot.Sample(np.reshape(z_train,(len(self.x_train),1)))
         self.input_dim = x_train.shape[1]
-
 
     def set_kernel(self, kernel, ard=True):
         '''
@@ -57,7 +55,6 @@ class openturns_wrapper():
         else:
             self.kernel_function = "This library does not support the specified kernel function"
 
-
     def set_mean(self, mean):
         '''
         This function constructs the mean function
@@ -69,7 +66,6 @@ class openturns_wrapper():
             self.mean_function = ot.Basis()
         else:
             self.mean_function = "This library does not support the specified mean function"
-
 
     def init_model(self, noise):
         '''
@@ -86,7 +82,6 @@ class openturns_wrapper():
         self.nugget = noise
         self.model = ot.KrigingAlgorithm(self.x_train, self.z_train, self.kernel_function, self.mean_function)
         self.model.setNoise([self.nugget]*len(self.x_train))
-
 
     def optimize(self, param_opt, itr):
 
@@ -108,9 +103,6 @@ class openturns_wrapper():
         lik_function =  self.model.getReducedLogLikelihoodFunction()
         print("\n\nlikelihood evaluation after optimization {}".format(lik_function(result.getCovarianceModel().getScale())))
         self.model = result
-        #print("\n\n Optimized amplitude {}".format(result.getCovarianceModel().getAmplitude()))
-        #print("\n\n Optimized range {}".format(result.getCovarianceModel().getScale()))
-
 
     def predict(self, x_test):
         '''

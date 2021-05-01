@@ -36,7 +36,6 @@ class sklearn_wrapper():
         self.z_postmean = None
         self.z_postvar = None
 
-
     def load_data(self, x_train, z_train):
         '''
         This function re-configures the training data according to the library requirement
@@ -45,7 +44,6 @@ class sklearn_wrapper():
         self.z_train = z_train
         self.x_train = x_train
         self.input_dim = x_train.shape[1]
-
 
     def set_kernel(self, kernel, ard):
         '''
@@ -64,7 +62,6 @@ class sklearn_wrapper():
         else:
             self.kernel_function = "This library does not support the specified kernel function"
 
-
     def set_mean(self, mean):
         '''
         This function constructs the mean function
@@ -76,7 +73,6 @@ class sklearn_wrapper():
             self.mean_function = False
         else:
             self.mean_function = "This library does not support the specified mean function"
-
 
     def init_model(self, noise):
         '''
@@ -91,7 +87,6 @@ class sklearn_wrapper():
             self.model = 'No model'
 
         self.nugget = noise
-
 
     def optimize(self, param_opt, itr):
 
@@ -111,7 +106,6 @@ class sklearn_wrapper():
         print('Kernel hyperparameters after optimization :\n', self.model.kernel_)
         print("Nuggets before optimization :\n", self.model.alpha)
         print("Likelihoood after optimization :\n", self.model.log_marginal_likelihood_value_)
-
 
     def predict(self, x_test):
         '''
