@@ -1,6 +1,8 @@
 # saferGPMLE
 
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE.md)
+[![Lint](https://github.com/saferGPMLE/saferGPMLE/actions/workflows/flake8.yml/badge.svg)](https://github.com/saferGPMLE/saferGPMLE/actions?query=workflow%3ALint)
+
 
 ## What you will find in here
 
