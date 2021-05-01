@@ -90,8 +90,8 @@ class gpy_wrapper():
 
         else:
             self.model = GPy.models.GPRegression(self.x_train, self.z_train, kernel=self.kernel_function,
-                                        Y_metadata=None, normalizer=None,
-                                        noise_var=noise, mean_function=self.mean_function)
+                                                 Y_metadata=None, normalizer=None,
+                                                 noise_var=noise, mean_function=self.mean_function)
 
             if hasattr(self.model, 'sum'):
                 self.model.sum.constant.variance.fix()
@@ -135,9 +135,9 @@ class gpy_wrapper():
 
                 self.set_beta(beta, zero_mean)
 
-                self.model.optimize(messages=optimizer_input, max_iters=1000, start=None, clear_after_finish=False,
-                               ipython_notebook=True)
-
+                self.model.optimize(messages=optimizer_input, max_iters=1000, start=None,
+                                    clear_after_finish=False, ipython_notebook=True)
+                
             print('\nAfter optimization : \n', self.model)
 
             if hasattr(self.model, 'sum'):
