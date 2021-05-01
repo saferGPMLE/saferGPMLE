@@ -104,13 +104,14 @@ class gpflow_wrapper():
 
     def optimize(self, param_opt, itr):
 
-            if param_opt == 'MLE':
-                gpflow.train.ScipyOptimizer().minimize(self.model, disp=True)
-                print('\n\nprintin AFTER optimization {}'.format(self.model.likelihood))
+        if param_opt == 'MLE':
+            gpflow.train.ScipyOptimizer().minimize(self.model, disp=True)
+            print('\n\nprintin AFTER optimization {}'.format(self.model.likelihood))
 
-            elif param_opt != 'Not_optimize':
-                return ("Not sure whether this library supports the specified Parameter optimizer")
-            print(self.model.as_pandas_table())
+        elif param_opt != 'Not_optimize':
+            return ("Not sure whether this library supports the specified Parameter optimizer")
+
+        print(self.model.as_pandas_table())
 
     def predict(self, x_test):
         '''

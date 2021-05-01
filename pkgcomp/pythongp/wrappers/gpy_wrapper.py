@@ -103,11 +103,8 @@ class gpy_wrapper():
         if param_opt in ['MLE', 'MLE_with_smart_init']:
             optimizer_input = True
             if param_opt == 'MLE':
-                #if itr <= 1:
-                    self.model.optimize(messages=optimizer_input, max_iters=1000, start=None, clear_after_finish=False,
-                                   ipython_notebook=True)
-                #else:
-                    #self.model.optimize_restarts(num_restarts=itr)
+                self.model.optimize(messages=optimizer_input, max_iters=1000, start=None, clear_after_finish=False,
+                                    ipython_notebook=True)
             else:
                 grid = np.vectorize(lambda x: math.exp(x * math.log(10)))(np.arange(-5, 5, 1))
                 scores = []
