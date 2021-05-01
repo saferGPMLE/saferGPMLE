@@ -7,6 +7,7 @@
 import numpy as np
 import gpflow
 
+
 class gpflow_wrapper():
 
     def __init__(self):

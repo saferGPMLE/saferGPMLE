@@ -9,6 +9,7 @@ import gpytorch
 import numpy as np
 from ast import literal_eval as make_tuple
 
+
 class gpytorch_wrapper():
 
     def __init__(self):

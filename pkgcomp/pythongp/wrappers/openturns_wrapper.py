@@ -7,6 +7,7 @@
 import openturns as ot
 import numpy as np
 
+
 class openturns_wrapper():
 
     def __init__(self):

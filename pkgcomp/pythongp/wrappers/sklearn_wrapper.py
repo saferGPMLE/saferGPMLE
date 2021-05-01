@@ -8,6 +8,7 @@ from ast import literal_eval as make_tuple
 import sklearn.gaussian_process as sklearn_gp
 import numpy as np
 
+
 class sklearn_wrapper():
 
     def __init__(self):
