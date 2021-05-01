@@ -20,4 +20,3 @@ def select_package(pkg):
     else:
         raise ValueError('Unexpected package name : {}'.format(pkg))
     return pgp
-

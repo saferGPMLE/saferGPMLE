@@ -125,4 +125,3 @@ class gpflow_wrapper():
         self.z_postmean, self.z_postvar = self.model.predict_y(x_test)
 
         return self.z_postmean.reshape(-1), np.sqrt(self.z_postvar.reshape(-1))
-

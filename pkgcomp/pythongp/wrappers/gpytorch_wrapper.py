@@ -222,4 +222,3 @@ class gpytorch_wrapper():
             self.z_postvar = np.sqrt(observed_pred.variance.numpy())
             self.z_postmean = observed_pred.mean.numpy()
         return self.z_postmean, self.z_postvar
-

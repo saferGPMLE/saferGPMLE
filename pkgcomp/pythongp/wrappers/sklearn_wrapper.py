@@ -126,4 +126,3 @@ class sklearn_wrapper():
         self.z_postvar = np.sqrt(np.add(np.square(self.z_postvar), self.nugget))
         
         return self.z_postmean, self.z_postvar
-

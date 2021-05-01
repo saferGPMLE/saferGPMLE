@@ -125,4 +125,3 @@ class openturns_wrapper():
         self.z_postvar = np.sqrt(np.add(np.diag(np.array(self.model.getConditionalCovariance(self.x_test))), self.nugget))
 
         return self.z_postmean, self.z_postvar
-
