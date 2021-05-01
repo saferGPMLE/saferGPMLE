@@ -49,7 +49,8 @@ class openturns_wrapper():
         '''
 
         if kernel['name'] == 'Matern':
-            self.kernel_function = ot.MaternModel(kernel['lengthscale'], [kernel['scale']], float(kernel['order']))
+            self.kernel_function = ot.MaternModel(
+                kernel['lengthscale'], [kernel['scale']], float(kernel['order']))
         elif kernel['name'] == 'Gaussian':
             self.kernel_function = ot.SquaredExponential(kernel['lengthscale'], [kernel['scale']])
         else:
@@ -80,7 +81,8 @@ class openturns_wrapper():
             self.model = 'No model'
 
         self.nugget = noise
-        self.model = ot.KrigingAlgorithm(self.x_train, self.z_train, self.kernel_function, self.mean_function)
+        self.model = ot.KrigingAlgorithm(self.x_train, self.z_train,
+                                         self.kernel_function, self.mean_function)
         self.model.setNoise([self.nugget]*len(self.x_train))
 
     def optimize(self, param_opt, itr):
@@ -101,7 +103,8 @@ class openturns_wrapper():
         print("parameter after optimization : \n", result.getCovarianceModel())
         print("Nugget", self.model.getNoise())
         lik_function = self.model.getReducedLogLikelihoodFunction()
-        print("\n\nlikelihood evaluation after optimization {}".format(lik_function(result.getCovarianceModel().getScale())))
+        print(("\n\nlikelihood evaluation after optimization {}"
+               .format(lik_function(result.getCovarianceModel().getScale()))))
         self.model = result
 
     def predict(self, x_test):
@@ -115,6 +118,7 @@ class openturns_wrapper():
             return
 
         self.z_postmean = np.array(self.model.getConditionalMean(self.x_test))
-        self.z_postvar = np.sqrt(np.add(np.diag(np.array(self.model.getConditionalCovariance(self.x_test))), self.nugget))
+        self.z_postvar = np.sqrt(np.add(np.diag(
+            np.array(self.model.getConditionalCovariance(self.x_test))), self.nugget))
 
         return self.z_postmean, self.z_postvar

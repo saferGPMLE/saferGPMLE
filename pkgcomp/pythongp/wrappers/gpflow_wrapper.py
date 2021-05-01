@@ -35,7 +35,8 @@ class gpflow_wrapper():
 
     def load_data(self, x_train, z_train):
         '''
-        This function re-configures the training data according to the library requirement
+        This function re-configures the training data according to the library
+        requirement.
         '''
         self.z_train = np.reshape(z_train, (len(z_train), 1))
         self.x_train = x_train
@@ -48,27 +49,32 @@ class gpflow_wrapper():
 
         if kernel['name'] == 'Matern':
             if kernel['order'] == 1.5:
-                self.kernel_function = gpflow.kernels.Matern32(input_dim=self.input_dim,
-                                                               variance=kernel['scale'],
-                                                               lengthscales=kernel['lengthscale'],
-                                                               ARD=ard)
+                self.kernel_function = gpflow.kernels.Matern32(
+                    input_dim=self.input_dim,
+                    variance=kernel['scale'],
+                    lengthscales=kernel['lengthscale'],
+                    ARD=ard)
             elif kernel['order'] == 2.5:
-                self.kernel_function = gpflow.kernels.Matern52(input_dim=self.input_dim,
-                                                               variance=kernel['scale'],
-                                                               lengthscales=kernel['lengthscale'],
-                                                               ARD=ard)
+                self.kernel_function = gpflow.kernels.Matern52(
+                    input_dim=self.input_dim,
+                    variance=kernel['scale'],
+                    lengthscales=kernel['lengthscale'],
+                    ARD=ard)
             elif kernel['order'] == 0.5:
-                self.kernel_function = gpflow.kernels.Matern12(input_dim=self.input_dim,
-                                                               variance=kernel['scale'],
-                                                               lengthscales=kernel['lengthscale'],
-                                                               ARD=ard)
+                self.kernel_function = gpflow.kernels.Matern12(
+                    input_dim=self.input_dim,
+                    variance=kernel['scale'],
+                    lengthscales=kernel['lengthscale'],
+                    ARD=ard)
         elif kernel['name'] == 'Gaussian':
-            self.kernel_function = gpflow.kernels.RBF(input_dim=self.input_dim,
-                                                      variance=kernel['scale'],
-                                                      lengthscales=kernel['lengthscale'],
-                                                      ARD=ard)
+            self.kernel_function = gpflow.kernels.RBF(
+                input_dim=self.input_dim,
+                variance=kernel['scale'],
+                lengthscales=kernel['lengthscale'],
+                ARD=ard)
         else:
-            self.kernel_function = "This library does not support the specified kernel function"
+            self.kernel_function = ("This library does not support "
+                                    "the specified kernel function")
 
     def set_mean(self, mean):
         '''
@@ -76,11 +82,13 @@ class gpflow_wrapper():
         '''
 
         if mean == 'constant':
-            self.mean_function = gpflow.mean_functions.Constant(c=np.ones(1)*np.mean(self.train_dataframe['z_train']))
+            self.mean_function = gpflow.mean_functions.Constant(
+                c=np.ones(1)*np.mean(self.train_dataframe['z_train']))
         elif mean == 'zero':
             self.mean_function = gpflow.mean_functions.Zero()
         else:
-            self.mean_function = "Not sure whether this library supports the specified mean function"
+            self.mean_function = ("Not sure whether this library "
+                                  "supports the specified mean function")
 
     def init_model(self, noise):
         '''
@@ -96,7 +104,8 @@ class gpflow_wrapper():
 
         else:
 
-            self.model = gpflow.models.GPR(self.x_train, self.z_train, kern=self.kernel_function,
+            self.model = gpflow.models.GPR(self.x_train, self.z_train,
+                                           kern=self.kernel_function,
                                            mean_function=self.mean_function)
             self.model.likelihood.variance = noise
 

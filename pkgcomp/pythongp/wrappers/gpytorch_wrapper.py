@@ -86,11 +86,13 @@ class gpytorch_wrapper():
 
         if mean == 'constant':
             self.mean_function = gpytorch.means.ConstantMean()
-            self.mean_function.constant = torch.nn.Parameter(torch.ones(1)*np.mean(self.train_dataframe['z_train']))
+            self.mean_function.constant = torch.nn.Parameter(
+                torch.ones(1)*np.mean(self.train_dataframe['z_train']))
         elif mean == 'zero':
             self.mean_function = gpytorch.means.ZeroMean()
         else:
-            self.mean_function = "Not sure whether this library supports the specified mean function"
+            self.mean_function = ("Not sure whether this library "
+                                  "supports the specified mean function")
 
     def init_model(self, noise):
         '''
@@ -131,8 +133,9 @@ class gpytorch_wrapper():
                 return gpytorch.distributions.MultivariateNormal(mean_x, covar_x)
 
         # initialize likelihood and model
-        # The most common likelihood function used for GP regression is the Gaussian likelihood
-        # but in GPytorch other options like Bernoulli likelihood, Softmax likelihood etc. are available
+        # The most common likelihood function used for GP regression is the Gaussian
+        # likelihood but in GPytorch other options like Bernoulli likelihood, Softmax
+        # likelihood etc. are available
 
         self.likelihood = gpytorch.likelihoods.GaussianLikelihood(noise_prior=None)
 
@@ -196,7 +199,8 @@ class gpytorch_wrapper():
             print("Nugget : ", self.model.likelihood.noise.item())
         else:
             print("The hyperparameters used for prediction are :\n")
-            print("kernel lengthscale : ", self.model.covar_module.base_kernel.base_kernel.lengthscale)
+            print("kernel lengthscale : ",
+                  self.model.covar_module.base_kernel.base_kernel.lengthscale)
             print("kernel scale : ", self.model.covar_module.base_kernel.outputscale.item())
             print("Nugget : ", self.model.likelihood.noise.item())
             print('Optimized likelihood: ', loss.item())

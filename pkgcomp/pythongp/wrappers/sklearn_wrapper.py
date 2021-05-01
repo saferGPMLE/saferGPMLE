@@ -51,14 +51,19 @@ class sklearn_wrapper():
         '''
 
         if kernel['name'] == 'Matern':
-            self.kernel_function = sklearn_gp.kernels.Matern(length_scale=kernel['lengthscale'],
-                                                             nu=kernel['order'],
-                                                             length_scale_bounds=make_tuple(kernel['lengthscale_bounds'])) * \
-                                   sklearn_gp.kernels.ConstantKernel(constant_value=kernel['scale'])
+            self.kernel_function = (
+                sklearn_gp.kernels.Matern(
+                    length_scale=kernel['lengthscale'],
+                    nu=kernel['order'],
+                    length_scale_bounds=make_tuple(kernel['lengthscale_bounds']))
+                * sklearn_gp.kernels.ConstantKernel(
+                    constant_value=kernel['scale']))
         elif kernel['name'] == 'Gaussian':
-            self.kernel_function = sklearn_gp.kernels.RBF(length_scale=kernel['lengthscale'],
-                                                          length_scale_bounds=make_tuple(kernel['lengthscale_bounds'])) * \
-                                                          sklearn_gp.kernels.ConstantKernel(constant_value=kernel['scale'])
+            self.kernel_function = (
+                sklearn_gp.kernels.RBF(
+                    length_scale=kernel['lengthscale'],
+                    length_scale_bounds=make_tuple(kernel['lengthscale_bounds']))
+                * sklearn_gp.kernels.ConstantKernel(constant_value=kernel['scale']))
         else:
             self.kernel_function = "This library does not support the specified kernel function"
 
@@ -97,10 +102,9 @@ class sklearn_wrapper():
         else:
             return ("This library does not support the specified Parameter optimizer")
 
-        self.model = sklearn_gp.GaussianProcessRegressor(kernel=self.kernel_function,
-                                                         alpha=self.nugget, optimizer=optimizer_input,
-                                                         normalize_y=self.mean_function, copy_X_train=True,
-                                                         random_state=None)
+        self.model = sklearn_gp.GaussianProcessRegressor(
+            kernel=self.kernel_function, alpha=self.nugget, optimizer=optimizer_input,
+            normalize_y=self.mean_function, copy_X_train=True, random_state=None)
         print('Kernel hyperparameters before optimization :\n', self.model.kernel)
         self.model.fit(self.x_train, self.z_train)
         print('Kernel hyperparameters after optimization :\n', self.model.kernel_)
@@ -117,7 +121,8 @@ class sklearn_wrapper():
             return
 
         self.z_postmean, self.z_postvar = self.model.predict(self.x_test, return_std=True)
-        # To predict with the noise we need to add the likelihood variance to the predicted posterior variance and take squareroot
+        # To predict with the noise we need to add the likelihood variance to
+        # the predicted posterior variance and take squareroot
         self.z_postvar = np.sqrt(np.add(np.square(self.z_postvar), self.nugget))
 
         return self.z_postmean, self.z_postvar

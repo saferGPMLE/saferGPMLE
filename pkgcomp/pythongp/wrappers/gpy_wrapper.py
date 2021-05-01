@@ -73,9 +73,11 @@ class gpy_wrapper():
         '''
 
         if mean == 'constant':
-            self.mean_function = GPy.mappings.constant.Constant(input_dim=self.x_train.shape[1], output_dim=1, value=0.0)
+            self.mean_function = GPy.mappings.constant.Constant(
+                input_dim=self.x_train.shape[1], output_dim=1, value=0.0)
         elif mean != 'zero':
-            self.mean_function = "Not sure whether this library supports the specified mean function"
+            self.mean_function = ("Not sure whether this library "
+                                  "supports the specified mean function")
 
     def init_model(self, noise):
         '''
@@ -89,9 +91,9 @@ class gpy_wrapper():
             self.model = 'No model'
 
         else:
-            self.model = GPy.models.GPRegression(self.x_train, self.z_train, kernel=self.kernel_function,
-                                                 Y_metadata=None, normalizer=None,
-                                                 noise_var=noise, mean_function=self.mean_function)
+            self.model = GPy.models.GPRegression(
+                self.x_train, self.z_train, kernel=self.kernel_function, Y_metadata=None,
+                normalizer=None, noise_var=noise, mean_function=self.mean_function)
 
             if hasattr(self.model, 'sum'):
                 self.model.sum.constant.variance.fix()
@@ -103,8 +105,8 @@ class gpy_wrapper():
         if param_opt in ['MLE', 'MLE_with_smart_init']:
             optimizer_input = True
             if param_opt == 'MLE':
-                self.model.optimize(messages=optimizer_input, max_iters=1000, start=None, clear_after_finish=False,
-                                    ipython_notebook=True)
+                self.model.optimize(messages=optimizer_input, max_iters=1000, start=None,
+                                    clear_after_finish=False, ipython_notebook=True)
             else:
                 grid = np.vectorize(lambda x: math.exp(x * math.log(10)))(np.arange(-5, 5, 1))
                 scores = []
@@ -114,7 +116,8 @@ class gpy_wrapper():
                 for ls in grid:
                     self.set_isotropic_lengthscale(ls)
 
-                    beta, variance = self.get_beta_and_var_from_ls(zero_mean, hasattr(self.model, 'sum'))
+                    beta, variance = self.get_beta_and_var_from_ls(
+                        zero_mean, hasattr(self.model, 'sum'))
 
                     self.set_var(variance)
 
@@ -129,7 +132,8 @@ class gpy_wrapper():
 
                 self.set_isotropic_lengthscale(grid[best_model_index])
 
-                beta, variance = self.get_beta_and_var_from_ls(zero_mean, hasattr(self.model, 'sum'))
+                beta, variance = self.get_beta_and_var_from_ls(
+                    zero_mean, hasattr(self.model, 'sum'))
 
                 self.set_var(variance)
 
@@ -137,7 +141,7 @@ class gpy_wrapper():
 
                 self.model.optimize(messages=optimizer_input, max_iters=1000, start=None,
                                     clear_after_finish=False, ipython_notebook=True)
-                
+
             print('\nAfter optimization : \n', self.model)
 
             if hasattr(self.model, 'sum'):
