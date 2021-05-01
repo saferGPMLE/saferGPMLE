@@ -30,8 +30,8 @@ print('n_train =', n_train)
 
 
 ######################################################
-##  A function to compute some metrics              ##
-##     for a given package, using a given data set  ##
+#   A function to compute some metrics               #
+#      for a given package, using a given data set   #
 ######################################################
 
 def compute_metrics(pgp, data, n_train):
@@ -79,7 +79,7 @@ def compute_metrics(pgp, data, n_train):
 
 
 ####################################################
-##  Compute metrics for all packages in the list  ##
+#   Compute metrics for all packages in the list   #
 ####################################################
 
 np.random.seed(0)
