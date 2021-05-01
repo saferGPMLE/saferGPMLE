@@ -41,12 +41,12 @@ class gpytorch_wrapper():
         '''
         This function re-configures the training data according to the library requirement
         '''
-        self.z_train = torch.tensor(z_train, dtype = torch.float32)
-        self.x_train = torch.tensor(x_train, dtype = torch.float32)
+        self.z_train = torch.tensor(z_train, dtype=torch.float32)
+        self.x_train = torch.tensor(x_train, dtype=torch.float32)
         self.input_dim = x_train.shape[1]
         
 
-    def set_kernel(self, kernel, ard = True):
+    def set_kernel(self, kernel, ard=True):
         '''
         kernel : dictionary of parameters
         '''
@@ -55,21 +55,24 @@ class gpytorch_wrapper():
         grid_size = gpytorch.utils.grid.choose_grid_size(self.x_train)
 
         if kernel['name'] == 'Matern':
-            covar = gpytorch.kernels.GridInterpolationKernel(gpytorch.kernels.ScaleKernel(gpytorch.kernels.MaternKernel(nu=kernel['order'],
-                                                                              eps = make_tuple(kernel['lengthscale_bounds'])[0],
-                                                                              ard_num_dims = self.input_dim)),
-                                                            grid_size = grid_size,
-                                                            num_dims = self.input_dim)
+            covar = gpytorch.kernels.GridInterpolationKernel(
+                gpytorch.kernels.ScaleKernel(
+                    gpytorch.kernels.MaternKernel(nu=kernel['order'],
+                                                  eps=make_tuple(kernel['lengthscale_bounds'])[0],
+                                                  ard_num_dims=self.input_dim)),
+                grid_size=grid_size,
+                num_dims=self.input_dim)
             scale = kernel['scale']
             covar.base_kernel._set_outputscale(scale)
             covar.base_kernel.base_kernel._set_lengthscale(kernel['lengthscale'])
             self.kernel_function = covar
         elif kernel['name'] == 'Gaussian':
-            covar = gpytorch.kernels.GridInterpolationKernel(gpytorch.kernels.ScaleKernel(
-                                                            gpytorch.kernels.RBFKernel(eps = make_tuple(kernel['lengthscale_bounds'])[0],
-                                                                                        ard_num_dims = self.input_dim)),
-                                                             grid_size = grid_size,
-                                                             num_dims = self.input_dim)
+            covar = gpytorch.kernels.GridInterpolationKernel(
+                gpytorch.kernels.ScaleKernel(
+                    gpytorch.kernels.RBFKernel(eps=make_tuple(kernel['lengthscale_bounds'])[0],
+                                               ard_num_dims=self.input_dim)),
+                grid_size=grid_size,
+                num_dims=self.input_dim)
             scale = kernel['scale']
             covar.base_kernel._set_outputscale(scale)
             covar.base_kernel.base_kernel._set_lengthscale(kernel['lengthscale'])
@@ -134,14 +137,14 @@ class gpytorch_wrapper():
         # The most common likelihood function used for GP regression is the Gaussian likelihood
         # but in GPytorch other options like Bernoulli likelihood, Softmax likelihood etc. are available
 
-        self.likelihood = gpytorch.likelihoods.GaussianLikelihood(noise_prior = None)
+        self.likelihood = gpytorch.likelihoods.GaussianLikelihood(noise_prior=None)
         
         if self.input_dim == 1:
             self.model = ExactGPModel(self.x_train, self.z_train, self.likelihood)
         else:
             self.model = KISSGPRegressionModel(self.x_train, self.z_train, self.likelihood)
         
-        self.model.likelihood.initialize(noise = noise)
+        self.model.likelihood.initialize(noise=noise)
         
     
     def optimize(self, param_opt, itr):
@@ -190,7 +193,6 @@ class gpytorch_wrapper():
 
         reg_model = [self.model, self.likelihood]
 
-
         if self.input_dim == 1:
             print("The hyperparameters used for prediction are :\n")
             print("kernel lengthscale : ", self.model.covar_module.base_kernel.lengthscale.item())
@@ -210,7 +212,7 @@ class gpytorch_wrapper():
         '''
         This function makes predictions for the test data
         '''
-        self.x_test = torch.tensor(x_test, dtype = torch.float32)
+        self.x_test = torch.tensor(x_test, dtype=torch.float32)
         
         if type(self.model) == str:
             return

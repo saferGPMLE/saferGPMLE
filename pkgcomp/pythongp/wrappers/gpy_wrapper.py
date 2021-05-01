@@ -44,28 +44,28 @@ class gpy_wrapper():
         self.input_dim = x_train.shape[1]
 
 
-    def set_kernel(self, kernel, ard = True):
+    def set_kernel(self, kernel, ard=True):
         '''
         kernel : dictionary of parameters
         '''
 
         if kernel['name'] == 'Matern':
             if kernel['order'] == 1.5:
-                self.kernel_function = GPy.kern.Matern32(input_dim = self.input_dim,
-                                                         variance = kernel['scale'],
-                                                         lengthscale = kernel['lengthscale'],
-                                                         ARD = ard)
+                self.kernel_function = GPy.kern.Matern32(input_dim=self.input_dim,
+                                                         variance=kernel['scale'],
+                                                         lengthscale=kernel['lengthscale'],
+                                                         ARD=ard)
             elif kernel['order'] == 2.5:
-                self.kernel_function = GPy.kern.Matern52(input_dim = self.input_dim,
-                                                         variance = kernel['scale'],
-                                                         lengthscale = kernel['lengthscale'],
-                                                         ARD = ard)
+                self.kernel_function = GPy.kern.Matern52(input_dim=self.input_dim,
+                                                         variance=kernel['scale'],
+                                                         lengthscale=kernel['lengthscale'],
+                                                         ARD=ard)
 
         elif kernel['name'] == 'Gaussian':
-            self.kernel_function = GPy.kern.RBF(input_dim = self.input_dim,
-                                                variance = kernel['scale'],
-                                                lengthscale = kernel['lengthscale'],
-                                                ARD = ard)
+            self.kernel_function = GPy.kern.RBF(input_dim=self.input_dim,
+                                                variance=kernel['scale'],
+                                                lengthscale=kernel['lengthscale'],
+                                                ARD=ard)
         else:
             self.kernel_function = "This library does not support the specified kernel function"
 
@@ -76,8 +76,7 @@ class gpy_wrapper():
         '''
 
         if mean == 'constant':
-            self.mean_function = GPy.mappings.constant.Constant(input_dim = self.x_train.shape[1], output_dim = 1, value=0.0)
-            #self.mean_function = GPy.mappings.constant.Constant(input_dim = self.x_train.shape[1], output_dim = 1, value=np.mean(self.train_dataframe['z_train']))
+            self.mean_function = GPy.mappings.constant.Constant(input_dim=self.x_train.shape[1], output_dim=1, value=0.0)
         elif mean != 'zero':
             self.mean_function = "Not sure whether this library supports the specified mean function"
 
@@ -96,7 +95,7 @@ class gpy_wrapper():
         else:
             self.model = GPy.models.GPRegression(self.x_train, self.z_train, kernel=self.kernel_function,
                                         Y_metadata=None, normalizer=None,
-                                        noise_var = noise, mean_function=self.mean_function)
+                                        noise_var=noise, mean_function=self.mean_function)
 
             if hasattr(self.model, 'sum'):
                 self.model.sum.constant.variance.fix()
@@ -137,8 +136,6 @@ class gpy_wrapper():
                 best_model_index = np.argmin(scores)
 
                 self.set_isotropic_lengthscale(grid[best_model_index])
-
-                #self.model.Mat52.lengthscale = [27.04, 83.38]
 
                 beta, variance = self.get_beta_and_var_from_ls(zero_mean, hasattr(self.model, 'sum'))
 

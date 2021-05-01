@@ -44,7 +44,7 @@ class openturns_wrapper():
         self.input_dim = x_train.shape[1]    
 
     
-    def set_kernel(self, kernel, ard = True):
+    def set_kernel(self, kernel, ard=True):
         '''
         kernel : dictionary of parameters
         '''
@@ -90,9 +90,9 @@ class openturns_wrapper():
     def optimize(self, param_opt, itr):
         
         if param_opt == 'MLE':
-            self.model.setOptimizeParameters(optimizeParameters = True)
+            self.model.setOptimizeParameters(optimizeParameters=True)
         elif param_opt == 'Not_optimize':
-            self.model.setOptimizeParameters(optimizeParameters = False)
+            self.model.setOptimizeParameters(optimizeParameters=False)
         else:
             return ("This library does not support the specified Parameter optimizer")
 
@@ -121,7 +121,7 @@ class openturns_wrapper():
         if type(self.model) == str:
             return
         
-        self.z_postmean  = np.array(self.model.getConditionalMean(self.x_test))
+        self.z_postmean = np.array(self.model.getConditionalMean(self.x_test))
         self.z_postvar = np.sqrt(np.add(np.diag(np.array(self.model.getConditionalCovariance(self.x_test))), self.nugget))
 
         return self.z_postmean, self.z_postvar

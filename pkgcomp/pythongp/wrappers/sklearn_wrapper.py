@@ -52,14 +52,14 @@ class sklearn_wrapper():
         '''
   
         if kernel['name'] == 'Matern':
-            self.kernel_function = sklearn_gp.kernels.Matern(length_scale = kernel['lengthscale'],
-                                                             nu = kernel['order'],
-                                                             length_scale_bounds = make_tuple(kernel['lengthscale_bounds'])) * \
-                                   sklearn_gp.kernels.ConstantKernel(constant_value = kernel['scale'])
+            self.kernel_function = sklearn_gp.kernels.Matern(length_scale=kernel['lengthscale'],
+                                                             nu=kernel['order'],
+                                                             length_scale_bounds=make_tuple(kernel['lengthscale_bounds'])) * \
+                                   sklearn_gp.kernels.ConstantKernel(constant_value=kernel['scale'])
         elif kernel['name'] == 'Gaussian':
-            self.kernel_function = sklearn_gp.kernels.RBF(length_scale = kernel['lengthscale'],
-                                                          length_scale_bounds = make_tuple(kernel['lengthscale_bounds'])) * \
-                                   sklearn_gp.kernels.ConstantKernel(constant_value = kernel['scale'])
+            self.kernel_function = sklearn_gp.kernels.RBF(length_scale=kernel['lengthscale'],
+                                                          length_scale_bounds=make_tuple(kernel['lengthscale_bounds'])) * \
+                                                          sklearn_gp.kernels.ConstantKernel(constant_value=kernel['scale'])
         else:
             self.kernel_function = "This library does not support the specified kernel function"
 
@@ -102,9 +102,9 @@ class sklearn_wrapper():
             return ("This library does not support the specified Parameter optimizer")
 
         self.model = sklearn_gp.GaussianProcessRegressor(kernel=self.kernel_function,
-                                                                  alpha = self.nugget, optimizer=optimizer_input,
-                                                                  normalize_y=self.mean_function, copy_X_train=True,
-                                                                  random_state=None)
+                                                         alpha=self.nugget, optimizer=optimizer_input,
+                                                         normalize_y=self.mean_function, copy_X_train=True,
+                                                         random_state=None)
         print('Kernel hyperparameters before optimization :\n', self.model.kernel)
         self.model.fit(self.x_train, self.z_train)
         print('Kernel hyperparameters after optimization :\n', self.model.kernel_)

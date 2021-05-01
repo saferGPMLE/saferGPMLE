@@ -42,32 +42,32 @@ class gpflow_wrapper():
         self.input_dim = x_train.shape[1]
 
 
-    def set_kernel(self, kernel, ard = True):
+    def set_kernel(self, kernel, ard=True):
         '''
         kernel : dictionary of parameters
         '''
 
         if kernel['name'] == 'Matern':
             if kernel['order'] == 1.5:
-                self.kernel_function = gpflow.kernels.Matern32(input_dim = self.input_dim,
-                                                variance = kernel['scale'],
-                                                lengthscales = kernel['lengthscale'],
-                                                ARD = ard)
+                self.kernel_function = gpflow.kernels.Matern32(input_dim=self.input_dim,
+                                                               variance=kernel['scale'],
+                                                               lengthscales=kernel['lengthscale'],
+                                                               ARD=ard)
             elif kernel['order'] == 2.5:
-                self.kernel_function = gpflow.kernels.Matern52(input_dim = self.input_dim,
-                                                variance = kernel['scale'],
-                                                lengthscales = kernel['lengthscale'],
-                                                ARD = ard)
+                self.kernel_function = gpflow.kernels.Matern52(input_dim=self.input_dim,
+                                                               variance=kernel['scale'],
+                                                               lengthscales=kernel['lengthscale'],
+                                                               ARD=ard)
             elif kernel['order'] == 0.5:
-                self.kernel_function = gpflow.kernels.Matern12(input_dim = self.input_dim,
-                                                variance = kernel['scale'],
-                                                lengthscales = kernel['lengthscale'],
-                                                ARD = ard)
+                self.kernel_function = gpflow.kernels.Matern12(input_dim=self.input_dim,
+                                                               variance=kernel['scale'],
+                                                               lengthscales=kernel['lengthscale'],
+                                                               ARD=ard)
         elif kernel['name'] == 'Gaussian':
-            self.kernel_function = gpflow.kernels.RBF(input_dim = self.input_dim,
-                                       variance = kernel['scale'],
-                                       lengthscales = kernel['lengthscale'],
-                                       ARD = ard)
+            self.kernel_function = gpflow.kernels.RBF(input_dim=self.input_dim,
+                                                      variance=kernel['scale'],
+                                                      lengthscales=kernel['lengthscale'],
+                                                      ARD=ard)
         else:
             self.kernel_function = "This library does not support the specified kernel function"
 
@@ -78,7 +78,7 @@ class gpflow_wrapper():
         '''       
 
         if mean == 'constant':
-            self.mean_function = gpflow.mean_functions.Constant(c = np.ones(1)*np.mean(self.train_dataframe['z_train']))
+            self.mean_function = gpflow.mean_functions.Constant(c=np.ones(1)*np.mean(self.train_dataframe['z_train']))
         elif mean == 'zero':
             self.mean_function = gpflow.mean_functions.Zero()
         else:
@@ -100,7 +100,7 @@ class gpflow_wrapper():
         else :
 
             self.model = gpflow.models.GPR(self.x_train, self.z_train, kern=self.kernel_function,
-                                          mean_function=self.mean_function)
+                                           mean_function=self.mean_function)
             self.model.likelihood.variance = noise
 
             print(self.model.as_pandas_table())
@@ -109,7 +109,7 @@ class gpflow_wrapper():
     def optimize(self, param_opt, itr):
 
             if param_opt == 'MLE':
-                gpflow.train.ScipyOptimizer().minimize(self.model, disp = True)
+                gpflow.train.ScipyOptimizer().minimize(self.model, disp=True)
                 print('\n\nprintin AFTER optimization {}'.format(self.model.likelihood))
 
             elif param_opt != 'Not_optimize':
