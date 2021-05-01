@@ -193,12 +193,12 @@ class gpytorch_wrapper():
             print("The hyperparameters used for prediction are :\n")
             print("kernel lengthscale : ", self.model.covar_module.base_kernel.lengthscale.item())
             print("kernel scale : ", self.model.covar_module.outputscale.item())
-            print("Nugget : ",self.model.likelihood.noise.item())
+            print("Nugget : ", self.model.likelihood.noise.item())
         else:
             print("The hyperparameters used for prediction are :\n")
             print("kernel lengthscale : ", self.model.covar_module.base_kernel.base_kernel.lengthscale)
             print("kernel scale : ", self.model.covar_module.base_kernel.outputscale.item())
-            print("Nugget : ",self.model.likelihood.noise.item())
+            print("Nugget : ", self.model.likelihood.noise.item())
             print('Optimized likelihood: ', loss.item())
 
         self.model = reg_model

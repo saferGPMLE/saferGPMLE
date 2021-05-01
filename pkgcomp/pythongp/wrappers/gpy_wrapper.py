@@ -38,7 +38,7 @@ class gpy_wrapper():
         '''
         This function re-configures the training data according to the library requirement
         '''
-        self.z_train = np.reshape(z_train,(len(z_train),1))
+        self.z_train = np.reshape(z_train, (len(z_train), 1))
         self.x_train = x_train
         self.input_dim = x_train.shape[1]
 
@@ -96,7 +96,7 @@ class gpy_wrapper():
             if hasattr(self.model, 'sum'):
                 self.model.sum.constant.variance.fix()
 
-        print('\nBefore optimization : \n',self.model)
+        print('\nBefore optimization : \n', self.model)
 
     def optimize(self, param_opt, itr):
 

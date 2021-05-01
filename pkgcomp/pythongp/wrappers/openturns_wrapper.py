@@ -40,7 +40,7 @@ class openturns_wrapper():
         This function re-configures the training data according to the library requirement
         '''
         self.x_train = ot.Sample(x_train)
-        self.z_train = ot.Sample(np.reshape(z_train,(len(self.x_train),1)))
+        self.z_train = ot.Sample(np.reshape(z_train, (len(self.x_train), 1)))
         self.input_dim = x_train.shape[1]
 
     def set_kernel(self, kernel, ard=True):
@@ -93,12 +93,12 @@ class openturns_wrapper():
             return ("This library does not support the specified Parameter optimizer")
 
         print(self.kernel_function.getFullParameterDescription())
-        print("parameter before optimization : ",self.kernel_function.getFullParameter())
+        print("parameter before optimization : ", self.kernel_function.getFullParameter())
 
         self.model.run()
 
         result = self.model.getResult()
-        print("parameter after optimization : \n",result.getCovarianceModel())
+        print("parameter after optimization : \n", result.getCovarianceModel())
         print("Nugget", self.model.getNoise())
         lik_function = self.model.getReducedLogLikelihoodFunction()
         print("\n\nlikelihood evaluation after optimization {}".format(lik_function(result.getCovarianceModel().getScale())))

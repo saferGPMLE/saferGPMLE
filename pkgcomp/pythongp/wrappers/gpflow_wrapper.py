@@ -37,7 +37,7 @@ class gpflow_wrapper():
         '''
         This function re-configures the training data according to the library requirement
         '''
-        self.z_train = np.reshape(z_train,(len(z_train),1))
+        self.z_train = np.reshape(z_train, (len(z_train), 1))
         self.x_train = x_train
         self.input_dim = x_train.shape[1]
 
