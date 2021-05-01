@@ -100,7 +100,7 @@ class openturns_wrapper():
         result = self.model.getResult()
         print("parameter after optimization : \n",result.getCovarianceModel())
         print("Nugget", self.model.getNoise())
-        lik_function =  self.model.getReducedLogLikelihoodFunction()
+        lik_function = self.model.getReducedLogLikelihoodFunction()
         print("\n\nlikelihood evaluation after optimization {}".format(lik_function(result.getCovarianceModel().getScale())))
         self.model = result
 
