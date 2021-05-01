@@ -94,7 +94,7 @@ class gpflow_wrapper():
                 print(self.mean_function)
             self.model = 'No model'
 
-        else :
+        else:
 
             self.model = gpflow.models.GPR(self.x_train, self.z_train, kern=self.kernel_function,
                                            mean_function=self.mean_function)
