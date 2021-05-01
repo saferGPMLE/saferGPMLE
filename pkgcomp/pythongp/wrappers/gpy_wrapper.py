@@ -101,10 +101,10 @@ class gpy_wrapper():
                 self.model.sum.constant.variance.fix()
 
         print('\nBefore optimization : \n',self.model)
-        
-    
+
+
     def optimize(self, param_opt, itr):
-        
+
         if param_opt in ['MLE', 'MLE_with_smart_init']:
             optimizer_input = True
             if param_opt == 'MLE':
@@ -165,17 +165,17 @@ class gpy_wrapper():
         elif param_opt != 'Not_optimize':
             return ("Not sure whether this library supports the specified Parameter optimizer")
 
-    
+
     def predict(self, x_test):
         '''
         This function makes predictions for the test data
         '''
 
         self.x_test = x_test
-        
+
         if type(self.model) == str:
             return
-        
+
         self.z_postmean, self.z_postvar = self.model.predict(self.x_test, include_likelihood=True)
 
         return self.z_postmean.reshape(-1), np.sqrt(self.z_postvar.reshape(-1))

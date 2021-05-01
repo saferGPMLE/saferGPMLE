@@ -17,7 +17,7 @@ class sklearn_wrapper():
 
         # model definition
         self.model = None
-        
+
         self.nugget = None
 
         self.mean_function = None
@@ -42,7 +42,7 @@ class sklearn_wrapper():
         '''
 
         self.z_train = z_train
-        self.x_train = x_train 
+        self.x_train = x_train
         self.input_dim = x_train.shape[1]
 
 
@@ -50,7 +50,7 @@ class sklearn_wrapper():
         '''
         kernel : dictionary of parameters
         '''
-  
+
         if kernel['name'] == 'Matern':
             self.kernel_function = sklearn_gp.kernels.Matern(length_scale=kernel['lengthscale'],
                                                              nu=kernel['order'],
@@ -88,12 +88,12 @@ class sklearn_wrapper():
             if type(self.mean_function) == str:
                 print(self.mean_function)
             self.model = 'No model'
-            
+
         self.nugget = noise
 
 
     def optimize(self, param_opt, itr):
-        
+
         if param_opt == 'MLE':
             optimizer_input = 'fmin_l_bfgs_b'
         elif param_opt == 'Not_optimize':
@@ -117,12 +117,12 @@ class sklearn_wrapper():
         This function makes predictions for the test data
         '''
         self.x_test = x_test
-        
+
         if type(self.model) == str:
             return
-        
+
         self.z_postmean, self.z_postvar = self.model.predict(self.x_test, return_std=True)
         # To predict with the noise we need to add the likelihood variance to the predicted posterior variance and take squareroot
         self.z_postvar = np.sqrt(np.add(np.square(self.z_postvar), self.nugget))
-        
+
         return self.z_postmean, self.z_postvar

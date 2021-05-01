@@ -75,7 +75,7 @@ class gpflow_wrapper():
     def set_mean(self, mean):
         '''
         This function constructs the mean function
-        '''       
+        '''
 
         if mean == 'constant':
             self.mean_function = gpflow.mean_functions.Constant(c=np.ones(1)*np.mean(self.train_dataframe['z_train']))

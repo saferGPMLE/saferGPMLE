@@ -18,7 +18,7 @@ class gpytorch_wrapper():
 
         # model definition
         self.model = None
-        
+
         self.likelihood = None
 
         self.mean_function = None
@@ -44,7 +44,7 @@ class gpytorch_wrapper():
         self.z_train = torch.tensor(z_train, dtype=torch.float32)
         self.x_train = torch.tensor(x_train, dtype=torch.float32)
         self.input_dim = x_train.shape[1]
-        
+
 
     def set_kernel(self, kernel, ard=True):
         '''
@@ -124,8 +124,8 @@ class gpytorch_wrapper():
         class KISSGPRegressionModel(gpytorch.models.ExactGP):
             def __init__(self, train_x, train_y, likelihood):
                 super(KISSGPRegressionModel, self).__init__(train_x, train_y, likelihood)
-        
-                
+
+
                 self.mean_module = mean_proxy
                 self.covar_module = kernel_proxy
             def forward(self, x):
@@ -138,15 +138,15 @@ class gpytorch_wrapper():
         # but in GPytorch other options like Bernoulli likelihood, Softmax likelihood etc. are available
 
         self.likelihood = gpytorch.likelihoods.GaussianLikelihood(noise_prior=None)
-        
+
         if self.input_dim == 1:
             self.model = ExactGPModel(self.x_train, self.z_train, self.likelihood)
         else:
             self.model = KISSGPRegressionModel(self.x_train, self.z_train, self.likelihood)
-        
+
         self.model.likelihood.initialize(noise=noise)
-        
-    
+
+
     def optimize(self, param_opt, itr):
 
         if param_opt == 'MLE':
@@ -179,7 +179,7 @@ class gpytorch_wrapper():
                             i + 1, training_iter, loss.item(),
                             self.model.covar_module.base_kernel.lengthscale.item(),
                             self.model.likelihood.noise.item()))
-                else:    
+                else:
                     print('Iter %d/%d - Loss: %.3f' % (i + 1, training_iter, loss.item()))
                 '''
                 optimizer.step()
@@ -213,10 +213,10 @@ class gpytorch_wrapper():
         This function makes predictions for the test data
         '''
         self.x_test = torch.tensor(x_test, dtype=torch.float32)
-        
+
         if type(self.model) == str:
             return
-        
+
         with torch.no_grad(), gpytorch.settings.fast_pred_var():
             observed_pred = self.model[1](self.model[0](self.x_test))
             self.z_postvar = np.sqrt(observed_pred.variance.numpy())

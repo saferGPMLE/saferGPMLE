@@ -16,7 +16,7 @@ def select_package(pkg):
         pgp = gpytorch_wrapper.gpytorch_wrapper()
     elif pkg == 'openturns':
         from pythongp.wrappers import openturns_wrapper
-        pgp = openturns_wrapper.openturns_wrapper()    
+        pgp = openturns_wrapper.openturns_wrapper()
     else:
         raise ValueError('Unexpected package name : {}'.format(pkg))
     return pgp
