@@ -124,6 +124,7 @@ class gpytorch_wrapper():
 
                 self.mean_module = mean_proxy
                 self.covar_module = kernel_proxy
+
             def forward(self, x):
                 mean_x = self.mean_module(x)
                 covar_x = self.covar_module(x)
