@@ -4,7 +4,10 @@ on: [push, pull_request]
 
 jobs:
   pkgcomp:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
       - name: Check out source repository
         uses: actions/checkout@v2
