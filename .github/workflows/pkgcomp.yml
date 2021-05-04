@@ -1,0 +1,22 @@
+name: pkgcomp
+
+on: [push, pull_request]
+
+jobs:
+  pkgcomp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v2
+      - name: Set up Python environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.7"
+      - name: Install packages
+        run: |
+          pip3 install --upgrade pip
+          pip3 install numpy scipy pandas scikit-learn==0.24.2
+          pip3 list
+      - name: Run test
+        run: python3 pkgcomp.py --pkg scikit-learn
+        working-directory: ./pkgcomp/
