@@ -8,6 +8,12 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
+        pkg: [scikit-learn, openturns]
+        include:
+          - pkg: scikit-learn
+            pkgver: 0.24.2
+          - pkg: openturns
+            pkgver: 1.16
     steps:
       - name: Check out source repository
         uses: actions/checkout@v2
@@ -18,8 +24,8 @@ jobs:
       - name: Install packages
         run: |
           pip3 install --upgrade pip
-          pip3 install numpy scipy pandas scikit-learn==0.24.2
+          pip3 install numpy scipy pandas ${{ matrix.pkg }}==${{ matrix.pkgver }}
           pip3 list
       - name: Run test
-        run: python3 pkgcomp.py --pkg scikit-learn
+        run: python3 pkgcomp.py --pkg ${{ matrix.pkg }}
         working-directory: ./pkgcomp/
