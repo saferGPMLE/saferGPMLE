@@ -50,18 +50,18 @@ class gpy_wrapper():
         if kernel['name'] == 'Matern':
             if kernel['order'] == 1.5:
                 self.kernel_function = GPy.kern.Matern32(input_dim=self.input_dim,
-                                                         variance=kernel['scale'],
+                                                         variance=kernel['variance'],
                                                          lengthscale=kernel['lengthscale'],
                                                          ARD=ard)
             elif kernel['order'] == 2.5:
                 self.kernel_function = GPy.kern.Matern52(input_dim=self.input_dim,
-                                                         variance=kernel['scale'],
+                                                         variance=kernel['variance'],
                                                          lengthscale=kernel['lengthscale'],
                                                          ARD=ard)
 
         elif kernel['name'] == 'Gaussian':
             self.kernel_function = GPy.kern.RBF(input_dim=self.input_dim,
-                                                variance=kernel['scale'],
+                                                variance=kernel['variance'],
                                                 lengthscale=kernel['lengthscale'],
                                                 ARD=ard)
         else:

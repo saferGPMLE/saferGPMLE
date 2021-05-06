@@ -59,7 +59,7 @@ def compute_metrics(pgp, data, n_train):
         'lengthscale':         [1, 1],
         'order':               2.5,
         'lengthscale_bounds':  '(1e-5, 1e5)',
-        'scale':               1.0
+        'variance':            1.0
     }
 
     # Contruct GP model

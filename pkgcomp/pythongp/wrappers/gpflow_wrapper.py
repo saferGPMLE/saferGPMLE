@@ -51,25 +51,25 @@ class gpflow_wrapper():
             if kernel['order'] == 1.5:
                 self.kernel_function = gpflow.kernels.Matern32(
                     input_dim=self.input_dim,
-                    variance=kernel['scale'],
+                    variance=kernel['variance'],
                     lengthscales=kernel['lengthscale'],
                     ARD=ard)
             elif kernel['order'] == 2.5:
                 self.kernel_function = gpflow.kernels.Matern52(
                     input_dim=self.input_dim,
-                    variance=kernel['scale'],
+                    variance=kernel['variance'],
                     lengthscales=kernel['lengthscale'],
                     ARD=ard)
             elif kernel['order'] == 0.5:
                 self.kernel_function = gpflow.kernels.Matern12(
                     input_dim=self.input_dim,
-                    variance=kernel['scale'],
+                    variance=kernel['variance'],
                     lengthscales=kernel['lengthscale'],
                     ARD=ard)
         elif kernel['name'] == 'Gaussian':
             self.kernel_function = gpflow.kernels.RBF(
                 input_dim=self.input_dim,
-                variance=kernel['scale'],
+                variance=kernel['variance'],
                 lengthscales=kernel['lengthscale'],
                 ARD=ard)
         else:

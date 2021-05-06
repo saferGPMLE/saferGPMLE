@@ -57,13 +57,14 @@ class sklearn_wrapper():
                     nu=kernel['order'],
                     length_scale_bounds=make_tuple(kernel['lengthscale_bounds']))
                 * sklearn_gp.kernels.ConstantKernel(
-                    constant_value=kernel['scale']))
+                    constant_value=kernel['variance']))
         elif kernel['name'] == 'Gaussian':
             self.kernel_function = (
                 sklearn_gp.kernels.RBF(
                     length_scale=kernel['lengthscale'],
                     length_scale_bounds=make_tuple(kernel['lengthscale_bounds']))
-                * sklearn_gp.kernels.ConstantKernel(constant_value=kernel['scale']))
+                * sklearn_gp.kernels.ConstantKernel(
+                    constant_value=kernel['variance']))
         else:
             self.kernel_function = "This library does not support the specified kernel function"
 

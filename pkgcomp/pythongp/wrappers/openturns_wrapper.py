@@ -6,6 +6,7 @@
 '''
 import openturns as ot
 import numpy as np
+import math
 
 
 class openturns_wrapper():
@@ -50,9 +51,13 @@ class openturns_wrapper():
 
         if kernel['name'] == 'Matern':
             self.kernel_function = ot.MaternModel(
-                kernel['lengthscale'], [kernel['scale']], float(kernel['order']))
+                scale=kernel['lengthscale'],
+                amplitude=[math.sqrt(kernel['variance'])],
+                nu=float(kernel['order']))
         elif kernel['name'] == 'Gaussian':
-            self.kernel_function = ot.SquaredExponential(kernel['lengthscale'], [kernel['scale']])
+            self.kernel_function = ot.SquaredExponential(
+                scale=kernel['lengthscale'],
+                amplitude=[math.sqrt(kernel['variance'])])
         else:
             self.kernel_function = "This library does not support the specified kernel function"
 

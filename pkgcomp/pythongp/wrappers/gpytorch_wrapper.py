@@ -61,8 +61,7 @@ class gpytorch_wrapper():
                                                   ard_num_dims=self.input_dim)),
                 grid_size=grid_size,
                 num_dims=self.input_dim)
-            scale = kernel['scale']
-            covar.base_kernel._set_outputscale(scale)
+            covar.base_kernel._set_outputscale(kernel['variance'])
             covar.base_kernel.base_kernel._set_lengthscale(kernel['lengthscale'])
             self.kernel_function = covar
         elif kernel['name'] == 'Gaussian':
@@ -72,8 +71,7 @@ class gpytorch_wrapper():
                                                ard_num_dims=self.input_dim)),
                 grid_size=grid_size,
                 num_dims=self.input_dim)
-            scale = kernel['scale']
-            covar.base_kernel._set_outputscale(scale)
+            covar.base_kernel._set_outputscale(kernel['variance'])
             covar.base_kernel.base_kernel._set_lengthscale(kernel['lengthscale'])
             self.kernel_function = covar
         else:
@@ -195,13 +193,13 @@ class gpytorch_wrapper():
         if self.input_dim == 1:
             print("The hyperparameters used for prediction are :\n")
             print("kernel lengthscale : ", self.model.covar_module.base_kernel.lengthscale.item())
-            print("kernel scale : ", self.model.covar_module.outputscale.item())
+            print("kernel variance : ", self.model.covar_module.outputscale.item())
             print("Nugget : ", self.model.likelihood.noise.item())
         else:
             print("The hyperparameters used for prediction are :\n")
             print("kernel lengthscale : ",
                   self.model.covar_module.base_kernel.base_kernel.lengthscale)
-            print("kernel scale : ", self.model.covar_module.base_kernel.outputscale.item())
+            print("kernel variance : ", self.model.covar_module.base_kernel.outputscale.item())
             print("Nugget : ", self.model.likelihood.noise.item())
             print('Optimized likelihood: ', loss.item())
 
