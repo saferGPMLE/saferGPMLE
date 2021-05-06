@@ -51,13 +51,13 @@ class openturns_wrapper():
 
         if kernel['name'] == 'Matern':
             self.kernel_function = ot.MaternModel(
-                scale=kernel['lengthscale'],
-                amplitude=[math.sqrt(kernel['variance'])],
-                nu=float(kernel['order']))
+                kernel['lengthscale'],
+                [math.sqrt(kernel['variance'])],
+                float(kernel['order']))
         elif kernel['name'] == 'Gaussian':
             self.kernel_function = ot.SquaredExponential(
-                scale=kernel['lengthscale'],
-                amplitude=[math.sqrt(kernel['variance'])])
+                kernel['lengthscale'],
+                [math.sqrt(kernel['variance'])])
         else:
             self.kernel_function = "This library does not support the specified kernel function"
 
