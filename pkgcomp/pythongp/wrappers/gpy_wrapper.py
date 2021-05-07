@@ -161,6 +161,9 @@ class gpy_wrapper():
         elif param_opt != 'Not_optimize':
             return ("Not sure whether this library supports the specified Parameter optimizer")
 
+    def get_NLL(self):
+        return -self.model.log_likelihood()
+
     def predict(self, x_test):
         '''
         This function makes predictions for the test data

@@ -75,7 +75,11 @@ def compute_metrics(pgp, data, n_train):
     # Compute EMRMSE
     emrmse = np.sqrt(np.mean(np.square(
         np.array(z_test) - np.array(z_postmean))))
-    print("EMRMSE", emrmse)
+
+    print("\n")
+    print("[compute_metrics]  RESULTS:")
+    print("[compute_metrics]  | NLL    =", pgp.get_NLL())
+    print("[compute_metrics]  | EMRMSE =", emrmse)
 
 
 ####################################################

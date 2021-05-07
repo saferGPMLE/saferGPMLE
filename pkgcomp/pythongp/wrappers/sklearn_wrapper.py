@@ -110,7 +110,9 @@ class sklearn_wrapper():
         self.model.fit(self.x_train, self.z_train)
         print('Kernel hyperparameters after optimization :\n', self.model.kernel_)
         print("Nuggets before optimization :\n", self.model.alpha)
-        print("Likelihoood after optimization :\n", self.model.log_marginal_likelihood_value_)
+
+    def get_NLL(self):
+        return -self.model.log_marginal_likelihood_value_
 
     def predict(self, x_test):
         '''

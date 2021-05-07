@@ -122,6 +122,9 @@ class gpflow_wrapper():
 
         print(self.model.as_pandas_table())
 
+    def get_NLL(self):
+        return -self.model.compute_log_likelihood()
+
     def predict(self, x_test):
         '''
         This function makes predictions for the test data

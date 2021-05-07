@@ -201,9 +201,12 @@ class gpytorch_wrapper():
                   self.model.covar_module.base_kernel.base_kernel.lengthscale)
             print("kernel variance : ", self.model.covar_module.base_kernel.outputscale.item())
             print("Nugget : ", self.model.likelihood.noise.item())
-            print('Optimized likelihood: ', loss.item())
 
         self.model = reg_model
+        self.loss = loss
+
+    def get_NLL(self):
+        return self.loss.item()
 
     def predict(self, x_test):
         '''

@@ -86,31 +86,32 @@ class openturns_wrapper():
             self.model = 'No model'
 
         self.nugget = noise
-        self.model = ot.KrigingAlgorithm(self.x_train, self.z_train,
-                                         self.kernel_function, self.mean_function)
-        self.model.setNoise([self.nugget]*len(self.x_train))
+        self.kriging_algorithm = ot.KrigingAlgorithm(
+            self.x_train, self.z_train, self.kernel_function, self.mean_function)
+        self.kriging_algorithm.setNoise([self.nugget] * len(self.x_train))
 
     def optimize(self, param_opt, itr):
 
         if param_opt == 'MLE':
-            self.model.setOptimizeParameters(optimizeParameters=True)
+            self.kriging_algorithm.setOptimizeParameters(optimizeParameters=True)
         elif param_opt == 'Not_optimize':
-            self.model.setOptimizeParameters(optimizeParameters=False)
+            self.kriging_algorithm.setOptimizeParameters(optimizeParameters=False)
         else:
             return ("This library does not support the specified Parameter optimizer")
 
         print(self.kernel_function.getFullParameterDescription())
         print("parameter before optimization : ", self.kernel_function.getFullParameter())
 
-        self.model.run()
+        self.kriging_algorithm.run()
 
-        result = self.model.getResult()
-        print("parameter after optimization : \n", result.getCovarianceModel())
-        print("Nugget", self.model.getNoise())
-        lik_function = self.model.getReducedLogLikelihoodFunction()
-        print(("\n\nlikelihood evaluation after optimization {}"
-               .format(lik_function(result.getCovarianceModel().getScale()))))
-        self.model = result
+        self.model = self.kriging_algorithm.getResult()
+        print("parameter after optimization : \n", self.model.getCovarianceModel())
+        print("Nugget", self.kriging_algorithm.getNoise())
+
+    def get_NLL(self):
+        lik_function = self.kriging_algorithm.getReducedLogLikelihoodFunction()
+        NLL = -lik_function(self.model.getCovarianceModel().getScale())
+        return NLL[0]
 
     def predict(self, x_test):
         '''
