@@ -13,7 +13,7 @@ presented in:
 *Numerical issues in maximum likelihood parameter estimation
     for Gaussian process interpolation* (2021)  
 Subhasish Basak, Sébastien Petit, Julien Bect, Emmanuel Vazquez  
-https://arxiv.org/abs/2101.09774
+https://arxiv.org/abs/2101.09747
 
 Please refer to this work using the following bibtex entry:
 ```
