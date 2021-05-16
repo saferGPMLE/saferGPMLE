@@ -60,7 +60,8 @@ jobs:
         run: |
           find . -name "result.csv" -print0 | xargs -0 cat | tr -d '\r' >> results.csv
           sort results.csv > tmp.csv && mv tmp.csv results.csv
-          cat results.csv
+      - name: Pretty-print csv outpt
+        run: column -t -s, results.csv
       - name: Upload concatenated results
         uses: actions/upload-artifact@v2
         with:
