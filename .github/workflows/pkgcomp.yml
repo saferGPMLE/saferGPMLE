@@ -8,13 +8,21 @@ jobs:
     strategy:
       matrix:
         os: [macos-10.15, windows-2019, ubuntu-20.04]
-        pkg: [scikit-learn==0.24.2, openturns==1.16, gpy==1.9.9, gpflow==1.5.1, gpytorch==1.4.1]
+        pkg: [scikit-learn==0.24.2, openturns==1.16, gpy==1.9.9, gpy==1.10.0, gpflow==1.5.1, gpytorch==1.4.1]
         include:
           - pkg: scikit-learn==0.24.2
             pkgadd: ''
           - pkg: openturns==1.16
             pkgadd: ''
+          - pkg: openturns==1.17
+            os: windows-2019
+            pkgadd: ''
+          - pkg: openturns==1.17
+            os: ubuntu-20.04
+            pkgadd: ''
           - pkg: gpy==1.9.9
+            pkgadd: matplotlib
+          - pkg: gpy==1.10.0
             pkgadd: matplotlib
           - pkg: gpflow==1.5.1
             pkgadd: tensorflow==1.*
