@@ -1,0 +1,85 @@
+file,output,best method(s),minimum cost
+borehole_10d.csv,f_1,"['gpy_mle0032', 'gpy_mle0132']",136.456745234888
+borehole_20d.csv,f_1,['gpy_mle0131'],120.838569330037
+borehole_3d.csv,f_1,"['gpy_mle0031', 'gpy_mle0131']",84.4993353938802
+borehole_5d.csv,f_1,['gpy_mle0016'],111.322261866924
+branin_10d.csv,f_1,"['gpy_mle0032', 'gpy_mle0132']",87.2227104201094
+branin_20d.csv,f_1,"['gpy_mle0021', 'gpy_mle0121']",118.186415274359
+branin_3d.csv,f_1,"['stk261_matR2019b_mle1002', 'stk261_matR2019b_mle1003']",31.7098148142833
+branin_5d.csv,f_1,['gpy_mle0131'],52.3496826757859
+g10_10d.csv,f_1,['gpy_mle0005'],-51.4943435194927
+g10_10d.csv,g_1,"['gpy_mle0031', 'gpy_mle0131']",-778.685862808784
+g10_10d.csv,g_2,"['gpy_mle0033', 'gpy_mle0133']",-691.731754735472
+g10_10d.csv,g_3,"['gpy_mle0033', 'gpy_mle0133']",-668.9433226865
+g10_10d.csv,g_4,"['gpy_mle0032', 'gpy_mle0132']",697.139657374612
+g10_10d.csv,g_5,"['gpy_mle0033', 'gpy_mle0133', 'gpy_mle1133']",819.904247691761
+g10_10d.csv,g_6,"['gpy_mle0022', 'gpy_mle0122']",804.903200043358
+g10_20d.csv,f_1,['gpy_mle0131'],-215.454730028816
+g10_20d.csv,g_1,['gpy_mle0032'],-1668.0769410924
+g10_20d.csv,g_2,['gpy_mle0133'],-1534.31878682775
+g10_20d.csv,g_3,"['gpy_mle0033', 'gpy_mle0133']",-1426.03334858776
+g10_20d.csv,g_4,"['gpy_mle0031', 'gpy_mle0131']",1189.69242079817
+g10_20d.csv,g_5,"['gpy_mle0033', 'gpy_mle0133']",1416.18578200632
+g10_20d.csv,g_6,"['gpy_mle0033', 'gpy_mle0133']",1387.8952116671
+g10_3d.csv,f_1,['gpy_mle0005'],41.1454864102429
+g10_3d.csv,g_1,['gpy_mle0033'],-184.847540345039
+g10_3d.csv,g_2,"['gpy_mle0033', 'gpy_mle0133']",-157.07054344959
+g10_3d.csv,g_3,"['gpy_mle0033', 'gpy_mle0133']",-152.333790081919
+g10_3d.csv,g_4,"['gpy_mle0032', 'gpy_mle0132', 'gpy_mle1132']",286.992628253864
+g10_3d.csv,g_5,"['gpy_mle0032', 'gpy_mle0132']",325.83829141575
+g10_3d.csv,g_6,"['gpy_mle0033', 'gpy_mle0133']",321.226875654268
+g10_5d.csv,f_1,"['gpy_mle0033', 'gpy_mle0133']",17.4737917946113
+g10_5d.csv,g_1,"['gpy_mle0033', 'gpy_mle0133']",-350.037474139737
+g10_5d.csv,g_2,['gpy_mle0132'],-310.358378069374
+g10_5d.csv,g_3,['gpy_mle0132'],-286.882179595366
+g10_5d.csv,g_4,['gpy_mle0131'],414.74152771056
+g10_5d.csv,g_5,"['gpy_mle0031', 'gpy_mle0131']",474.752861926919
+g10_5d.csv,g_6,"['gpy_mle0032', 'gpy_mle0132']",469.294494473043
+g10mod_10d.csv,g_4,['gpy_mle0033'],239.08806430409
+g10mod_10d.csv,g_5,['gpy_mle0131'],274.358719619249
+g10mod_10d.csv,g_6,"['gpy_mle0032', 'gpy_mle0132', 'gpy_mle1132']",233.225454734152
+g10mod_20d.csv,g_4,"['gpy_mle0031', 'gpy_mle0131']",492.616798836415
+g10mod_20d.csv,g_5,"['gpy_mle0033', 'gpy_mle0133']",521.884236083167
+g10mod_20d.csv,g_6,['gpy_mle0132'],493.915286504087
+g10mod_3d.csv,g_4,"['gpy_mle0032', 'gpy_mle0132']",287.186889091919
+g10mod_3d.csv,g_5,"['gpy_mle0031', 'gpy_mle0131']",326.33886026149
+g10mod_3d.csv,g_6,"['gpy_mle0033', 'gpy_mle0133']",321.643360670936
+g10mod_5d.csv,g_4,['gpy_mle0133'],133.825048257439
+g10mod_5d.csv,g_5,"['gpy_mle0031', 'gpy_mle0133']",126.167627345844
+g10mod_5d.csv,g_6,['gpy_mle0131'],130.704523232941
+g10modmod_10d.csv,g_4,"['gpy_mle0032', 'gpy_mle0132']",1418.26411055372
+g10modmod_10d.csv,g_5,['gpy_mle0132'],1491.06934627576
+g10modmod_10d.csv,g_6,"['gpy_mle0031', 'gpy_mle0131']",1462.37780628714
+g10modmod_20d.csv,g_4,"['gpy_mle0033', 'gpy_mle0133']",2813.0350479599
+g10modmod_20d.csv,g_5,"['gpy_mle0033', 'gpy_mle0133']",2928.03908625946
+g10modmod_20d.csv,g_6,"['gpy_mle0032', 'gpy_mle0132']",2873.8034705279
+g10modmod_3d.csv,g_4,['gpy_mle0121'],453.48668697696
+g10modmod_3d.csv,g_5,"['gpy_mle0032', 'gpy_mle0132', 'gpy_mle0133']",455.161219485363
+g10modmod_3d.csv,g_6,"['gpy_mle0031', 'gpy_mle0033', 'gpy_mle0131', 'gpy_mle0133']",455.076335417581
+g10modmod_5d.csv,g_4,"['gpy_mle0033', 'gpy_mle0133']",736.708404019912
+g10modmod_5d.csv,g_5,"['gpy_mle0032', 'gpy_mle0132', 'gpy_mle1132']",747.226133266938
+g10modmod_5d.csv,g_6,"['gpy_mle0032', 'gpy_mle0132']",743.509619006329
+weldedbeamdesign_10d.csv,f_1,"['gpy_mle0023', 'gpy_mle0123']",122.728589807163
+weldedbeamdesign_10d.csv,f_2,"['gpy_mle0031', 'gpy_mle0131']",190.125960524077
+weldedbeamdesign_10d.csv,g_1,['gpy_mle0016'],149.403643088925
+weldedbeamdesign_10d.csv,g_2,['gpy_mle0012'],334.637667926633
+weldedbeamdesign_10d.csv,g_3,['gpy_mle0132'],-317.636094428784
+weldedbeamdesign_10d.csv,g_4,"['gpy_mle0031', 'gpy_mle0131']",564.869354001786
+weldedbeamdesign_20d.csv,f_1,"['gpy_mle0022', 'gpy_mle0122']",138.703812981072
+weldedbeamdesign_20d.csv,f_2,['gpy_mle0133'],258.154471773579
+weldedbeamdesign_20d.csv,g_1,"['gpy_mle0033', 'gpy_mle0133']",265.792897629187
+weldedbeamdesign_20d.csv,g_2,['gpy_mle0016'],567.975200675692
+weldedbeamdesign_20d.csv,g_3,['gpy_mle0133'],-712.874872627715
+weldedbeamdesign_20d.csv,g_4,['gpy_mle0133'],1012.85351787774
+weldedbeamdesign_3d.csv,f_1,['gpy_mle0012'],55.1416645726774
+weldedbeamdesign_3d.csv,f_2,"['gpy_mle0033', 'gpy_mle0133']",0.044524289560606
+weldedbeamdesign_3d.csv,g_1,"['gpy_mle0012', 'gpy_mle0016']",42.2803202221238
+weldedbeamdesign_3d.csv,g_2,"['gpy_mle0032', 'gpy_mle0132']",69.4523159954006
+weldedbeamdesign_3d.csv,g_3,"['gpy_mle0033', 'gpy_mle0133']",-59.5741256690935
+weldedbeamdesign_3d.csv,g_4,"['gpy_mle0032', 'gpy_mle0132']",196.871511635043
+weldedbeamdesign_5d.csv,f_1,"['gpy_mle0032', 'gpy_mle0132']",82.0892115945696
+weldedbeamdesign_5d.csv,f_2,['gpy_mle0031'],51.2945293086259
+weldedbeamdesign_5d.csv,g_1,"['gpy_mle0032', 'gpy_mle0132']",84.2841487073721
+weldedbeamdesign_5d.csv,g_2,['gpy_mle0132'],133.513224668657
+weldedbeamdesign_5d.csv,g_3,['gpy_mle1132'],-133.347372595972
+weldedbeamdesign_5d.csv,g_4,"['gpy_mle0032', 'gpy_mle0132']",313.973595668411
