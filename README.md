@@ -39,6 +39,5 @@ There are two subdirectories in this repository:
 * `pkgcomp` provides a framework for comparing several Python toolboxes,
   as exemplified by Table 1 in the article.
 
-* `safergpy` (currently empty) will provide a framework for producing
-  the other results of the article, and in particular the results
-  presented in Section 5.
+* `safergpy` provides a framework for reproducing the other results of
+  the article, and in particular the results presented in Section 5.
