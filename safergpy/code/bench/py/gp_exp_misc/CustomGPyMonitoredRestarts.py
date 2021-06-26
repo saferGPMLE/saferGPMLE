@@ -9,6 +9,7 @@ import scipy.stats
 import math
 from scipy.stats import norm
 
+
 class CustomGPyMonitoredRestarts(CustomGPy):
 
     __slots__ = CustomGPy.__slots__ + ['bench_type']

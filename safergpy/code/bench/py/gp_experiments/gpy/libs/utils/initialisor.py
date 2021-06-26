@@ -6,6 +6,7 @@ from scipy.stats import truncnorm
 import paramz
 from libs.utils.gpy_estimation_lib import set_gpy_model_ls, optimize_from_start, set_gpy_model_var
 
+
 def std_init(model, use_dimension, profiler, fix_var, is_zero_mean):
     assert not (fix_var and profiler is not None)
 
@@ -30,8 +31,10 @@ def std_init(model, use_dimension, profiler, fix_var, is_zero_mean):
 
     return model
 
+
 def custom_init(model):
     return model
+
 
 def grid_init(model, isotropic, profiler, fix_var, is_zero_mean):
     assert not (fix_var and profiler is not None)

@@ -25,6 +25,8 @@ dataset =  [str(sys.argv[4]), sys.argv[5]]
 print('Comparing : \n', methods)
 
 #--- File name parsing utilities ---
+
+
 def get_problem_and_dimension(file):
     splited_file_name = file.split('_')
 

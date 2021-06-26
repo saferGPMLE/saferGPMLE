@@ -2,6 +2,7 @@ import scipy.stats
 import numpy as np
 import math
 
+
 def get_gaussian_alpha_coverage(y, mu_pred, var_pred, alpha):
     assert mu_pred.shape == var_pred.shape, "Shape issue"
     assert isinstance(alpha, float), "alpha must be float"
@@ -18,23 +19,28 @@ def get_gaussian_alpha_coverage(y, mu_pred, var_pred, alpha):
 
     return is_alpha_credible.mean()
 
+
 def get_residuals(mu_pred, y):
     assert isinstance(mu_pred, np.ndarray) and isinstance(y, np.ndarray), 'Type issue'
     assert mu_pred.shape == y.shape and mu_pred.ndim == 1, 'Shape issue'
     residuals = y - mu_pred
     return residuals
 
+
 def get_mse(mu_pred, y):
     residuals = get_residuals(mu_pred, y)
     return (residuals**2).mean()
+
 
 def get_vse(mu_pred, y):
     residuals = get_residuals(mu_pred, y)
     return (residuals**2).var()
 
+
 def get_mae(mu_pred, y):
     residuals = get_residuals(mu_pred, y)
     return (abs(residuals)).mean()
+
 
 def get_scaled_mse(mu_pred, var_pred, y):
     residuals = get_residuals(mu_pred, y)

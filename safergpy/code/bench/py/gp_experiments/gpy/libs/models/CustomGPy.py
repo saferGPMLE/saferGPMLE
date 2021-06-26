@@ -9,6 +9,7 @@ import scipy.stats
 import math
 from scipy.stats import norm
 
+
 class CustomGPy():
     eps = 0.001
     is_zero_mean = False

@@ -2,6 +2,7 @@ import time
 from gp_experiments.gpy.libs.utils.gpy_estimation_lib import custom_optimize_restarts, gaussian_random_init, optimize_from_start
 import numpy as np
 
+
 def trainer_all(model, options, profiler=None, ipython_notebook=False, bench_type='single'):
     if bench_type == 'single':
         l = launch_sessions_all(model=model, ipython_notebook=ipython_notebook, profiler=profiler, **options)
@@ -41,6 +42,7 @@ def launch_sessions_all(
 
     return l
 
+
 def launch_sessions_all_monte_carlo(
         model,
         optim_scheme,
@@ -61,6 +63,7 @@ def launch_sessions_all_monte_carlo(
             model = profiler(model)
 
     return l
+
 
 def custom_optimize_restarts_misc(model, n_multistarts, gtol, bfgs_factor, std_perturbations, profiler, ipython_notebook):
     assert n_multistarts > 0, "multistarts should be > 0, {}".format(n_multistarts)

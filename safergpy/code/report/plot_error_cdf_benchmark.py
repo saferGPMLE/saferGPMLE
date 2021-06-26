@@ -49,6 +49,8 @@ top = 1.1
 n = 1100
 
 #--- File name parsing utilities ---
+
+
 def get_problem_and_dimension(file):
     splited_file_name = file.split('_')
 

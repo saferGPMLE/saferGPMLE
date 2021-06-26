@@ -4,6 +4,7 @@ import libs.utils.metrics_computations
 from scipy.stats import truncnorm
 import paramz
 
+
 def trainer(model, options, profiler=None, ipython_notebook=False):
     model, status = launch_sessions(
         model=model,
@@ -16,6 +17,7 @@ def trainer(model, options, profiler=None, ipython_notebook=False):
         model = profiler(model)
 
     return model, status
+
 
 def brutal_train(model, n, gtol=10**(-20), bfgs_factor=10, ipython_notebook=False,
                  log_bounds=[-3,5], profiler=None):
@@ -52,6 +54,7 @@ def brutal_train(model, n, gtol=10**(-20), bfgs_factor=10, ipython_notebook=Fals
 
     return model, None
 
+
 def launch_sessions(
         model,
         optim_scheme,
@@ -73,6 +76,7 @@ def launch_sessions(
             model = profiler(model)
 
     return model, status
+
 
 def gaussian_random_init(model, num_restarts, std_perturbations):
 
@@ -120,6 +124,7 @@ def gaussian_random_init(model, num_restarts, std_perturbations):
 
     return np.concatenate((current_point.reshape(1, -1), draw))
 
+
 def custom_optimize_restarts(model, n_multistarts, gtol, bfgs_factor, std_perturbations, profiler, ipython_notebook):
     assert n_multistarts > 0, "multistarts should be > 0, {}".format(n_multistarts)
 
@@ -158,6 +163,7 @@ def custom_optimize_restarts(model, n_multistarts, gtol, bfgs_factor, std_pertur
 
     return model, statuses[argmin]
 
+
 def analytical_mean_and_variance_optimization(model):
 
     estimated_mean = model.constmap.C.copy()[0]
@@ -185,6 +191,7 @@ def analytical_mean_and_variance_optimization(model):
 
     return model
 
+
 def optimize_from_start(model, gtol, bfgs_factor, ipython_notebook, messages=False):
     if gtol is not None and bfgs_factor is not None:
         optim = model.optimize(messages=messages, max_iters=1000, start=None, clear_after_finish=False,
@@ -199,6 +206,7 @@ def optimize_from_start(model, gtol, bfgs_factor, ipython_notebook, messages=Fal
         optim = model.optimize(messages=messages, max_iters=1000, start=None, clear_after_finish=False,
                        ipython_notebook=ipython_notebook)
     return model, optim.status
+
 
 def get_beta_and_var_from_ls(model):
     K_inv = model.kern.variance.values.copy()[0] * model.posterior.woodbury_inv.copy()
@@ -223,6 +231,7 @@ def get_beta_and_var_from_ls(model):
         print("Negative variance of {} brought back to {}.".format(before_var, variance))
     return beta, variance
 
+
 def get_variance_estimate(mu_loo, var_loo, y, diagonal_var):
     assert isinstance(var_loo, np.ndarray) and isinstance(diagonal_var, float), 'Type issue'
     assert var_loo.ndim == 1, 'Shape issue'
@@ -231,6 +240,7 @@ def get_variance_estimate(mu_loo, var_loo, y, diagonal_var):
         mu_loo, var_loo/diagonal_var, y)
 
     return unit_var_scaled_mse
+
 
 def set_gpy_model_ls(gpy_model, value):
     if isinstance(value, np.ndarray):
@@ -244,11 +254,13 @@ def set_gpy_model_ls(gpy_model, value):
 
     gpy_model.kern.lengthscale = value_copy
 
+
 def set_gpy_model_var(model, var):
     assert isinstance(var, float)
     assert not model.kern.variance.is_fixed
 
     model.kern.variance = var
+
 
 def analytical_zero_mean_variance_optimization(model):
 

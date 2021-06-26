@@ -85,6 +85,7 @@ plt.show()
 
 model.train()
 
+
 def plot_model(x, model, x_test, x_train, z_train):
     model.model.kern.lengthscale = x
 
@@ -102,6 +103,7 @@ def plot_model(x, model, x_test, x_train, z_train):
 
     plt.legend()
     plt.show()
+
 
 def plot_sample(x, model, x_test):
     model.model.kern.lengthscale = x

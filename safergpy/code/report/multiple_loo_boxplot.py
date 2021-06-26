@@ -33,6 +33,8 @@ output = str(sys.argv[6])
 print('generating box plots for : \n', method)
 
 #--- File name parsing utilities ---
+
+
 def get_problem_and_dimension(file):
     splited_file_name = file.split('_')
 

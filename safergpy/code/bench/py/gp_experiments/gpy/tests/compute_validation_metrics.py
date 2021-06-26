@@ -16,6 +16,7 @@ import libs.utils.metrics_computations
 
 #######################################################
 
+
 def mc_validation(x_train, y_train, ModelClass, n_sample, x_test=None, y_test=None):
     model = ModelClass(x_train, y_train)
     model.train()
@@ -98,6 +99,7 @@ def mc_validation(x_train, y_train, ModelClass, n_sample, x_test=None, y_test=No
 
     return mean_errors, var_errors, mean_normalized_error, var_normalized_error, sample_lengthscales, sample_vars, sample_means
 
+
 def plot_mse_decomposition(mean_errors, var_errors, empirical_std, trained_model_mean_error, trained_model_var_error):
 
     std_errors = [math.sqrt(x) for x in var_errors]
@@ -134,8 +136,10 @@ def plot_mse_decomposition(mean_errors, var_errors, empirical_std, trained_model
 
     plt.show()
 
+
 def get_gaussian_log_lik(y_test, post_mean, post_var):
     return libs.utils.metrics_computations(y_test, post_mean, post_var)
+
 
 def get_chi2_alpha_coverage(y_test, y_pred, y_var, alpha):
     assert y_pred.shape == y_var.shape and y_pred.shape == y_test.shape, "Shape issue"
@@ -151,6 +155,7 @@ def get_chi2_alpha_coverage(y_test, y_pred, y_var, alpha):
     is_alpha_credible = np.logical_and(lower <= standardized_residuals, standardized_residuals <= upper).astype(float)
 
     return is_alpha_credible.mean()
+
 
 def update_with_error_statistics(post_mean, post_var, truth, metrics):
     assert post_mean.shape == post_var.shape and post_mean.shape == truth.shape, "Shape issue."
@@ -171,13 +176,16 @@ def update_with_error_statistics(post_mean, post_var, truth, metrics):
 
     return metrics
 
+
 def get_mse(y_test, post_mean):
     assert y_test.shape == post_mean.shape, "Shape issue : {} and {}".format(y_test, post_mean)
     return ((y_test - post_mean) ** 2).mean()
 
+
 def get_mae(y_test, post_mean):
     assert y_test.shape == post_mean.shape, "Shape issue : {} and {}".format(y_test.shape, post_mean.shape)
     return (abs(y_test - post_mean)).mean()
+
 
 def get_gaussian_alpha_coverage(y_test, y_pred, y_var, alpha):
     return libs.utils.metrics_computations.get_gaussian_alpha_coverage(y_test, y_pred, y_var, alpha)
@@ -205,6 +213,7 @@ def get_gaussian_alpha_coverage(y_test, y_pred, y_var, alpha):
 #
 #     return losses[(prob_feasibility != feasible_y_test)].mean() * non_zero_loss_key.mean()
 
+
 def get_gaussian_classifier_mse(y_test, y_pred, y_var):
     assert y_pred.shape == y_var.shape, "Shape issue"
 
@@ -221,10 +230,12 @@ def get_gaussian_classifier_mse(y_test, y_pred, y_var):
                                                         feasible_y_test.shape)
     return ((feasible_y_test - prob_feasibility)**2).mean()
 
+
 def get_improvement_mse(y_test, previous_min, ei):
     assert ei.shape == y_test.shape and previous_min.shape == y_test.shape, "Shape issue."
 
     return (np.where(y_test >= previous_min, -ei, (previous_min - y_test) - ei)**2).mean()
+
 
 def get_objective_improvement_gaussian_likelihood(y_test, previous_min, post_mean, post_var):
     assert y_test.shape == previous_min.shape, "Shape issue : {} and {}".format(y_test.shape, previous_min.shape)
@@ -250,10 +261,12 @@ def get_objective_improvement_gaussian_likelihood(y_test, previous_min, post_mea
 
     return np.where(y_test >= previous_min, zero_improvement_log_density, non_zero_improvement_log_density).mean()
 
+
 def get_ks_gaussian_comparison_statistic(y_test, post_mean, post_var):
     return libs.utils.metrics_computations.get_ks_gaussian_comparison_statistic(y_test, post_mean, post_var)
 
 #######################################################
+
 
 def update_metrics_with_posterior(y_test, post_mean, post_var,
                                   metrics, alpha, output, row,
@@ -292,6 +305,7 @@ def update_metrics_with_posterior(y_test, post_mean, post_var,
     metrics = pd.concat((metrics, row_metrics), ignore_index=True)
 
     return metrics
+
 
 def get_proper_estimates(
         metrics, data, predictors, outputs, alpha, in_sample, model):
@@ -351,6 +365,7 @@ def get_proper_estimates(
 
     return metrics
 
+
 def get_fixed_parameters_loo(metrics, data, predictors, outputs, alpha, model):
     for output in outputs:
         x_train = data[predictors].values
@@ -379,6 +394,7 @@ def get_fixed_parameters_loo(metrics, data, predictors, outputs, alpha, model):
 
     return metrics
 
+
 def get_metrics(
         file, predictors, outputs, reestimate_param, alpha, in_sample, model):
     data = pd.read_csv(file, sep=',', index_col=0)
@@ -397,6 +413,7 @@ def get_metrics(
                                            alpha, model=model)
 
     return metrics
+
 
 def launch_data_set_optimization_evaluations(
         data_path, destination_path, model):
@@ -422,6 +439,7 @@ def launch_data_set_optimization_evaluations(
 
     full_sample.to_csv(destination_path)
 
+
 def launch_full_optimization_evaluations(data_dir, destination_dir, models):
     for file in os.listdir(data_dir):
         print(file)
@@ -430,6 +448,7 @@ def launch_full_optimization_evaluations(data_dir, destination_dir, models):
                 os.path.join(data_dir, file),
                 os.path.join(destination_dir,
                 model[0], file), model[1])
+
 
 def launch_data_set_perf_evaluations(data_path, destination_path, model):
 
@@ -447,6 +466,7 @@ def launch_data_set_perf_evaluations(data_path, destination_path, model):
         os.makedirs(target_dir)
 
     metrics_loo.to_csv(destination_path)
+
 
 def launch_full_perf_evaluations(data_dir, destination_dir, models):
     for file in os.listdir(data_dir):

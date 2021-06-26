@@ -9,6 +9,7 @@ from GPy.util.linalg import pdinv, dpotrs, tdot
 from GPy.util import diag
 import sklearn.linear_model
 
+
 def plot_paramz_likelihood_path(model, label):
 
     #param_one = np.array([27.04301504, 83.37540132])
@@ -61,6 +62,7 @@ def plot_paramz_likelihood_path(model, label):
     # plt.ylabel("NLL")
     #
     # plt.savefig("/Users/sebastien/cache_matplotlib/plot.pgf")
+
 
 def plot_likelihood_path(model, estimate_mean=True, estimate_var=True):
     param_one = np.array([27.04301504, 83.37540132])
@@ -131,6 +133,7 @@ def plot_likelihood_path(model, estimate_mean=True, estimate_var=True):
     plt.ylabel("Log gradient norm of negative log likelihood")
     plt.show()
 
+
 def plot_neg_likelihood_var(model):
 
     var_init = model.Mat52.variance.values[0]
@@ -156,6 +159,7 @@ def plot_neg_likelihood_var(model):
     plt.vlines(var_init, ymin=min(y_1d), ymax=max(y_1d), label='estimated_var : {0:.3f}, nll : {1:.3f}'.format(var_init, cost_var_init))
     plt.legend()
     plt.show()
+
 
 def plot_multistart_optimization(model, n, mean_value,
                                  variance_value,
@@ -253,6 +257,7 @@ def plot_multistart_optimization(model, n, mean_value,
 
     return data
 
+
 def get_noise_level(x, y):
     sk_model = sklearn.linear_model.LinearRegression(fit_intercept=True)
 
@@ -262,6 +267,7 @@ def get_noise_level(x, y):
     sk_model.fit(X_data, Y_data)
 
     print("noise level (std) : {}".format((Y_data - sk_model.predict(X_data)).std(ddof=3)))
+
 
 def plot_taylor(model, idx_param, diagonalize=False, width=1e-2, n=1000):
     obj_value, grad = model._objective_grads(model.optimizer_array)
@@ -330,6 +336,7 @@ def plot_taylor(model, idx_param, diagonalize=False, width=1e-2, n=1000):
     plt.show()
 
     get_noise_level(dx_vector, y)
+
 
 def decompose_all(model, idx_param, diagonalize=False, width=1e-2, n=1000):
     obj_value, grad = model._objective_grads(model.optimizer_array)

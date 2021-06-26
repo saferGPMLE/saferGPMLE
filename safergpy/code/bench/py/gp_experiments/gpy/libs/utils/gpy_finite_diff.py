@@ -37,6 +37,7 @@ import libs.utils.gpy_estimation_lib as gpy_estimation_lib
 #         diff, _ = centraldiff_oneparam (model, idx_param, delta)
 #         print ("delta=%8.2e  -->  %+.5e" % (delta, diff))
 
+
 def get_cost_and_grad_and_hessian(model, lengthscale_value, mean_value, variance_value):
     model.Mat52.lengthscale = lengthscale_value
 

@@ -12,6 +12,8 @@ methods = [sys.argv[2], sys.argv[3]]
 print(methods)
 
 #--- File name parsing utilities ---
+
+
 def get_problem_and_dimension(file):
     splited_file_name = file.split('_')
 

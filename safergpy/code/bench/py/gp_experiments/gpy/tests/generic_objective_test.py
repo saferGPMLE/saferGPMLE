@@ -6,6 +6,7 @@ import gp_experiments.gpy.libs.utils.metrics_computations
 import os
 import sys
 
+
 def get_trajectories(x, true_p, true_variance, true_rho, N_traj):
     kernel_function = GPy.kern.RationalMatern(p=true_p, input_dim=x.shape[1],
                                         variance=true_variance,
@@ -49,9 +50,11 @@ print(model.model._objective_grads(model.model.optimizer_array))
 
 print(model.model.checkgrad(verbose=True, tolerance=10**(-8)))
 
+
 def compute_mse(x,y):
     assert x.shape == y.shape, 'Shape issue'
     return ((x - y) ** 2).mean() / (x ** 2).mean()
+
 
 def get_loo(ref_model, x ,y):
     model = RationalMaternZeroMean(p=ref_model.p, criteria=ref_model.criteria, fix_noise=True,
