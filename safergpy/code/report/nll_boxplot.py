@@ -67,46 +67,46 @@ cost_dict_full_healed = {}
 for file in os.listdir(data_dir):
     problem, d = get_problem_and_dimension(file)
     
-    if [problem, d] == dataset :
+    if [problem, d] == dataset:
 
         data = pd.read_csv(os.path.join(data_dir, file), sep=',', index_col=0)[['cost', 'output']]
         df = pd.DataFrame(data)
         
-        for output in list(df['output']) :
+        for output in list(df['output']):
             cost_dict[output] = list(df.loc[df['output'] == output]['cost'])
 
 for file in os.listdir(data_dir_healed):
     problem, d = get_problem_and_dimension(file)
     
-    if [problem, d] == dataset :
+    if [problem, d] == dataset:
 
         data = pd.read_csv(os.path.join(data_dir_healed, file), sep=',', index_col=0)[['cost', 'output']]
         df = pd.DataFrame(data)
         
-        for output in list(df['output']) :
+        for output in list(df['output']):
             cost_dict_healed[output] = list(df.loc[df['output'] == output]['cost'])
 
 
 for file in os.listdir(data_dir_full):
     problem, d = get_problem_and_dimension(file)
     
-    if [problem, d] == dataset :
+    if [problem, d] == dataset:
 
         data_full = pd.read_csv(os.path.join(data_dir_full, file), sep=',', index_col=0)[['cost', 'output']]
         df_full = pd.DataFrame(data_full)
 
-        for output in list(df_full['output']) :
+        for output in list(df_full['output']):
             cost_dict_full[output] = list(df_full.loc[df_full['output'] == output]['cost'])
 
 for file in os.listdir(data_dir_full_healed):
     problem, d = get_problem_and_dimension(file)
     
-    if [problem, d] == dataset :
+    if [problem, d] == dataset:
 
         data_full = pd.read_csv(os.path.join(data_dir_full_healed, file), sep=',', index_col=0)[['cost', 'output']]
         df_full = pd.DataFrame(data_full)
 
-        for output in list(df_full['output']) :
+        for output in list(df_full['output']):
             cost_dict_full_healed[output] = list(df_full.loc[df_full['output'] == output]['cost'])
 
 #print('\ncost_dict', cost_dict)

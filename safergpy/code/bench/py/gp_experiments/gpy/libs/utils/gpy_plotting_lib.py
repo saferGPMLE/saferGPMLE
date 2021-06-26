@@ -175,7 +175,7 @@ def plot_multistart_optimization(model, n, mean_value,
 
     rho_data = np.exp(log_rho_data * math.log(10))
 
-    data = pd.DataFrame({'rho1': [], 'rho2': [], 'sigma2': [], 'm': [], 'cost': [], 'status' : []})
+    data = pd.DataFrame({'rho1': [], 'rho2': [], 'sigma2': [], 'm': [], 'cost': [], 'status': []})
 
     for rho in rho_data:
         model.Mat52.lengthscale = rho
@@ -197,7 +197,7 @@ def plot_multistart_optimization(model, n, mean_value,
                                          'status': optim.status}),
                            ignore_index=True)
 
-    colors = {"Errorb'ABNORMAL_TERMINATION_IN_LNSRCH'": 'red', 'Converged': 'blue', 'Maximum number of f evaluations reached' : 'green'}
+    colors = {"Errorb'ABNORMAL_TERMINATION_IN_LNSRCH'": 'red', 'Converged': 'blue', 'Maximum number of f evaluations reached': 'green'}
 
     if not data['status'].apply(lambda x: x in colors.keys()).min():
         raise ValueError('Unknown status : {}'.format(data['status'].unique()))
@@ -243,7 +243,7 @@ def plot_multistart_optimization(model, n, mean_value,
                linestyles="--", colors="g")
 
     plt.plot([np.log10(data['rho1']).min(), np.log10(data['rho1']).max()],
-             [math.log10(variance_value) - (math.log10(optimum[0]) - np.log10(data['rho1']).min())*5 ,
+             [math.log10(variance_value) - (math.log10(optimum[0]) - np.log10(data['rho1']).min())*5,
               math.log10(variance_value) + (np.log10(data['rho1']).max() - math.log10(optimum[0]))*5], label='constant microergodicity')
 
     plt.xlabel("ln(rho_1)")
@@ -300,7 +300,7 @@ def plot_taylor(model, idx_param, diagonalize=False, width=1e-2, n=1000):
         y.append(obj)
         model.optimizer_array = array.copy()
         y_order_1.append(obj_value + (d * grad).sum())
-        y_order_2.append(obj_value + (d * grad).sum() + 0.5 * (d.reshape(1, -1) @ hessian @ d.reshape(-1, 1))[0 , 0])
+        y_order_2.append(obj_value + (d * grad).sum() + 0.5 * (d.reshape(1, -1) @ hessian @ d.reshape(-1, 1))[0, 0])
 
     fig, ax = plt.subplots()
 

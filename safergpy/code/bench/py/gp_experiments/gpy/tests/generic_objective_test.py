@@ -56,7 +56,7 @@ def compute_mse(x, y):
     return ((x - y) ** 2).mean() / (x ** 2).mean()
 
 
-def get_loo(ref_model, x , y):
+def get_loo(ref_model, x, y):
     model = RationalMaternZeroMean(p=ref_model.p, criteria=ref_model.criteria, fix_noise=True,
                                    untrained_variance=ref_model.model.kern.variance.copy(),
                                    untrained_lengthscale=ref_model.model.kern.lengthscale.copy(), init='custom')
@@ -112,7 +112,7 @@ if criteria not in ['mle', 'gcv', 'kernel_alignment']:
     print(compute_mse(mu_loo_analytical, model.model.L_K.mu_loo))
     print(compute_mse(var_loo_analytical, model.model.L_K.var_loo))
 
-mu_loo_empirical, var_loo_empirical = get_loo(model, x , y)
+mu_loo_empirical, var_loo_empirical = get_loo(model, x, y)
 
 print("Numeric vs analytical")
 print(compute_mse(mu_loo_analytical, mu_loo_empirical))
@@ -137,7 +137,7 @@ if criteria == 'mse_loo':
     print(model.model._objective_grads(model.model.optimizer_array))
     print(a.status)
 
-    mu_loo_empirical, var_loo_empirical = get_loo(model, x , y)
+    mu_loo_empirical, var_loo_empirical = get_loo(model, x, y)
 
     print(model.model.objective_function())
     print(((mu_loo_empirical.reshape(-1) - y.reshape(-1)) ** 2).mean())
@@ -204,7 +204,7 @@ if criteria == 'log_pred_density_loo':
     print(model.model._objective_grads(model.model.optimizer_array))
     print(a.status)
 
-    mu_loo_empirical, var_loo_empirical = get_loo(model, x , y)
+    mu_loo_empirical, var_loo_empirical = get_loo(model, x, y)
 
     print(model.model.objective_function())
     print(-gp_experiments.gpy.libs.utils.metrics_computations.get_gaussian_log_lik(y.reshape(-1),
@@ -232,7 +232,7 @@ if criteria == 'crps_loo':
     print(model.model._objective_grads(model.model.optimizer_array))
     print(a.status)
 
-    mu_loo_empirical, var_loo_empirical = get_loo(model, x , y)
+    mu_loo_empirical, var_loo_empirical = get_loo(model, x, y)
 
     print(model.model.objective_function())
     print(-gp_experiments.gpy.libs.utils.metrics_computations.get_crps(mu_loo_empirical.reshape(-1),
@@ -260,7 +260,7 @@ if criteria == 'standardized_mse_loo':
     print(model.model._objective_grads(model.model.optimizer_array))
     print(a.status)
 
-    mu_loo_empirical, var_loo_empirical = get_loo(model, x , y)
+    mu_loo_empirical, var_loo_empirical = get_loo(model, x, y)
 
     print(model.model.objective_function())
     print(gp_experiments.gpy.libs.utils.metrics_computations.get_scaled_mse(mu_loo_empirical.reshape(-1),

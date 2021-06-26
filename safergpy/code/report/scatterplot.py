@@ -51,7 +51,7 @@ for method_dir in methods:
     for file in os.listdir(os.path.join(data_dir, method_dir)):
         problem, d = get_problem_and_dimension(file)
         #print('problem : {}, dataset : {}, condition : {}'.format(problem, dataset, [problem, d] == dataset))
-        if [problem, d] == dataset :
+        if [problem, d] == dataset:
 
             data = pd.read_csv(os.path.join(data_dir, method_dir, file), sep=',', index_col=0)[['post_mean', 'y_test', 'ls_dim_1', 'ls_dim_2', 'mse']]
 

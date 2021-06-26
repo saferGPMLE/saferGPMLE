@@ -59,7 +59,7 @@ def df_generator(data_dir, tag):
     for file in os.listdir(data_dir):
         problem, d = get_problem_and_dimension(file)
 
-        if [problem, d] == dataset :
+        if [problem, d] == dataset:
 
             data = pd.read_csv(os.path.join(data_dir, file), sep=',', index_col=0)
             df = pd.DataFrame(data)

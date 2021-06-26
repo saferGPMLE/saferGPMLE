@@ -126,7 +126,7 @@ fig = plt.figure(1, figsize=(9, 6))
 
 ax = fig.add_subplot(111)
 
-method_name = {'gpy_mle1220' : 'strict', 'gpy_mle2220' : 'soft'}
+method_name = {'gpy_mle1220': 'strict', 'gpy_mle2220': 'soft'}
  
 norm = np.float64(388.1727536396725)
 print('max area is {}'.format(np.max(area_all['gpy_mle1220'] + area_all['gpy_mle2220'])))
@@ -136,7 +136,7 @@ for method in method_list:
     
     words = list(range(1, 21))
     for i in range(len(words)):
-        if i%2 ==0 :
+        if i%2 ==0:
             plt.text(time_all[method][i]-5, (area_all[method][i]/norm)-0.0005, str(words[i]), fontsize=14)
 
 

@@ -57,7 +57,7 @@ ls_dict = {}
 for file in os.listdir(data_dir):
     problem, d = get_problem_and_dimension(file)
     
-    if [problem, d] == dataset :
+    if [problem, d] == dataset:
 
         data = pd.read_csv(os.path.join(data_dir, file), sep=',', index_col=0)
         df = pd.DataFrame(data)
@@ -76,7 +76,7 @@ for file in os.listdir(data_dir):
 for file in os.listdir(data_dir_full):
     problem, d = get_problem_and_dimension(file)
     
-    if [problem, d] == dataset :
+    if [problem, d] == dataset:
 
         data_full = pd.read_csv(os.path.join(data_dir_full, file), sep=',', index_col=0)
         df_full = pd.DataFrame(data_full)
