@@ -141,7 +141,7 @@ def plot_neg_likelihood_var(model):
 
     grid_1d = np.linspace(-1, 1, 2001)
 
-    grid_1d = [var_init * math.exp( x * math.log(10)) for x in grid_1d]
+    grid_1d = [var_init * math.exp(x * math.log(10)) for x in grid_1d]
 
     y_1d = []
     for x in grid_1d:
@@ -383,7 +383,7 @@ def decompose_all(model, idx_param, diagonalize=False, width=1e-2, n=1000):
         alpha, _ = dpotrs(LW, YYT_factor, lower=1)
 
         y_reg.append(0.5*(- model.Y.shape[1] * W_logdet))
-        y_data.append(0.5*( - np.sum(alpha * YYT_factor)))
+        y_data.append(0.5*(- np.sum(alpha * YYT_factor)))
 
         model.optimizer_array = array.copy()
 

@@ -110,7 +110,7 @@ def color_scheme(bp, bp_1):
         median.set(color='r', linewidth=2)
 
     for box in bp_1['boxes']:
-        box.set( color='r', linewidth=2)
+        box.set(color='r', linewidth=2)
 
     for whisker in bp_1['whiskers']:
         whisker.set(color='r', linewidth=2)

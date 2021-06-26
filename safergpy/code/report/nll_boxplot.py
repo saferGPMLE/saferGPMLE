@@ -151,7 +151,7 @@ else:
     # change outline color, fill color and linewidth of the boxes
     for box in bp1['boxes']:
         # change outline color
-        box.set( color='r', linewidth=2)
+        box.set(color='r', linewidth=2)
 
     # change color and linewidth of the whiskers
     for whisker in bp1['whiskers']:
