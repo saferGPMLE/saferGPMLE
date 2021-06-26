@@ -34,15 +34,15 @@ if not (solid_lines or dashed_lines or daashed_lines):
 
 methods = []
 
-print ("solid_lines: " + str (solid_lines))
+print("solid_lines: " + str(solid_lines))
 if solid_lines:
     methods = solid_lines + methods
 
-print ("dashed_lines: " + str (dashed_lines))
+print("dashed_lines: " + str(dashed_lines))
 if dashed_lines:
     methods = dashed_lines + methods
 
-print ("daashed_lines: " + str (daashed_lines))
+print("daashed_lines: " + str(daashed_lines))
 if daashed_lines:
     methods = daashed_lines + methods
 
