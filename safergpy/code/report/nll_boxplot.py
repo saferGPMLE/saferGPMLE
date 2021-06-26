@@ -166,7 +166,7 @@ else:
 
     plt.xlabel('output functions', fontsize=14)
     plt.ylabel('NLL_default - NLL_healed', fontsize=14)
-    plt.title('Boxplot of difference in LOO estimated NLL of {}'.format(dataset[0]+ '_' + str(dataset[1])), fontsize=14)
+    plt.title('Boxplot of difference in LOO estimated NLL of {}'.format(dataset[0] + '_' + str(dataset[1])), fontsize=14)
     plt.grid(True)
     ax.set_xticklabels(list(df_full['output']))
     plt.show()

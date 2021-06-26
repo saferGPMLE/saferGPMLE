@@ -136,7 +136,7 @@ for method in method_list:
     
     words = list(range(1, 21))
     for i in range(len(words)):
-        if i%2 ==0:
+        if i%2 == 0:
             plt.text(time_all[method][i]-5, (area_all[method][i]/norm)-0.0005, str(words[i]), fontsize=14)
 
 

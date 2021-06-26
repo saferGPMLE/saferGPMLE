@@ -141,7 +141,7 @@ def plot_neg_likelihood_var(model):
 
     grid_1d = np.linspace(-1, 1, 2001)
 
-    grid_1d = [var_init * math.exp( x *math.log(10)) for x in grid_1d]
+    grid_1d = [var_init * math.exp( x * math.log(10)) for x in grid_1d]
 
     y_1d = []
     for x in grid_1d:
@@ -221,7 +221,7 @@ def plot_multistart_optimization(model, n, mean_value,
     plt.hlines(y=math.log(10) * bounds[1] + math.log10(optimum[1]), xmin=math.log(10) * bounds[0] + math.log10(optimum[0]), xmax=math.log(10) * bounds[1] + math.log10(optimum[0]),
                linestyles="--", colors="g")
 
-    plt.plot([math.log10(optimum[0]) - 2, math.log10(optimum[0]) + 2],  [math.log10(optimum[1])- 2, math.log10(optimum[1]) + 2], label='constant anisotropy')
+    plt.plot([math.log10(optimum[0]) - 2, math.log10(optimum[0]) + 2],  [math.log10(optimum[1]) - 2, math.log10(optimum[1]) + 2], label='constant anisotropy')
 
     plt.legend()
 

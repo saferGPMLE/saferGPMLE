@@ -123,7 +123,7 @@ for arg in args[::-1]:
 
         words = list(range(1, 21))
         for i in range(len(words)):
-            if i%2 ==0:
+            if i%2 == 0:
                 plt.text([np.array(time_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]+0.5, 
                          ([np.array(area_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]/norm)-0.0005, 
                          str(words[i]), fontsize=14)
@@ -132,7 +132,7 @@ for arg in args[::-1]:
         
         words = list(range(1, 21))
         for i in range(len(words)):
-            if i%2 ==0:
+            if i%2 == 0:
                 plt.text([np.array(time_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]-30, 
                          ([np.array(area_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]/norm)+0.00015, 
                          str(words[i]), fontsize=14)

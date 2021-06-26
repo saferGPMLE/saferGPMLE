@@ -91,12 +91,12 @@ df_full_1 = df_generator(data_dir_full_1, 'healed')
 # --- generating boxplot ---
 
 # data to plot
-A= [df['ls_dim_5'],  df_1['ls_dim_5']]
+A = [df['ls_dim_5'],  df_1['ls_dim_5']]
 B = [df['ls_dim_6'],  df_1['ls_dim_6']]
 C = [df['ls_dim_7'],  df_1['ls_dim_7']]
 D = [df['ls_dim_8'],  df_1['ls_dim_8']]
 
-A_1= [df_full['ls_dim_5'],  df_full_1['ls_dim_5']]
+A_1 = [df_full['ls_dim_5'],  df_full_1['ls_dim_5']]
 B_1 = [df_full['ls_dim_6'],  df_full_1['ls_dim_6']]
 C_1 = [df_full['ls_dim_7'],  df_full_1['ls_dim_7']]
 D_1 = [df_full['ls_dim_8'],  df_full_1['ls_dim_8']]

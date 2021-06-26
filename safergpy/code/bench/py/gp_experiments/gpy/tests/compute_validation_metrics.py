@@ -300,7 +300,7 @@ def update_metrics_with_posterior(y_test, post_mean, post_var,
 
     for i in range(len(ls)):
         row_metrics['ls_dim_{}'.format(i+1)] = [ls[i]]*y_test.shape[0]
-        assert (ls[i]>0), "Estimated negative lengthscale"
+        assert (ls[i] > 0), "Estimated negative lengthscale"
 
     metrics = pd.concat((metrics, row_metrics), ignore_index=True)
 

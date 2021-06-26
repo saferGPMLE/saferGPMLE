@@ -84,7 +84,7 @@ class CustomGPy():
         if stopping_criterion == 'strict':
             gtol = 10 ** (-20)
             bfgs_factor = 10
-        elif stopping_criterion== 'soft':
+        elif stopping_criterion == 'soft':
             gtol = None
             bfgs_factor = None
         elif stopping_criterion == 'intermediate':

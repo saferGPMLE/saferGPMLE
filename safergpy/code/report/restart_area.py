@@ -194,7 +194,7 @@ if len(method_list) > 1:
     
     words = list(range(1, 21))
     for i in range(len(words)):
-        if i%2 ==0:
+        if i%2 == 0:
             plt.text(xx[i]+0.1, (yy[i]/norm)-0.0005, str(words[i]))
 
     plt.show()

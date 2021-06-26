@@ -22,7 +22,7 @@ def get_trajectories(x, true_p, true_variance, true_rho, N_traj):
 x = np.array(np.load(os.path.join(os.getenv("HOME"), 'git-repos', 'gp_param_exp',
                              'does', 'doe_10_3_unif.npy')))
 
-true_p= 2
+true_p = 2
 true_variance = 1
 true_rhos = x.shape[1] * [1]
 N_traj = 300
