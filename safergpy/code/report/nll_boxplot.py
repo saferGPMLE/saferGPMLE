@@ -142,7 +142,7 @@ if plot_type == 'h':
 else:
         
     bp = ax.boxplot(to_plot)
-    bp1  = ax.boxplot(to_plot_full)
+    bp1 = ax.boxplot(to_plot_full)
 
     # change color and linewidth of the medians
     for median in bp['medians']:

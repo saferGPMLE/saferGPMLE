@@ -55,10 +55,10 @@ def mc_validation(x_train, y_train, ModelClass, n_sample, x_test=None, y_test=No
 
     sample_means = np.exp(math.log(2) * (2 * unit_uniform_draw[:, 0] - 1) + math.log(c_mean))
 
-    sample_vars = np.exp(math.log(10) * ((unit_uniform_draw[:, 1] * (var_range_log10[1] - var_range_log10[0])  + var_range_log10[0]) + math.log10(c_var)))
+    sample_vars = np.exp(math.log(10) * ((unit_uniform_draw[:, 1] * (var_range_log10[1] - var_range_log10[0]) + var_range_log10[0]) + math.log10(c_var)))
 
-    sample_lengthscales = np.exp(math.log(10)  * (np.tile(np.log10(lengthscales), reps=(n_sample, 1)) +
-                                    (unit_uniform_draw[:, 2:] * (scale_range_log10[1] - scale_range_log10[0])  + scale_range_log10[0])))
+    sample_lengthscales = np.exp(math.log(10) * (np.tile(np.log10(lengthscales), reps=(n_sample, 1)) +
+                                    (unit_uniform_draw[:, 2:] * (scale_range_log10[1] - scale_range_log10[0]) + scale_range_log10[0])))
 
     mean_errors = []
     var_errors = []
