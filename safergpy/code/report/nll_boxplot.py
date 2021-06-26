@@ -133,7 +133,7 @@ plot_type = input('Type "h" for histogram : \n')
 
 if plot_type == 'h':
 
-    plt.hist(to_plot, density=False, bins=10, edgecolor='black') 
+    plt.hist(to_plot, density=False, bins=10, edgecolor='black')
     plt.xlabel('NLL_default - NLL_healed', fontsize=14)
     plt.ylabel('frequency', fontsize=14)
     plt.title('Histogram of NLL differences', fontsize=14)
@@ -159,7 +159,7 @@ else:
 
     # change color and linewidth of the caps
     for cap in bp1['caps']:
-        cap.set(color='r', linewidth=2)   
+        cap.set(color='r', linewidth=2)
 
     for median in bp1['medians']:
         median.set(color='r', linewidth=2)

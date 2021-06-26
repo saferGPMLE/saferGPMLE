@@ -71,8 +71,8 @@ for method in method_list:
             batch_nll.append(i)
         elif 'time' in i:
             batch_time.append(i)
-    batch_nll.sort(key=lambda x: int(x.split('_')[-1])) 
-    batch_time.sort(key=lambda x: int(x.split('_')[-1])) 
+    batch_nll.sort(key=lambda x: int(x.split('_')[-1]))
+    batch_time.sort(key=lambda x: int(x.split('_')[-1]))
 
     # for debugging:
     '''
@@ -82,7 +82,7 @@ for method in method_list:
             print('++++++++++++++++')
             print('\n{}{}, b {}, best {}, diff {}'.format(df['problem'][ind], df['d'][ind], df[batch_nll[0]][ind], df['best'][ind],  df[batch_nll[0]][ind] - df['best'][ind]))
             print('================')
-    ''' 
+    '''
     # --- Creating bins for the ECDF ---
 
     bins = np.linspace(left, right, n)
@@ -96,16 +96,16 @@ for method in method_list:
 
     # --- Computing the area ---
       
-    area_dict = {}  
-    for b in batch_nll:  
-        area = np.trapz(df_bins[b], df_bins.index) 
+    area_dict = {}
+    for b in batch_nll:
+        area = np.trapz(df_bins[b], df_bins.index)
         area_dict[int(b.split('_')[-1])] = area
         #print('\nfor batch {} area is {}'.format(b, area))
       
     # --- Computing the total run-time ---
 
     time_dict = {}
-    for b in batch_time:  
+    for b in batch_time:
         time = np.sum(df[b])
         time_dict[int(b.split('_')[-1])] = time
         #print('\nfor batch {} area is {}'.format(b, area))
@@ -178,7 +178,7 @@ if len(method_list) > 1:
 # -- for comparing [n_1, 3.0] with n_1 \in 1(1)20--
 
 if len(method_list) > 1:
-    plt.figure()    
+    plt.figure()
     xx = []
     yy = []
     for method in method_list:
