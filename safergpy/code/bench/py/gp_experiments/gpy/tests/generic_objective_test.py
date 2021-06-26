@@ -126,7 +126,6 @@ if criteria == 'mse_loo':
     print(model.model.objective_function())
     print(((mu_loo_empirical.reshape(-1) - y.reshape(-1)) ** 2).mean())
 
-
     ###############################################################
 
     print("LOO test optimize")
@@ -170,13 +169,11 @@ if criteria == 'gcv':
     print(gp_experiments.gpy.libs.utils.metrics_computations.get_gcv_test(model.model.posterior._K,
                                                                                   model.model.Y)[0, 0])
 
-
     print("optimize GCV")
 
     a = model.model.optimize()
     print(model.model._objective_grads(model.model.optimizer_array))
     print(a.status)
-
 
     print("GCV")
     print(model.model.objective_function())

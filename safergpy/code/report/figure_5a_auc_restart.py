@@ -39,7 +39,6 @@ for method in method_list:
 
     data_dir = os.path.join(os.getcwd(), '..', '..', 'results', 'bench1', 'restarts', method)
 
-
     df = pd.DataFrame()
     files = os.listdir(data_dir)
     files.sort()
@@ -68,7 +67,6 @@ for method in method_list:
     batch_nll.sort(key=lambda x: int(x.split('_')[-1])) 
     batch_time.sort(key=lambda x: int(x.split('_')[-1])) 
 
-    
     # for debugging:
     '''
     for ind in df.index: 
@@ -113,18 +111,15 @@ for method in method_list:
     area_values = values
     area_all[method] = area_values
 
-
     ##--- Plotting the run-time ---
 
     keys = list(time_dict.keys())
     values = list(time_dict.values())
     
-    
     time_values = values
     time_all[method] = time_values
     
     
-
 ##-- for comparing n_2*[1, _] --
 
 fig = plt.figure(1, figsize=(9, 6))

@@ -97,7 +97,6 @@ for arg in args:
     time_dict[arg] = [results_times]
     
     
-
 fig = plt.figure(1, figsize=(9,6))
 
 ax = fig.add_subplot(111)

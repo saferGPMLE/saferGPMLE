@@ -46,7 +46,6 @@ for method in method_list:
 
     data_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench1', 'data_restarts_no_std', method)
 
-
     df = pd.DataFrame()
     files = os.listdir(data_dir)
     files.sort()
@@ -75,7 +74,6 @@ for method in method_list:
     batch_nll.sort(key=lambda x: int(x.split('_')[-1])) 
     batch_time.sort(key=lambda x: int(x.split('_')[-1])) 
 
-    
     # for debugging:
     '''
     for ind in df.index: 
@@ -127,10 +125,7 @@ for method in method_list:
     plt.xlabel('batches of restart/multistart', fontsize=15)
     plt.title('improvement over restarts', fontsize=15)
 
-
-
     ##--- Plotting the first derivative ---
-
 
     dydx = np.diff(list(values))/np.diff(list(keys))
 
@@ -142,7 +137,6 @@ for method in method_list:
     plt.ylabel('1st derivative', fontsize=15)
     plt.xlabel('batches of restart/multistart', fontsize=15)
     plt.title('rate of improvement over restarts', fontsize=15)
-
 
     ##--- Plotting the run-time ---
 
@@ -158,7 +152,6 @@ for method in method_list:
     plt.ylabel('cummulative run-time', fontsize=15)
     plt.xlabel('batches of restart/multistart', fontsize=15)
     plt.title('cost over restarts', fontsize=15)
-
 
     #plt.show()
 

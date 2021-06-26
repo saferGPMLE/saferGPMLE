@@ -228,7 +228,6 @@ class CustomGPy():
     def repair_model(self):
         self.check_training_type()
 
-
         self.model = GPy.models.GPRegression(self._input_values, self._output_values, kernel=self.kernel_function,
                                         Y_metadata=None, normalizer=None,
                                         noise_var=0, mean_function=self.mean_function)

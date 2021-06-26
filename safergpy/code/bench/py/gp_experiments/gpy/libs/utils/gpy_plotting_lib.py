@@ -251,7 +251,6 @@ def plot_multistart_optimization(model, n, mean_value,
 
     plt.show()
 
-
     return data
 
 def get_noise_level(x, y):

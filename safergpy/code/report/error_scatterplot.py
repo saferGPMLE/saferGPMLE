@@ -59,7 +59,6 @@ if df_pivot['cost'].isnull().any().any():
     df_pivot = df_pivot.dropna()
 
 
-
 ## Scatter plot ##
 methods_to_be_compared = methods
 df_pivot['diff'] = df_pivot['cost'][methods_to_be_compared[0]] - df_pivot['cost'][methods_to_be_compared[1]]

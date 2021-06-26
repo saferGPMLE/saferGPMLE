@@ -142,7 +142,6 @@ else:
     bp = ax.boxplot(to_plot)
     bp1  = ax.boxplot(to_plot_full)
 
-
     ## change color and linewidth of the medians
     for median in bp['medians']:
         median.set(color='g', linewidth=2)
@@ -162,7 +161,6 @@ else:
 
     for median in bp1['medians']:
         median.set(color='r', linewidth=2)
-
 
     plt.xlabel('output functions', fontsize=14)
     plt.ylabel('NLL_default - NLL_healed', fontsize=14)

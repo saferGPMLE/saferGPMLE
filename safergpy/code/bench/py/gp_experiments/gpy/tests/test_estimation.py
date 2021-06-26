@@ -113,8 +113,6 @@ def plot_sample(x, model, x_test):
     plt.show()
 
 
-
-
 ls = model.model.Mat52.lengthscale.copy()
 
 log_scale_multi = np.linspace(-1, 2, 1000)

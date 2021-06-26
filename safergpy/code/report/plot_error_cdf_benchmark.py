@@ -130,7 +130,6 @@ for type in methods_to_be_compared:
 ########
 
 
-
 plt.figure()
 
 color = ['b', 'g', 'r', 'c', 'm']
