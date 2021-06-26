@@ -9,14 +9,14 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("--solid-lines", type = str, nargs = '*',
-                    help = 'solid lines curves')
+parser.add_argument("--solid-lines", type=str, nargs='*',
+                    help='solid lines curves')
 
-parser.add_argument("--dashed-lines", type = str, nargs = '*',
-                    help = 'dashed lines curves')
+parser.add_argument("--dashed-lines", type=str, nargs='*',
+                    help='dashed lines curves')
 
-parser.add_argument("--daashed-lines", type = str, nargs = '*',
-                    help = 'daashed lines curves')
+parser.add_argument("--daashed-lines", type=str, nargs='*',
+                    help='daashed lines curves')
 
 args = parser.parse_args()
 
@@ -84,7 +84,7 @@ for method_dir in methods:
         data['optim_type'] = optim_type
         data['d'] = d
 
-        df = df.append(data, ignore_index = True)
+        df = df.append(data, ignore_index=True)
 ##-- Retrieve best known ---
 
 data = pd.read_csv(os.path.join(data_dir, 'best_known.csv'), sep=',')[['output', 'minimum cost', 'file']]
@@ -96,12 +96,12 @@ data['d'] = data['file'].apply(lambda x: get_problem_and_dimension(x)[1])
 
 data = data[['output', 'cost', 'problem', 'optim_type', 'd']]
 
-df = df.append(data, ignore_index = True)
+df = df.append(data, ignore_index=True)
 summary = "Summary :\n{} datasets\n{} outputs".format(df.groupby(['problem', 'd']).ngroups,
                                                   df.groupby(['problem', 'd', 'output']).ngroups)
 ##-- Post processing ---
 
-df_pivot = pd.pivot_table(df, values = ['cost'], columns = ["optim_type"],index = ['problem', 'output', 'd'])
+df_pivot = pd.pivot_table(df, values=['cost'], columns=["optim_type"],index=['problem', 'output', 'd'])
 
 # Turn this flag on for comparing methods with different data-sets
 # It will only consider the errors for the common datasets
@@ -127,7 +127,7 @@ bins = np.linspace(left,right,n)
 
 methods_to_be_compared = methods
 
-df_bins = pd.DataFrame(index = bins, columns = methods_to_be_compared)
+df_bins = pd.DataFrame(index=bins, columns=methods_to_be_compared)
 
 for type in methods_to_be_compared:
     #print(type)
@@ -150,7 +150,7 @@ color = ['b', 'g', 'r']
 i = 0
 if solid_lines is not None:
     for type in solid_lines:
-        plt.plot(df_bins.index,df_bins[type], '-', label = labelss[i], color = color[i])
+        plt.plot(df_bins.index,df_bins[type], '-', label=labelss[i], color=color[i])
         i += 1
 
         print('\narea of {} is {}'.format(type, np.trapz(df_bins[type], df_bins.index)))
@@ -158,7 +158,7 @@ if solid_lines is not None:
 i = 1
 if dashed_lines is not None:
     for type in dashed_lines:
-        plt.plot(df_bins.index,df_bins[type], ':', label = labelss[i], color = color[i])
+        plt.plot(df_bins.index,df_bins[type], ':', label=labelss[i], color=color[i])
         i += 1
 
         print('\narea of {} is {}'.format(type, np.trapz(df_bins[type], df_bins.index)))
@@ -166,16 +166,16 @@ if dashed_lines is not None:
 i = 2
 if daashed_lines is not None:
     for type in daashed_lines:
-        plt.plot(df_bins.index,df_bins[type], '-.', label = labelss[i], color = color[i])
+        plt.plot(df_bins.index,df_bins[type], '-.', label=labelss[i], color=color[i])
         i += 1
         print('\narea of {} is {}'.format(type, np.trapz(df_bins[type], df_bins.index)))
 
-plt.xlabel('NLL differences', fontsize = 20)
-plt.ylabel('Probability', fontsize = 20)
-plt.title('ECDF of error', fontsize = 20)
-plt.ylim(bottom = bottom, top = top)
+plt.xlabel('NLL differences', fontsize=20)
+plt.ylabel('Probability', fontsize=20)
+plt.title('ECDF of error', fontsize=20)
+plt.ylim(bottom=bottom, top=top)
 
-plt.legend(loc = "lower right", prop = {'size':20})
+plt.legend(loc="lower right", prop={'size':20})
 
 ax.tick_params(axis="x", labelsize=20)
 ax.tick_params(axis="y", labelsize=20)

@@ -39,11 +39,11 @@ for method_dir in methods:
         data['optim_type'] = optim_type
         data['d'] = d
 
-        df = df.append(data, ignore_index = True)
+        df = df.append(data, ignore_index=True)
 
 ##-- Post processing ---
 
-df_pivot = pd.pivot_table(df, values = ['cost'], columns = ["optim_type"],index = ['problem', 'output', 'd'])
+df_pivot = pd.pivot_table(df, values=['cost'], columns=["optim_type"],index=['problem', 'output', 'd'])
 
 do_anyway = False
 if do_anyway:

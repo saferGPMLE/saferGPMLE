@@ -24,16 +24,16 @@ for arg in args:
 
     for file in files:
         file_path = os.path.join(data_dir, file)
-        df_new = pd.read_csv(file_path, index_col = 0)
+        df_new = pd.read_csv(file_path, index_col=0)
 
         df_new['file'] = file
 
-        df = df.append(df_new, ignore_index = True)
+        df = df.append(df_new, ignore_index=True)
 
     # Retrieving the best known
     data = pd.read_csv(os.path.join(data_dir, '../', 'best_known.csv'), sep=',')[['minimum cost', 'file', 'output']]
 
-    df = pd.merge(df, data, on = ['file', 'output'])
+    df = pd.merge(df, data, on=['file', 'output'])
 
     #init_draw = df[['nll_1', 'time_1', 'file', 'output']]
 
@@ -58,11 +58,11 @@ for arg in args:
 
         assert len(key_nll_with_start) == N_multistarts and len(key_time_with_start) == N_multistarts
 
-        nll_minima = np.minimum.accumulate(df[key_nll_with_start].values, axis = 1)
-        time_sum = np.cumsum(df[key_time_with_start].values, axis = 1)
+        nll_minima = np.minimum.accumulate(df[key_nll_with_start].values, axis=1)
+        time_sum = np.cumsum(df[key_time_with_start].values, axis=1)
 
-        nll_table = pd.concat((pd.DataFrame(nll_minima, columns = key_nll_with_start), df[['file', 'output', 'minimum cost']]), axis = 1)
-        time_table = pd.concat((pd.DataFrame(time_sum, columns = key_time_with_start), df[['file', 'output']]), axis = 1)
+        nll_table = pd.concat((pd.DataFrame(nll_minima, columns=key_nll_with_start), df[['file', 'output', 'minimum cost']]), axis=1)
+        time_table = pd.concat((pd.DataFrame(time_sum, columns=key_time_with_start), df[['file', 'output']]), axis=1)
 
         assert len(key_nll_with_start) == len(key_time_with_start)
 
@@ -116,8 +116,8 @@ for arg in args[::-1]:
     plt.plot(
         [np.array(time_dict[arg][0][s]).mean() for s in range(N_multistarts)],
         [np.array(area_dict[arg][0][s]).mean() for s in range(N_multistarts)]/norm,
-        linestyle = '-',
-        marker='o', label = method_name[arg]
+        linestyle='-',
+        marker='o', label=method_name[arg]
     )
     
     if arg == 'gpy_mle1122':
@@ -127,7 +127,7 @@ for arg in args[::-1]:
             if i%2 ==0 :
                 plt.text([np.array(time_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]+0.5, 
                          ([np.array(area_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]/norm)-0.0005, 
-                         str(words[i]), fontsize = 14)
+                         str(words[i]), fontsize=14)
                 
     else:
         
@@ -136,13 +136,13 @@ for arg in args[::-1]:
             if i%2 ==0 :
                 plt.text([np.array(time_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]-30, 
                          ([np.array(area_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]/norm)+0.00015, 
-                         str(words[i]), fontsize = 14)
+                         str(words[i]), fontsize=14)
     
 
-plt.ylabel('area under ECDF', fontsize = 20)
-plt.xlabel('runtime', fontsize = 20)
+plt.ylabel('area under ECDF', fontsize=20)
+plt.xlabel('runtime', fontsize=20)
 #plt.title('improvement over multistarts', fontsize = 20)
-plt.legend(fontsize = 20)
+plt.legend(fontsize=20)
 
 ax.set_yticks([0.990, 0.992, 0.994, 0.996, 0.998, 1])
 

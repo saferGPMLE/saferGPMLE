@@ -56,7 +56,7 @@ for method in method_list:
 
         df_new['file'] = file
 
-        df = df.append(df_new, ignore_index = True)
+        df = df.append(df_new, ignore_index=True)
 
     ##--- Retrieve best known ---
 
@@ -89,7 +89,7 @@ for method in method_list:
 
     bins = np.linspace(left,right,n)
 
-    df_bins = pd.DataFrame(index = bins, columns = batch_nll)
+    df_bins = pd.DataFrame(index=bins, columns=batch_nll)
 
     for b in batch_nll:
         for log_lik_diff in bins:
@@ -123,9 +123,9 @@ for method in method_list:
     plt.figure(1)
     plt.plot(keys, values)
 
-    plt.ylabel('area under the ECDF', fontsize = 15)
-    plt.xlabel('batches of restart/multistart', fontsize = 15)
-    plt.title('improvement over restarts', fontsize = 15)
+    plt.ylabel('area under the ECDF', fontsize=15)
+    plt.xlabel('batches of restart/multistart', fontsize=15)
+    plt.title('improvement over restarts', fontsize=15)
 
 
 
@@ -139,9 +139,9 @@ for method in method_list:
     plt.figure(2)
     plt.plot(list(keys)[1:], dydx)
 
-    plt.ylabel('1st derivative', fontsize = 15)
-    plt.xlabel('batches of restart/multistart', fontsize = 15)
-    plt.title('rate of improvement over restarts', fontsize = 15)
+    plt.ylabel('1st derivative', fontsize=15)
+    plt.xlabel('batches of restart/multistart', fontsize=15)
+    plt.title('rate of improvement over restarts', fontsize=15)
 
 
     ##--- Plotting the run-time ---
@@ -155,9 +155,9 @@ for method in method_list:
     plt.figure(3)
     plt.plot(keys, values)
 
-    plt.ylabel('cummulative run-time', fontsize = 15)
-    plt.xlabel('batches of restart/multistart', fontsize = 15)
-    plt.title('cost over restarts', fontsize = 15)
+    plt.ylabel('cummulative run-time', fontsize=15)
+    plt.xlabel('batches of restart/multistart', fontsize=15)
+    plt.title('cost over restarts', fontsize=15)
 
 
     #plt.show()
@@ -193,11 +193,11 @@ if len(method_list) > 1:
         yy.append(area_all[method][1][0])
     norm = np.max(yy)
     print('max area : ', norm)
-    plt.plot(xx, yy/norm, linestyle = '-', marker='o')
+    plt.plot(xx, yy/norm, linestyle='-', marker='o')
 
-    plt.ylabel('area under ECDF', fontsize = 15)
-    plt.xlabel('runtime', fontsize = 15)
-    plt.title('improvement over restarts', fontsize = 15)
+    plt.ylabel('area under ECDF', fontsize=15)
+    plt.xlabel('runtime', fontsize=15)
+    plt.title('improvement over restarts', fontsize=15)
     
     words = list(range(1,21))
     for i in range(len(words)):

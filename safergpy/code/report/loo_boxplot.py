@@ -91,13 +91,13 @@ for file in os.listdir(data_dir_full):
 fig = plt.figure(1, figsize=(9, 6))
 ax = fig.add_subplot(111)
 
-boxplot = df.boxplot(column = ls, grid = False, color=dict(boxes='black', whiskers='black', caps='black'))
+boxplot = df.boxplot(column=ls, grid=False, color=dict(boxes='black', whiskers='black', caps='black'))
 
-boxplot2 = df_full.boxplot(column = ls, grid = False, color=dict(boxes='r', whiskers='r', medians='r', caps='r'))
+boxplot2 = df_full.boxplot(column=ls, grid=False, color=dict(boxes='r', whiskers='r', medians='r', caps='r'))
 
-plt.xlabel('input dimensions', fontsize = 14)
-plt.ylabel('range (in log scale)', fontsize = 14)
-plt.title('Boxplot of LOO estimated range of {}, {} with {}'.format(dataset[0] + '_' + dataset[1], output, 'improved'), fontsize = 14)
+plt.xlabel('input dimensions', fontsize=14)
+plt.ylabel('range (in log scale)', fontsize=14)
+plt.title('Boxplot of LOO estimated range of {}, {} with {}'.format(dataset[0] + '_' + dataset[1], output, 'improved'), fontsize=14)
 labels = [x.split('_')[-1] for x in ls]
 ax.set_xticklabels(labels)
 #plt.grid(True)

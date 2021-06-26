@@ -53,7 +53,7 @@ for method_dir in methods:
 
             data = pd.read_csv(os.path.join(data_dir, method_dir, file), sep=',', index_col=0)[['post_mean', 'y_test', 'ls_dim_1', 'ls_dim_2', 'mse']]
 
-            df[method_dir] = df[method_dir].append(data, ignore_index = True)
+            df[method_dir] = df[method_dir].append(data, ignore_index=True)
 
             mse_array = np.array(df[method_dir]['mse'])
             mse_array = np.sqrt(mse_array[~np.isnan(mse_array)])
@@ -70,26 +70,26 @@ for method_dir in methods:
 methods_to_be_compared = methods
 
 plt.figure(1, figsize=(9, 6))
-plt.plot(df[methods_to_be_compared[0]]['ls_dim_1'], df[methods_to_be_compared[0]]['ls_dim_2'], 'o', color = 'blue', label = 'healed')
-plt.plot(df[methods_to_be_compared[1]]['ls_dim_1'], df[methods_to_be_compared[1]]['ls_dim_2'], 'o', color = 'red', label = 'default')
-plt.ylabel('lengthscale 2', fontsize = 14)
-plt.xlabel('lengthscale 1', fontsize = 14)
+plt.plot(df[methods_to_be_compared[0]]['ls_dim_1'], df[methods_to_be_compared[0]]['ls_dim_2'], 'o', color='blue', label='healed')
+plt.plot(df[methods_to_be_compared[1]]['ls_dim_1'], df[methods_to_be_compared[1]]['ls_dim_2'], 'o', color='red', label='default')
+plt.ylabel('lengthscale 2', fontsize=14)
+plt.xlabel('lengthscale 1', fontsize=14)
 plt.legend(prop={'size': 15})
-plt.title('scatterplot of lengthscales (in log-scale)', fontsize = 14)
+plt.title('scatterplot of lengthscales (in log-scale)', fontsize=14)
 
 
 plt.figure(2, figsize=(9, 6))
 plt.plot(df[methods_to_be_compared[0]]['y_test'], df[methods_to_be_compared[0]]['post_mean'], 'o')
-plt.ylabel('predicted output values', fontsize = 14)
-plt.xlabel('test output values', fontsize = 14)
+plt.ylabel('predicted output values', fontsize=14)
+plt.xlabel('test output values', fontsize=14)
 plt.plot(df[methods_to_be_compared[0]]['y_test'], df[methods_to_be_compared[0]]['y_test'], color='r', linestyle='-')
-plt.title('observed vs predicted', fontsize = 14)
+plt.title('observed vs predicted', fontsize=14)
 
 plt.figure(3, figsize=(9, 6))
 plt.plot(df[methods_to_be_compared[1]]['y_test'], df[methods_to_be_compared[1]]['post_mean'], 'o')
-plt.ylabel('predicted output value', fontsize = 14)
-plt.xlabel('test output values', fontsize = 14)
+plt.ylabel('predicted output value', fontsize=14)
+plt.xlabel('test output values', fontsize=14)
 plt.plot(df[methods_to_be_compared[1]]['y_test'], df[methods_to_be_compared[1]]['y_test'], color='r', linestyle='-')
-plt.title('observed vs predicted', fontsize = 14)
+plt.title('observed vs predicted', fontsize=14)
 
 plt.show()

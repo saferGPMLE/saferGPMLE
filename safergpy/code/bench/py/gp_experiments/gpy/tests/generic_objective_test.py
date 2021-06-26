@@ -7,14 +7,14 @@ import os
 import sys
 
 def get_trajectories(x, true_p, true_variance, true_rho, N_traj):
-    kernel_function = GPy.kern.RationalMatern(p = true_p, input_dim = x.shape[1],
+    kernel_function = GPy.kern.RationalMatern(p=true_p, input_dim=x.shape[1],
                                         variance=true_variance,
                                         lengthscale=true_rho,
                                         ARD=True)
 
     true_K = kernel_function.K(x)
 
-    y = np.random.multivariate_normal(np.zeros([x.shape[0]]), true_K, size = N_traj)
+    y = np.random.multivariate_normal(np.zeros([x.shape[0]]), true_K, size=N_traj)
 
     return y
 
@@ -39,7 +39,7 @@ rho = np.random.uniform(size=x.shape[1]) + 1
 
 criteria = sys.argv[1]
 
-model = RationalMaternZeroMean(p=p, criteria = criteria, init = 'custom', fix_noise=True,
+model = RationalMaternZeroMean(p=p, criteria=criteria, init='custom', fix_noise=True,
                                    untrained_variance=variance,
                                    untrained_lengthscale=rho.copy())
 
@@ -47,14 +47,14 @@ model.set_data(x, y)
 
 print(model.model._objective_grads(model.model.optimizer_array))
 
-print(model.model.checkgrad(verbose = True, tolerance = 10**(-8)))
+print(model.model.checkgrad(verbose=True, tolerance=10**(-8)))
 
 def compute_mse(x,y):
     assert x.shape == y.shape, 'Shape issue'
     return ((x - y) ** 2).mean() / (x ** 2).mean()
 
 def get_loo(ref_model, x ,y):
-    model = RationalMaternZeroMean(p=ref_model.p, criteria = ref_model.criteria, fix_noise=True,
+    model = RationalMaternZeroMean(p=ref_model.p, criteria=ref_model.criteria, fix_noise=True,
                                    untrained_variance=ref_model.model.kern.variance.copy(),
                                    untrained_lengthscale=ref_model.model.kern.lengthscale.copy(), init='custom')
 
@@ -75,7 +75,7 @@ def get_loo(ref_model, x ,y):
 
 ##################################################
 
-test_kernel_function = GPy.kern.RationalMatern(p = model.p, input_dim=x.shape[1],
+test_kernel_function = GPy.kern.RationalMatern(p=model.p, input_dim=x.shape[1],
                                 variance=model.model.kern.variance.copy(),
                                 lengthscale=model.model.kern.lengthscale.copy(),
                                 ARD=True)
@@ -86,7 +86,7 @@ test_model = GPy.models.GPRegression(x, y, kernel=test_kernel_function,
 
 ##################################################
 
-x_test = np.random.uniform(size = (1000, x.shape[1]))
+x_test = np.random.uniform(size=(1000, x.shape[1]))
 
 predictions = model.predict(x_test)
 
@@ -267,7 +267,7 @@ if criteria == 'standardized_mse_loo':
                                                                        var_loo_empirical.reshape(-1),
                                                                        y.reshape(-1)))
 
-print(print(model.model.checkgrad(verbose = True, tolerance = 10**(-8))))
+print(print(model.model.checkgrad(verbose=True, tolerance=10**(-8))))
 
 # score = gp_experiments.gpy.libs.models.RationalMaternZeroMean.MinusCRPS()
 #

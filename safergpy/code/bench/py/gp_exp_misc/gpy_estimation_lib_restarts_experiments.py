@@ -2,7 +2,7 @@ import time
 from gp_experiments.gpy.libs.utils.gpy_estimation_lib import custom_optimize_restarts, gaussian_random_init, optimize_from_start
 import numpy as np
 
-def trainer_all(model, options, profiler=None, ipython_notebook=False, bench_type = 'single'):
+def trainer_all(model, options, profiler=None, ipython_notebook=False, bench_type='single'):
     if bench_type == 'single':
         l = launch_sessions_all(model=model, ipython_notebook=ipython_notebook, profiler=profiler, **options)
     elif bench_type == 'monte-carlo':

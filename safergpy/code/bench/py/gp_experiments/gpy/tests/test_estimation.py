@@ -6,7 +6,7 @@ from libs.utils.gpy_estimation_lib import analytical_mean_and_variance_optimizat
 import matplotlib.pyplot as plt
 import GPy
 
-data = pd.read_csv('/Users/sebastien/git-repos/test-functions/data/doe/g10_20d.csv', sep = ',', index_col = 0)
+data = pd.read_csv('/Users/sebastien/git-repos/test-functions/data/doe/g10_20d.csv', sep=',', index_col=0)
 
 predictors = [a for a in data.columns if 'x' in a]
 outputs = ['f_1']
@@ -31,7 +31,7 @@ model_one = GPy.models.GPRegression(x_train, z_train, mean_function=mean_functio
 
 model_one.Gaussian_noise.variance.fix()
 
-kernel_function_two = GPy.kern.RationalMatern(p = 2, input_dim=x_train.shape[1],
+kernel_function_two = GPy.kern.RationalMatern(p=2, input_dim=x_train.shape[1],
                                 variance=1.0, lengthscale=1.0, ARD=True)
 
 model_two = GPy.models.GPRegression(x_train, z_train, kernel=kernel_function_two,
@@ -88,17 +88,17 @@ model.train()
 def plot_model(x, model, x_test, x_train, z_train):
     model.model.kern.lengthscale = x
 
-    plt.plot(x_train, z_train, 'bo', label = 'training')
-    plt.plot(x_test, model.predict(x_test)[0], label = 'prediction')
+    plt.plot(x_train, z_train, 'bo', label='training')
+    plt.plot(x_test, model.predict(x_test)[0], label='prediction')
 
     alpha = np.linalg.inv(model.model.kern.K(x_train)) @ z_train
 
-    basis_values = np.tile(alpha.reshape(1, -1), reps = [x_test.shape[0], 1]) * model.model.kern.K(x_test, x_train)
+    basis_values = np.tile(alpha.reshape(1, -1), reps=[x_test.shape[0], 1]) * model.model.kern.K(x_test, x_train)
 
     #for i in range(model.model.Y.shape[0]):
     #    plt.plot(x_test, basis_values[:, i], label = str(i))
 
-    plt.plot(x_test, basis_values.sum(1), label = 'sum basis')
+    plt.plot(x_test, basis_values.sum(1), label='sum basis')
 
     plt.legend()
     plt.show()
@@ -106,8 +106,8 @@ def plot_model(x, model, x_test, x_train, z_train):
 def plot_sample(x, model, x_test):
     model.model.kern.lengthscale = x
     for i in range(10):
-        path = np.random.multivariate_normal(mean = np.zeros(x_test.shape[0]), cov = model.model.kern.K(x_test))
-        plt.plot(x_test, path, label = str(i))
+        path = np.random.multivariate_normal(mean=np.zeros(x_test.shape[0]), cov=model.model.kern.K(x_test))
+        plt.plot(x_test, path, label=str(i))
 
     plt.legend()
     plt.show()

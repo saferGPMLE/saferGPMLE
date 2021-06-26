@@ -162,7 +162,7 @@ x = 3 * x - 4
 
 print("start")
 
-model_trained = CustomGPy(postvar_options = {"value": 0, "type": 'None'})
+model_trained = CustomGPy(postvar_options={"value": 0, "type": 'None'})
 model_trained.set_data(x, y)
 
 model_trained.initialize()
@@ -213,7 +213,7 @@ y = 3 * y - 50
 
 x = 3 * x - 4
 
-model_trained = CustomGPy(postvar_options = {"value": 0, "type": 'truncate'}, init = 'classic_profiled')
+model_trained = CustomGPy(postvar_options={"value": 0, "type": 'truncate'}, init='classic_profiled')
 model_trained.set_data(x, y)
 
 #############################
@@ -226,15 +226,15 @@ model_trained.set_data(x_new, y_new)
 x_new_new = np.linspace(x.min(), x.max(), 1000).reshape(-1, 1)
 
 plt.plot(x_new, y_new, 'o')
-plt.plot(x_new_new, model_trained.predict(x_new_new)[0], label = 'post mean')
-plt.plot(x_new_new, model_trained.predict(x_new_new)[0] - 1.96 * np.sqrt(model_trained.predict(x_new_new)[1]), label = 'lower CI')
-plt.plot(x_new_new, model_trained.predict(x_new_new)[0] + 1.96 * np.sqrt(model_trained.predict(x_new_new)[1]), label = 'upper CI')
+plt.plot(x_new_new, model_trained.predict(x_new_new)[0], label='post mean')
+plt.plot(x_new_new, model_trained.predict(x_new_new)[0] - 1.96 * np.sqrt(model_trained.predict(x_new_new)[1]), label='lower CI')
+plt.plot(x_new_new, model_trained.predict(x_new_new)[0] + 1.96 * np.sqrt(model_trained.predict(x_new_new)[1]), label='upper CI')
 
 for i in range(3):
-    plt.plot(x_new_new, model_trained.sample_y(x_new_new, 1).reshape(-1), color = 'k')
+    plt.plot(x_new_new, model_trained.sample_y(x_new_new, 1).reshape(-1), color='k')
 
-plt.plot(x_new_new, model_trained.get_y_quantiles(0.9999, x_new_new), label = 'quantile')
-plt.plot(x_new_new, model_trained.get_y_quantiles(0.0001, x_new_new), label = 'quantile')
+plt.plot(x_new_new, model_trained.get_y_quantiles(0.9999, x_new_new), label='quantile')
+plt.plot(x_new_new, model_trained.get_y_quantiles(0.0001, x_new_new), label='quantile')
 plt.legend()
 
 ##########################
@@ -274,10 +274,10 @@ print("start")
 model_trained = RationalMaternZeroMean(
     p=0,
     criteria=criteria,
-    untrained_lengthscale = 1,
-    untrained_variance = 1,
-    optim_scheme = [[10, 3.0], [1, 1.0]],
-    init = 'classic',
+    untrained_lengthscale=1,
+    untrained_variance=1,
+    optim_scheme=[[10, 3.0], [1, 1.0]],
+    init='classic',
     upper_lengthscale={0: 2},
     fix_var=False
 )
@@ -311,9 +311,9 @@ var_loo_empirical = np.array(var_loo_empirical)
 
 model_trained.set_loo_posterior_metrics()
 
-get_scaled_mse(mu_pred= model_trained.get_loo_mean().reshape(-1),
-                   var_pred= model_trained.get_loo_var().reshape(-1),
-                   y = y.reshape(-1))
+get_scaled_mse(mu_pred=model_trained.get_loo_mean().reshape(-1),
+                   var_pred=model_trained.get_loo_var().reshape(-1),
+                   y=y.reshape(-1))
 
 #print(model_trained)
 print(y.mean())

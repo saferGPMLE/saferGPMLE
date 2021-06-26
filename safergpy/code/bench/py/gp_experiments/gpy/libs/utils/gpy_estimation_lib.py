@@ -4,11 +4,11 @@ import libs.utils.metrics_computations
 from scipy.stats import truncnorm
 import paramz
 
-def trainer(model, options, profiler = None, ipython_notebook = False):
+def trainer(model, options, profiler=None, ipython_notebook=False):
     model, status = launch_sessions(
-        model = model,
-        ipython_notebook = ipython_notebook,
-        profiler = profiler,
+        model=model,
+        ipython_notebook=ipython_notebook,
+        profiler=profiler,
         **options
     )
 
@@ -17,8 +17,8 @@ def trainer(model, options, profiler = None, ipython_notebook = False):
 
     return model, status
 
-def brutal_train(model, n, gtol = 10**(-20), bfgs_factor = 10, ipython_notebook = False,
-                 log_bounds = [-3,5], profiler = None):
+def brutal_train(model, n, gtol=10**(-20), bfgs_factor=10, ipython_notebook=False,
+                 log_bounds=[-3,5], profiler=None):
 
     log_rho_data = np.random.random((n, model.input_dim)) * (log_bounds[1] - log_bounds[0]) + log_bounds[0]
 
@@ -31,7 +31,7 @@ def brutal_train(model, n, gtol = 10**(-20), bfgs_factor = 10, ipython_notebook 
 
         model, status = launch_sessions(
             model,
-            optim_scheme = [[2, 2.0]],
+            optim_scheme=[[2, 2.0]],
             profiler=profiler,
             ipython_notebook=ipython_notebook,
             bfgs_factor=bfgs_factor,
@@ -185,7 +185,7 @@ def analytical_mean_and_variance_optimization(model):
 
     return model
 
-def optimize_from_start(model, gtol, bfgs_factor, ipython_notebook, messages = False):
+def optimize_from_start(model, gtol, bfgs_factor, ipython_notebook, messages=False):
     if gtol is not None and bfgs_factor is not None:
         optim = model.optimize(messages=messages, max_iters=1000, start=None, clear_after_finish=False,
                         ipython_notebook=ipython_notebook, gtol=gtol, bfgs_factor=bfgs_factor)

@@ -75,7 +75,7 @@ def df_generator(data_dir, tag):
             for i in ls:
                 df[i] = np.log(df[i])
             df = df.dropna()
-            df = df.drop(to_remove, axis = 1)
+            df = df.drop(to_remove, axis=1)
             df['method'] = np.array(df.shape[0]*[tag])
     return df
 
@@ -120,23 +120,23 @@ fig = plt.figure(figsize=(9, 6))
 ax = plt.axes()
 
 # first boxplot pair
-bp = ax.boxplot(A, positions = [1, 2], widths = 0.6)
-bp_1 = ax.boxplot(A_1, positions = [1, 2], widths = 0.6)
+bp = ax.boxplot(A, positions=[1, 2], widths=0.6)
+bp_1 = ax.boxplot(A_1, positions=[1, 2], widths=0.6)
 color_scheme(bp, bp_1)
 
 # second boxplot pair
-bp = ax.boxplot(B, positions = [4, 5], widths = 0.6)
-bp_1 = ax.boxplot(B_1, positions = [4, 5], widths = 0.6)
+bp = ax.boxplot(B, positions=[4, 5], widths=0.6)
+bp_1 = ax.boxplot(B_1, positions=[4, 5], widths=0.6)
 color_scheme(bp, bp_1)
 
 # thrid boxplot pair
-bp = ax.boxplot(C, positions = [7, 8], widths = 0.6)
-bp_1 = ax.boxplot(C_1, positions = [7, 8], widths = 0.6)
+bp = ax.boxplot(C, positions=[7, 8], widths=0.6)
+bp_1 = ax.boxplot(C_1, positions=[7, 8], widths=0.6)
 color_scheme(bp, bp_1)
 
 # fourth boxplot pair
-bp = ax.boxplot(D, positions = [10, 11], widths = 0.6)
-bp_1 = ax.boxplot(D_1, positions = [10, 11], widths = 0.6)
+bp = ax.boxplot(D, positions=[10, 11], widths=0.6)
+bp_1 = ax.boxplot(D_1, positions=[10, 11], widths=0.6)
 color_scheme(bp, bp_1)
 
 # set axes limits and labels
@@ -145,8 +145,8 @@ plt.xlim(0,12)
 ax.set_xticklabels(['1', '2', '3', '4'])
 ax.set_xticks([1.5, 4.5, 7.5, 10.5])
 
-plt.xlabel('input dimensions', fontsize = 14)
-plt.ylabel('lengthscale (in log scale)', fontsize = 14)
+plt.xlabel('input dimensions', fontsize=14)
+plt.ylabel('lengthscale (in log scale)', fontsize=14)
 plt.title('Boxplot of LOO estimated lengthscale')
 plt.grid(True)
 

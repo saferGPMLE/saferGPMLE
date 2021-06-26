@@ -101,7 +101,7 @@ if not os.path.exists(target_dir):
 for file in os.listdir(input_data):
     print('\n\nWorking on file : ', file)
     data_path = os.path.join(input_data, file)
-    data = pd.read_csv(data_path, sep = ',', index_col = 0)
+    data = pd.read_csv(data_path, sep=',', index_col=0)
     predictors = [a for a in data.columns if 'x' in a]
     outputs = [a for a in data.columns if 'x' not in a]
     data['row'] = range(data.shape[0])
@@ -117,6 +117,6 @@ for file in os.listdir(input_data):
         model_instance.set_data(x_train, y_train)
         l = model_instance.train()
         l['output'] = output
-        df = df.append(l, ignore_index = True)
+        df = df.append(l, ignore_index=True)
         #print('\n\nFile : {}, output :{}\n metrics : {}'.format(file, output, l))
     df.to_csv(os.path.join(output_data, results_dir_name, file))

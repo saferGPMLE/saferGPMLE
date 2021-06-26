@@ -132,9 +132,9 @@ plot_type = input('Type "h" for histogram : \n')
 if plot_type == 'h':
 
     plt.hist(to_plot, density=False, bins=10, edgecolor='black') 
-    plt.xlabel('NLL_default - NLL_healed', fontsize = 14)
-    plt.ylabel('frequency', fontsize = 14)
-    plt.title('Histogram of NLL differences', fontsize = 14)
+    plt.xlabel('NLL_default - NLL_healed', fontsize=14)
+    plt.ylabel('frequency', fontsize=14)
+    plt.title('Histogram of NLL differences', fontsize=14)
     plt.show()
 
 else:
@@ -164,9 +164,9 @@ else:
         median.set(color='r', linewidth=2)
 
 
-    plt.xlabel('output functions', fontsize = 14)
-    plt.ylabel('NLL_default - NLL_healed', fontsize = 14)
-    plt.title('Boxplot of difference in LOO estimated NLL of {}'.format(dataset[0]+ '_' + str(dataset[1])), fontsize = 14)
+    plt.xlabel('output functions', fontsize=14)
+    plt.ylabel('NLL_default - NLL_healed', fontsize=14)
+    plt.title('Boxplot of difference in LOO estimated NLL of {}'.format(dataset[0]+ '_' + str(dataset[1])), fontsize=14)
     plt.grid(True)
     ax.set_xticklabels(list(df_full['output']))
     plt.show()

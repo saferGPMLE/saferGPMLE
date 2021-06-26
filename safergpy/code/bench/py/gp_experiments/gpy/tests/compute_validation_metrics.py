@@ -16,7 +16,7 @@ import libs.utils.metrics_computations
 
 #######################################################
 
-def mc_validation(x_train, y_train, ModelClass, n_sample, x_test = None, y_test = None):
+def mc_validation(x_train, y_train, ModelClass, n_sample, x_test=None, y_test=None):
     model = ModelClass(x_train, y_train)
     model.train()
 
@@ -56,7 +56,7 @@ def mc_validation(x_train, y_train, ModelClass, n_sample, x_test = None, y_test 
 
     sample_vars = np.exp(math.log(10) * ((unit_uniform_draw[:, 1] * (var_range_log10[1] - var_range_log10[0])  + var_range_log10[0]) + math.log10(c_var)))
 
-    sample_lengthscales = np.exp(math.log(10)  * (np.tile(np.log10(lengthscales), reps = (n_sample, 1)) +
+    sample_lengthscales = np.exp(math.log(10)  * (np.tile(np.log10(lengthscales), reps=(n_sample, 1)) +
                                     (unit_uniform_draw[:, 2:] * (scale_range_log10[1] - scale_range_log10[0])  + scale_range_log10[0])))
 
     mean_errors = []
@@ -108,14 +108,14 @@ def plot_mse_decomposition(mean_errors, var_errors, empirical_std, trained_model
 
     plt.figure()
 
-    plt.plot(std_errors, mean_errors, 'o', label = "Sampled GP")
-    plt.vlines(x = empirical_std, ymin = lower, ymax = upper, label = 'Observations std')
+    plt.plot(std_errors, mean_errors, 'o', label="Sampled GP")
+    plt.vlines(x=empirical_std, ymin=lower, ymax=upper, label='Observations std')
 
-    circle1 = plt.Circle((0, 0), 0.5*empirical_std, color='k', fill = False)
-    circle2 = plt.Circle((0, 0), empirical_std, color='k', fill = False)
-    circle3 = plt.Circle((0, 0), 2*empirical_std, color='k', fill = False)
+    circle1 = plt.Circle((0, 0), 0.5*empirical_std, color='k', fill=False)
+    circle2 = plt.Circle((0, 0), empirical_std, color='k', fill=False)
+    circle3 = plt.Circle((0, 0), 2*empirical_std, color='k', fill=False)
 
-    plt.scatter([math.sqrt(trained_model_var_error)], [trained_model_mean_error], label = "trained model", color = 'k')
+    plt.scatter([math.sqrt(trained_model_var_error)], [trained_model_mean_error], label="trained model", color='k')
 
     ax = plt.gca()
 
@@ -145,8 +145,8 @@ def get_chi2_alpha_coverage(y_test, y_pred, y_var, alpha):
 
     standardized_residuals = (y_test - y_pred)/np.sqrt(y_var)
 
-    lower = scipy.stats.chi2.ppf((1 - alpha) / 2, df = 1)
-    upper = scipy.stats.chi2.ppf(1 - (1 - alpha) / 2, df = 1)
+    lower = scipy.stats.chi2.ppf((1 - alpha) / 2, df=1)
+    upper = scipy.stats.chi2.ppf(1 - (1 - alpha) / 2, df=1)
 
     is_alpha_credible = np.logical_and(lower <= standardized_residuals, standardized_residuals <= upper).astype(float)
 
@@ -240,8 +240,8 @@ def get_objective_improvement_gaussian_likelihood(y_test, previous_min, post_mea
     # supress the warning.
     zero_improvement_log_density = np.log(zero_improvement_density)
 
-    non_zero_improvement_log_density = scipy.stats.norm.logpdf(x = previous_min - y_test,
-                                                           loc = post_mean, scale = np.sqrt(post_var))
+    non_zero_improvement_log_density = scipy.stats.norm.logpdf(x=previous_min - y_test,
+                                                           loc=post_mean, scale=np.sqrt(post_var))
 
     assert y_test.shape == zero_improvement_log_density.shape, \
         "Shape issue : {} and {}".format(zero_improvement_log_density.shape, y_test.shape)
@@ -270,7 +270,7 @@ def update_metrics_with_posterior(y_test, post_mean, post_var,
             standard_y_test <= scipy.stats.norm.ppf(1 - (1 - alpha) / 2)
         ).astype(float)
 
-    log_lik = scipy.stats.norm.logpdf(x = y_test, loc = post_mean, scale = np.sqrt(post_var))
+    log_lik = scipy.stats.norm.logpdf(x=y_test, loc=post_mean, scale=np.sqrt(post_var))
 
     row_metrics = pd.DataFrame({'row': row,
                                 'output': [output] * y_test.shape[0],
@@ -283,7 +283,7 @@ def update_metrics_with_posterior(y_test, post_mean, post_var,
                                 'cost' : [cost] * y_test.shape[0],
                                 'status': [status] * y_test.shape[0],
                                 'post_var': post_var,
-                                'y_test': y_test}, columns = metrics.columns)
+                                'y_test': y_test}, columns=metrics.columns)
 
     for i in range(len(ls)):
         row_metrics['ls_dim_{}'.format(i+1)] = [ls[i]]*y_test.shape[0]
@@ -381,34 +381,34 @@ def get_fixed_parameters_loo(metrics, data, predictors, outputs, alpha, model):
 
 def get_metrics(
         file, predictors, outputs, reestimate_param, alpha, in_sample, model):
-    data = pd.read_csv(file, sep = ',', index_col = 0)
+    data = pd.read_csv(file, sep=',', index_col=0)
     data['row'] = range(data.shape[0])
 
     metrics = pd.DataFrame(
-     columns = ['row', 'output','mse', 'is_alpha_credible', 'log_lik']
+     columns=['row', 'output','mse', 'is_alpha_credible', 'log_lik']
      + ['c_mean', 'c_var', 'post_mean', 'cost', 'status', 'post_var', 'y_test']
      + ['ls_dim_{}'.format(x+1) for x in range(len(predictors))])
 
     if reestimate_param:
         metrics = get_proper_estimates(metrics, data, predictors, outputs,
-                                       alpha, in_sample, model = model)
+                                       alpha, in_sample, model=model)
     else:
         metrics = get_fixed_parameters_loo(metrics, data, predictors, outputs,
-                                           alpha, model = model)
+                                           alpha, model=model)
 
     return metrics
 
 def launch_data_set_optimization_evaluations(
         data_path, destination_path, model):
 
-    data = pd.read_csv(data_path, sep=',', index_col = 0)
+    data = pd.read_csv(data_path, sep=',', index_col=0)
 
     predictors = [a for a in data.columns if 'x' in a]
     outputs = [a for a in data.columns if 'x' not in a]
 
     metrics_in_sample = get_metrics(data_path, predictors, outputs,
                                     reestimate_param=True, alpha=0.95,
-                                    in_sample=True, model = model)
+                                    in_sample=True, model=model)
 
     column_to_write = ['row', 'output', 'c_mean', 'c_var', 'status', 'cost'] \
                       + [a for a in metrics_in_sample if 'ls_dim' in a]
@@ -433,14 +433,14 @@ def launch_full_optimization_evaluations(data_dir, destination_dir, models):
 
 def launch_data_set_perf_evaluations(data_path, destination_path, model):
 
-    data = pd.read_csv(data_path, sep=',', index_col = 0)
+    data = pd.read_csv(data_path, sep=',', index_col=0)
 
     predictors = [a for a in data.columns if 'x' in a]
     outputs = [a for a in data.columns if 'x' not in a]
 
     metrics_loo = get_metrics(data_path, predictors, outputs,
                               reestimate_param=True, alpha=0.95,
-                              in_sample=False, model = model)
+                              in_sample=False, model=model)
 
     target_dir = os.path.dirname(destination_path)
     if not os.path.exists(target_dir):

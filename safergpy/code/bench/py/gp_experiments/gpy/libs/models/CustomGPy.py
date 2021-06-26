@@ -22,17 +22,17 @@ class CustomGPy():
                  'input_transform_type', 'output_transform_type']
 
     def __init__(self,
-                 lengthscale_constraint_class = transfo.Exponent,
-                 variance_constraint_class = transfo.Exponent,
-                 init = "classic", stopping_criterion = "strict",
-                 optim_scheme = [[10, 3.0], [2, 1.0], [2, 1.0]],
-                 untrained_variance = 1, untrained_lengthscale = 1,
+                 lengthscale_constraint_class=transfo.Exponent,
+                 variance_constraint_class=transfo.Exponent,
+                 init="classic", stopping_criterion="strict",
+                 optim_scheme=[[10, 3.0], [2, 1.0], [2, 1.0]],
+                 untrained_variance=1, untrained_lengthscale=1,
                  fix_noise=True, fix_var=False,
-                 profiler = gpy_estimation_lib.analytical_mean_and_variance_optimization,
-                 postvar_options = {"value": 0, "type": 'Error'},
-                 input_transform_type = 'Hypercube',
-                 output_transform_type = 'Standardize',
-                 do_profiling = True
+                 profiler=gpy_estimation_lib.analytical_mean_and_variance_optimization,
+                 postvar_options={"value": 0, "type": 'Error'},
+                 input_transform_type='Hypercube',
+                 output_transform_type='Standardize',
+                 do_profiling=True
                  ):
 
         self.input_transform_type = input_transform_type
@@ -55,10 +55,10 @@ class CustomGPy():
         assert not (fix_var and profiler is not None)
 
         self.set_optim_opts(
-            stopping_criterion = stopping_criterion,
-            optim_scheme = optim_scheme,
-            do_profiling = do_profiling,
-            profiler = profiler
+            stopping_criterion=stopping_criterion,
+            optim_scheme=optim_scheme,
+            do_profiling=do_profiling,
+            profiler=profiler
         )
 
         assert fix_noise, 'Not implemented yet'
@@ -135,8 +135,8 @@ class CustomGPy():
             self.kernel_function.variance.fix()
 
     def transform_input(self, x):
-        tiled_ordinates = np.tile(self._input_ordinates, reps = [x.shape[0], 1])
-        tiled_factors = np.tile(self._input_factors, reps = [x.shape[0], 1])
+        tiled_ordinates = np.tile(self._input_ordinates, reps=[x.shape[0], 1])
+        tiled_factors = np.tile(self._input_factors, reps=[x.shape[0], 1])
 
         assert x.shape == tiled_ordinates.shape and x.shape == tiled_factors.shape
 

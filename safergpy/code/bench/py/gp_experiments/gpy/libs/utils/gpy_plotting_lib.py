@@ -50,7 +50,7 @@ def plot_paramz_likelihood_path(model, label):
 
     # plt.figure()
     # plt.tight_layout()
-    plt.plot(grid_1d, y_1d, label = label)
+    plt.plot(grid_1d, y_1d, label=label)
     # plt.title(title)
     #
     # plt.axvline(x = 0, color = 'b', label = 'Moment-based-init')
@@ -153,7 +153,7 @@ def plot_neg_likelihood_var(model):
                                                                                 model.Mat52.lengthscale[1]))
     plt.xlabel("var")
     plt.ylabel("Negative log likelihood")
-    plt.vlines(var_init, ymin = min(y_1d), ymax = max(y_1d), label = 'estimated_var : {0:.3f}, nll : {1:.3f}'.format(var_init, cost_var_init))
+    plt.vlines(var_init, ymin=min(y_1d), ymax=max(y_1d), label='estimated_var : {0:.3f}, nll : {1:.3f}'.format(var_init, cost_var_init))
     plt.legend()
     plt.show()
 
@@ -217,7 +217,7 @@ def plot_multistart_optimization(model, n, mean_value,
     plt.hlines(y=math.log(10) * bounds[1] + math.log10(optimum[1]), xmin=math.log(10) * bounds[0] + math.log10(optimum[0]), xmax=math.log(10) * bounds[1] + math.log10(optimum[0]),
                linestyles="--", colors="g")
 
-    plt.plot([math.log10(optimum[0]) - 2, math.log10(optimum[0]) + 2],  [math.log10(optimum[1])- 2, math.log10(optimum[1]) + 2], label = 'constant anisotropy')
+    plt.plot([math.log10(optimum[0]) - 2, math.log10(optimum[0]) + 2],  [math.log10(optimum[1])- 2, math.log10(optimum[1]) + 2], label='constant anisotropy')
 
     plt.legend()
 
@@ -240,7 +240,7 @@ def plot_multistart_optimization(model, n, mean_value,
 
     plt.plot([np.log10(data['rho1']).min(), np.log10(data['rho1']).max()],
              [math.log10(variance_value) - (math.log10(optimum[0]) - np.log10(data['rho1']).min())*5 ,
-              math.log10(variance_value) + (np.log10(data['rho1']).max() - math.log10(optimum[0]))*5], label = 'constant microergodicity')
+              math.log10(variance_value) + (np.log10(data['rho1']).max() - math.log10(optimum[0]))*5], label='constant microergodicity')
 
     plt.xlabel("ln(rho_1)")
     plt.ylabel("ln(sigma2)")
@@ -257,14 +257,14 @@ def plot_multistart_optimization(model, n, mean_value,
 def get_noise_level(x, y):
     sk_model = sklearn.linear_model.LinearRegression(fit_intercept=True)
 
-    X_data = np.concatenate((np.array(x).reshape(-1, 1), (np.array(x)**2).reshape(-1, 1)), axis = 1)
+    X_data = np.concatenate((np.array(x).reshape(-1, 1), (np.array(x)**2).reshape(-1, 1)), axis=1)
     Y_data = np.array(y).reshape(-1, 1)
 
     sk_model.fit(X_data, Y_data)
 
-    print("noise level (std) : {}".format((Y_data - sk_model.predict(X_data)).std(ddof = 3)))
+    print("noise level (std) : {}".format((Y_data - sk_model.predict(X_data)).std(ddof=3)))
 
-def plot_taylor(model, idx_param, diagonalize = False, width = 1e-2, n = 1000):
+def plot_taylor(model, idx_param, diagonalize=False, width=1e-2, n=1000):
     obj_value, grad = model._objective_grads(model.optimizer_array)
 
     print("obj value : {}".format(obj_value))
@@ -305,26 +305,26 @@ def plot_taylor(model, idx_param, diagonalize = False, width = 1e-2, n = 1000):
     #                                                                                ','.join(["{:.6}".format(x) for x in direction])))
     # else:
     #     plt.title("Axis".format(idx_param))
-    plt.plot(dx_vector, y, label = "NLL")
+    plt.plot(dx_vector, y, label="NLL")
     #plt.plot(dx_vector, y_order_1, label = "order 1 taylor expension at 0.0")
 
     ##############################################
 
     sk_model = sklearn.linear_model.LinearRegression(fit_intercept=True)
 
-    X_data = np.concatenate((np.array(dx_vector).reshape(-1, 1), (np.array(dx_vector)**2).reshape(-1, 1)), axis = 1)
+    X_data = np.concatenate((np.array(dx_vector).reshape(-1, 1), (np.array(dx_vector)**2).reshape(-1, 1)), axis=1)
     Y_data = np.array(y).reshape(-1, 1)
 
     sk_model.fit(X_data, Y_data)
 
-    plt.plot(dx_vector, sk_model.predict(X_data), label = 'Best linear fit')
+    plt.plot(dx_vector, sk_model.predict(X_data), label='Best linear fit')
 
     ##############################################
 
     #fig, ax = plt.subplots()
     ax.ticklabel_format(useOffset=False)
 
-    plt.axvline(x = 0, color = 'red', label = '')
+    plt.axvline(x=0, color='red', label='')
 
     #plt.plot(dx_vector, y_order_2, label = "order 2")
     plt.legend()
@@ -332,7 +332,7 @@ def plot_taylor(model, idx_param, diagonalize = False, width = 1e-2, n = 1000):
 
     get_noise_level(dx_vector, y)
 
-def decompose_all(model, idx_param, diagonalize = False, width = 1e-2, n = 1000):
+def decompose_all(model, idx_param, diagonalize=False, width=1e-2, n=1000):
     obj_value, grad = model._objective_grads(model.optimizer_array)
 
     print("obj value : {}".format(obj_value))
@@ -391,7 +391,7 @@ def decompose_all(model, idx_param, diagonalize = False, width = 1e-2, n = 1000)
 
     plt.subplot(1, 2, 1)
     plt.title("Data term")
-    plt.plot(dx_vector, y_data, label = "Data term")
+    plt.plot(dx_vector, y_data, label="Data term")
 
     plt.subplot(1, 2, 2)
     plt.title("Regularization term")
