@@ -186,27 +186,7 @@ if len(method_list) > 1:
 
     words = list(range(1, 21))
     for i in range(len(words)):
-        if i%2 == 0:
+        if i % 2 == 0:
             plt.text(xx[i]+0.1, (yy[i]/norm)-0.0005, str(words[i]))
 
     plt.show()
-'''
-##-- for comparing n_2*[1, _] --
-
-plt.figure(4)    
-norm = np.max(area_values)
-norm = np.array([1])
-plt.plot(time_values, area_values/norm, linestyle = '-', marker='o')
-print('max_area : ', np.max(area_values))
-print(time_values)
-plt.ylabel('area under ECDF', fontsize = 15)
-plt.xlabel('runtime', fontsize = 15)
-plt.title('improvement over batches', fontsize = 15)
-
-words = list(range(1,21))
-for i in range(len(words)):
-    if i%2 ==0 :
-        plt.text(time_values[i]+0.1, (area_values[i]/norm)-0.1, str(words[i]))
-
-plt.show()
-'''
