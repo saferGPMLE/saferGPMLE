@@ -1,7 +1,7 @@
 import sys
 import os
 
-##TODO(): make it an argument ?
+# TODO(): make it an argument ?
 os.environ["OMP_NUM_THREADS"] = str(1)
 
 import numpy as np
@@ -12,7 +12,7 @@ import importlib.util
 from gp_experiments.gpy.libs.transformations import Logexp
 import gp_experiments.gpy.libs.utils.gpy_estimation_lib as gpy_estimation_lib
 
-##--- To run ---
+# --- To run ---
 '''
 Syntax :  python3 code/bench/py/restart_metrics.py simple gpy <method_num> <input_dir> <output_dir>
 Exampe :  python3 code/bench/py/restart_metrics.py simple gpy 5021 datasets results/bench1/restart

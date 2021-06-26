@@ -4,14 +4,14 @@ import pandas as pd
 import numpy as np
 import sys
 
-#--- Methods ---
+# --- Methods ---
 
 bench_num = sys.argv[1]
 methods = [sys.argv[2], sys.argv[3]]
 
 print(methods)
 
-#--- File name parsing utilities ---
+# --- File name parsing utilities ---
 
 
 def get_problem_and_dimension(file):
@@ -22,13 +22,13 @@ def get_problem_and_dimension(file):
 
     return problem, d
 
-#--- Let's do the job ---
+# --- Let's do the job ---
 
 data_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench'+str(bench_num), 'data_old')
 
 df = pd.DataFrame({"output": [], "cost": [], "problem": [], "optim_type": [], "d": []})
 
-##-- Retrieve data from methods ---
+# -- Retrieve data from methods ---
 
 for method_dir in methods:
     optim_type = method_dir
@@ -43,7 +43,7 @@ for method_dir in methods:
 
         df = df.append(data, ignore_index=True)
 
-##-- Post processing ---
+# -- Post processing ---
 
 df_pivot = pd.pivot_table(df, values=['cost'], columns=["optim_type"], index=['problem', 'output', 'd'])
 
@@ -65,7 +65,7 @@ if df_pivot['cost'].isnull().any().any():
 methods_to_be_compared = methods
 df_pivot['diff'] = df_pivot['cost'][methods_to_be_compared[0]] - df_pivot['cost'][methods_to_be_compared[1]]
 
-#print(df_pivot[df_pivot['diff']!=0])
+# print(df_pivot[df_pivot['diff']!=0])
 
 plt.figure(1)
 plt.plot(df_pivot['cost'][methods_to_be_compared[0]], df_pivot['cost'][methods_to_be_compared[1]], 'o')

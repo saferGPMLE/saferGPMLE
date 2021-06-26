@@ -5,13 +5,13 @@ import pandas as pd
 import numpy as np
 import sys
 
-#--- README ---
+# --- README ---
 
 '''
 This script generates boxplots for range(lengthscale) values for LOO
 '''
 
-#--- To Run ---
+# --- To Run ---
 
 '''
 Syntax :
@@ -24,7 +24,7 @@ python3 multiple_loo_boxplot.py 2 gpy_mle0133 gpy_mle3021 borehole 20d f_1
 '''
 
 
-#--- Methods ---
+# --- Methods ---
 
 bench_num = sys.argv[1]
 method = [sys.argv[2], sys.argv[3]]
@@ -32,7 +32,7 @@ dataset =  [str(sys.argv[4]), sys.argv[5]]
 output = str(sys.argv[6])
 print('generating box plots for : \n', method)
 
-#--- File name parsing utilities ---
+# --- File name parsing utilities ---
 
 
 def get_problem_and_dimension(file):
@@ -43,7 +43,7 @@ def get_problem_and_dimension(file):
 
     return problem, d
 
-#--- Let's do the job ---
+# --- Let's do the job ---
 data_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench2', 'data_no_std', str(method[0]))
 
 data_dir_full = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench1', 'proposed', str(method[0]))
@@ -52,7 +52,7 @@ data_dir_1 = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..
 
 data_dir_full_1 = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench1', 'proposed', str(method[1]))
 
-##-- Retrieve data from methods ---
+# -- Retrieve data from methods ---
 
 
 def df_generator(data_dir, tag):
@@ -81,14 +81,14 @@ def df_generator(data_dir, tag):
             df['method'] = np.array(df.shape[0]*[tag])
     return df
 
-##--- generating dataframes ---
+# --- generating dataframes ---
 
 df = df_generator(data_dir, 'default')
 df_full = df_generator(data_dir_full, 'default')
 df_1 = df_generator(data_dir_1, 'healed')
 df_full_1 = df_generator(data_dir_full_1, 'healed')
 
-##--- generating boxplot ---
+# --- generating boxplot ---
 
 # data to plot
 A= [df['ls_dim_5'],  df_1['ls_dim_5']]
@@ -143,7 +143,7 @@ color_scheme(bp, bp_1)
 
 # set axes limits and labels
 plt.xlim(0, 12)
-#plt.ylim(0,9)
+# plt.ylim(0,9)
 ax.set_xticklabels(['1', '2', '3', '4'])
 ax.set_xticks([1.5, 4.5, 7.5, 10.5])
 

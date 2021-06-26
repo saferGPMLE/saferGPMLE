@@ -5,7 +5,7 @@ import numpy as np
 import argparse
 
 
-#--- Argument parser ---
+# --- Argument parser ---
 
 parser = argparse.ArgumentParser()
 
@@ -30,7 +30,7 @@ if not (solid_lines or dashed_lines or daashed_lines):
     quit()
 
 
-#--- Methods ---
+# --- Methods ---
 
 methods = []
 
@@ -47,7 +47,7 @@ if daashed_lines:
     methods = daashed_lines + methods
 
 
-#--- Plot parameters ---
+# --- Plot parameters ---
 
 left = -5
 right = 80
@@ -57,7 +57,7 @@ top = 1.1
 
 n = 1100
 
-#--- File name parsing utilities ---
+# --- File name parsing utilities ---
 
 
 def get_problem_and_dimension(file):
@@ -68,12 +68,12 @@ def get_problem_and_dimension(file):
 
     return problem, d
 
-#--- Let's do the job ---
+# --- Let's do the job ---
 data_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench1', 'data', 'param_init')
 
 df = pd.DataFrame({"output": [], "cost": [], "problem": [], "optim_type": [], "d": []})
 
-##-- Retrieve data from methods ---
+# -- Retrieve data from methods ---
 
 for method_dir in methods:
     optim_type = method_dir
@@ -87,7 +87,7 @@ for method_dir in methods:
         data['d'] = d
 
         df = df.append(data, ignore_index=True)
-##-- Retrieve best known ---
+# -- Retrieve best known ---
 
 data = pd.read_csv(os.path.join(data_dir, 'best_known.csv'), sep=',')[['output', 'minimum cost', 'file']]
 data = data.rename(columns={'minimum cost': 'cost'})
@@ -101,7 +101,7 @@ data = data[['output', 'cost', 'problem', 'optim_type', 'd']]
 df = df.append(data, ignore_index=True)
 summary = "Summary :\n{} datasets\n{} outputs".format(df.groupby(['problem', 'd']).ngroups,
                                                   df.groupby(['problem', 'd', 'output']).ngroups)
-##-- Post processing ---
+# -- Post processing ---
 
 df_pivot = pd.pivot_table(df, values=['cost'], columns=["optim_type"], index=['problem', 'output', 'd'])
 
@@ -132,12 +132,12 @@ methods_to_be_compared = methods
 df_bins = pd.DataFrame(index=bins, columns=methods_to_be_compared)
 
 for type in methods_to_be_compared:
-    #print(type)
+    # print(type)
     for log_lik_diff in bins:
         prop = ((df_pivot['cost'][type] - cost_best) < log_lik_diff).mean()
         #print("bin : {}, proportion : {}".format(thresold, prop))
         df_bins.loc[log_lik_diff][type] = prop
-    #print("")
+    # print("")
 ########
 
 labelss = ['moment', 'profiled', 'grid']

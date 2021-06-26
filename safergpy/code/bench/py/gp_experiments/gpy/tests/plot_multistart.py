@@ -36,12 +36,12 @@ model = GPy.models.GPRegression(x_train, z_train, kernel=kernel_function,
                                         noise_var=0, mean_function=mean_function)
 
 model.Gaussian_noise.variance.fix()
-#model.kern.lengthscale.constrain(Exponent())
-#model.kern.variance.constrain(Exponent())
+# model.kern.lengthscale.constrain(Exponent())
+# model.kern.variance.constrain(Exponent())
 
 data_optim = gpy_plotting_lib.plot_multistart_optimization(model, n=n,
                                                 mean_value=mean_value, variance_value=variance_value,
-                                                #fix_mean = False, fix_variance = False,
+                                                # fix_mean = False, fix_variance = False,
                                                 #gtol = gtol, bfgs_factor = bfgs_factor,
                                                 optimum=optimum.copy(), init_type='profiled')
 

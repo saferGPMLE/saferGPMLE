@@ -264,8 +264,8 @@ plt.plot(x_new, model_trained.predict(x_new)[0] + 3 * np.sqrt(model_trained.pred
 
 # model_trained.train()
 
-#print(model_trained)
-#print(model_trained.model.optimizer_array)
+# print(model_trained)
+# print(model_trained.model.optimizer_array)
 from gp_experiments.gpy.libs.utils.gpy_estimation_lib import analytical_zero_mean_variance_optimization as prof
 
 criteria = 'mse_loo'
@@ -314,13 +314,13 @@ get_scaled_mse(mu_pred=model_trained.get_loo_mean().reshape(-1),
                    var_pred=model_trained.get_loo_var().reshape(-1),
                    y=y.reshape(-1))
 
-#print(model_trained)
+# print(model_trained)
 print(y.mean())
 print(y.var())
 print(x.std(0))
 
-#model.objective_function_gradients()
-#model._grads(model.optimizer_array)
+# model.objective_function_gradients()
+# model._grads(model.optimizer_array)
 #model.checkgrad(verbose = True, tolerance = 10**(-8))
 
 #eps = 0.0001

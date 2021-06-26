@@ -7,7 +7,7 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 
-#####Problably possible to be cleaner with a proper package.
+# Problably possible to be cleaner with a proper package.
 if "__file__" in globals():
     sys.path.append(os.path.join(
         os.path.dirname(os.path.realpath(__file__)), '..'))
@@ -246,7 +246,7 @@ def get_objective_improvement_gaussian_likelihood(y_test, previous_min, post_mea
 
     zero_improvement_density = 1 - scipy.stats.norm.cdf((previous_min - post_mean)/np.sqrt(post_var))
 
-    ##### This may throw a "RuntimeWarning:divide by zero encountered in log" warning.
+    # This may throw a "RuntimeWarning:divide by zero encountered in log" warning.
     # This value maybe not be selected in the np.where. Not that postponing this in np.where wouldn't
     # supress the warning.
     zero_improvement_log_density = np.log(zero_improvement_density)

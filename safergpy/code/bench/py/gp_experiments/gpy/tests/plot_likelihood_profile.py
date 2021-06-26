@@ -49,7 +49,7 @@ gpy_plotting_lib.plot_paramz_likelihood_path(model, 'Log')
 plt.axvline(x=0, color='b', label='Profiled init')
 plt.axvline(x=1, color='k', label='Optimum')
 
-#plt.title("ProfiledLikPath")
+# plt.title("ProfiledLikPath")
 
 plt.ylabel("NLL")
 
@@ -57,5 +57,5 @@ plt.ylabel("NLL")
 
 plt.show()
 
-#plt.savefig("/Users/sebastien/cache_matplotlib/plot.pgf")
-#plt.savefig("/Users/sebastien/git-repos/gpstat-param/aistats2021/figures/Figure_5.pgf")
+# plt.savefig("/Users/sebastien/cache_matplotlib/plot.pgf")
+# plt.savefig("/Users/sebastien/git-repos/gpstat-param/aistats2021/figures/Figure_5.pgf")

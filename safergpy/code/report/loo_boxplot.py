@@ -5,13 +5,13 @@ import pandas as pd
 import numpy as np
 import sys
 
-#--- README ---
+# --- README ---
 
 '''
 This script generates boxplots for range(lengthscale) values for LOO
 '''
 
-#--- To Run ---
+# --- To Run ---
 
 '''
 Syntax :
@@ -24,7 +24,7 @@ python3 loo_boxplot.py 2 gpy_mle0133 g10 3d f_1
 '''
 
 
-#--- Methods ---
+# --- Methods ---
 
 bench_num = sys.argv[1]
 method = sys.argv[2]
@@ -32,7 +32,7 @@ dataset =  [str(sys.argv[3]), sys.argv[4]]
 output = str(sys.argv[5])
 print('generating box plots for : \n', method)
 
-#--- File name parsing utilities ---
+# --- File name parsing utilities ---
 
 
 def get_problem_and_dimension(file):
@@ -43,14 +43,14 @@ def get_problem_and_dimension(file):
 
     return problem, d
 
-#--- Let's do the job ---
+# --- Let's do the job ---
 
 data_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench2', 'data', str(method))
 
 data_dir_full = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench1', 'data', str(method))
 
 
-##-- Retrieve data from methods ---
+# -- Retrieve data from methods ---
 
 ls_dict = {}
 
@@ -101,7 +101,7 @@ plt.ylabel('range (in log scale)', fontsize=14)
 plt.title('Boxplot of LOO estimated range of {}, {} with {}'.format(dataset[0] + '_' + dataset[1], output, 'improved'), fontsize=14)
 labels = [x.split('_')[-1] for x in ls]
 ax.set_xticklabels(labels)
-#plt.grid(True)
+# plt.grid(True)
 # Major ticks every 20, minor ticks every 5
 ax.set_ylim(-5, 30)
 major_ticks = np.arange(0, 30, 5)

@@ -32,12 +32,12 @@ model.kern.variance.constrain(Exponent())
 
 ########################################################################################
 
-##################### For general datasets
-#model.kern.lengthscale = x_train.std(0).copy() #### Important because GPy standard values can fall in flat regions
-#a=model.optimize()
-#print(a.status)
+# For general datasets
+# model.kern.lengthscale = x_train.std(0).copy() #### Important because GPy standard values can fall in flat regions
+# a=model.optimize()
+# print(a.status)
 
-##################### For general datasets
+# For general datasets
 model.Mat52.variance = 2437888.1269414485
 model.constmap.C = 149.89436419735705
 model.Mat52.lengthscale = [27.39835089, 83.54421333]

@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import sys
 
-#--- To Run ---
+# --- To Run ---
 
 '''
 Syntax :
@@ -17,14 +17,14 @@ python3 scatterplot.py 2 gpy_mle0133 gpy_mle3021 g10mod 10d
 '''
 
 
-#--- Methods ---
+# --- Methods ---
 
 bench_num = sys.argv[1]
 methods = [sys.argv[2], sys.argv[3]]
 dataset =  [str(sys.argv[4]), sys.argv[5]]
 print('Comparing : \n', methods)
 
-#--- File name parsing utilities ---
+# --- File name parsing utilities ---
 
 
 def get_problem_and_dimension(file):
@@ -35,13 +35,13 @@ def get_problem_and_dimension(file):
 
     return problem, d
 
-#--- Let's do the job ---
+# --- Let's do the job ---
 
 data_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench'+str(bench_num), 'data')
 
 df = {}
 
-##-- Retrieve data from methods ---
+# -- Retrieve data from methods ---
 
 for method_dir in methods:
     

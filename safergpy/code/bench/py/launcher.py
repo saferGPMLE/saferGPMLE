@@ -1,7 +1,7 @@
 import sys
 import os
 
-##TODO(): make it an argument ?
+# TODO(): make it an argument ?
 os.environ["OMP_NUM_THREADS"] = str(1)
 
 import numpy as np

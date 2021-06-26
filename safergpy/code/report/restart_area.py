@@ -5,14 +5,14 @@ import numpy as np
 import argparse
 import sys
 
-#--- To run ---
+# --- To run ---
 '''
 Syntax  : python restart_area.py <method_name>
 Example : python restart_area.py gpy_mle4021
 '''
 
 
-#--- Argument parser ---
+# --- Argument parser ---
 i = 1
 method_list = []
 while True:
@@ -24,7 +24,7 @@ while True:
 
 #print('\nplotting restart area of : ', method_list)
 
-#--- Plot parameters ---
+# --- Plot parameters ---
 
 left = -5
 right = 400
@@ -42,7 +42,7 @@ if len(method_list) > 1:
 for method in method_list:
     
     print('plotting for method : ', method)
-    #--- Reading the restart metrics ---
+    # --- Reading the restart metrics ---
 
     data_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench1', 'data_restarts_no_std', method)
 
@@ -57,7 +57,7 @@ for method in method_list:
 
         df = df.append(df_new, ignore_index=True)
 
-    ##--- Retrieve best known ---
+    # --- Retrieve best known ---
 
     data = pd.read_csv(os.path.join(data_dir, '../', 'best_known.csv'), sep=',')[['minimum cost', 'file']]
 
@@ -83,7 +83,7 @@ for method in method_list:
             print('\n{}{}, b {}, best {}, diff {}'.format(df['problem'][ind], df['d'][ind], df[batch_nll[0]][ind], df['best'][ind],  df[batch_nll[0]][ind] - df['best'][ind]))
             print('================')
     ''' 
-    ##--- Creating bins for the ECDF ---
+    # --- Creating bins for the ECDF ---
 
     bins = np.linspace(left, right, n)
 
@@ -94,7 +94,7 @@ for method in method_list:
             prop = ((df[b] - df['best']) < log_lik_diff).mean()
             df_bins.loc[log_lik_diff][b] = prop
 
-    ##--- Computing the area ---
+    # --- Computing the area ---
       
     area_dict = {}  
     for b in batch_nll:  
@@ -102,7 +102,7 @@ for method in method_list:
         area_dict[int(b.split('_')[-1])] = area
         #print('\nfor batch {} area is {}'.format(b, area))
       
-    ##--- Computing the total run-time ---
+    # --- Computing the total run-time ---
 
     time_dict = {}
     for b in batch_time:  
@@ -110,14 +110,14 @@ for method in method_list:
         time_dict[int(b.split('_')[-1])] = time
         #print('\nfor batch {} area is {}'.format(b, area))
      
-    ##--- Plotting the area ---
+    # --- Plotting the area ---
 
     keys = list(area_dict.keys())
     values = list(area_dict.values())
 
     area_all[method] = [keys, values]
     area_values = values
-    #print(area_values)
+    # print(area_values)
     plt.figure(1)
     plt.plot(keys, values)
 
@@ -125,7 +125,7 @@ for method in method_list:
     plt.xlabel('batches of restart/multistart', fontsize=15)
     plt.title('improvement over restarts', fontsize=15)
 
-    ##--- Plotting the first derivative ---
+    # --- Plotting the first derivative ---
 
     dydx = np.diff(list(values))/np.diff(list(keys))
 
@@ -138,7 +138,7 @@ for method in method_list:
     plt.xlabel('batches of restart/multistart', fontsize=15)
     plt.title('rate of improvement over restarts', fontsize=15)
 
-    ##--- Plotting the run-time ---
+    # --- Plotting the run-time ---
 
     keys = list(time_dict.keys())
     values = list(time_dict.values())
@@ -153,7 +153,7 @@ for method in method_list:
     plt.xlabel('batches of restart/multistart', fontsize=15)
     plt.title('cost over restarts', fontsize=15)
 
-    #plt.show()
+    # plt.show()
 
 '''
 if len(method_list) > 1:
@@ -175,7 +175,7 @@ if len(method_list) > 1:
     plt.show()
 
 '''
-##-- for comparing [n_1, 3.0] with n_1 \in 1(1)20--
+# -- for comparing [n_1, 3.0] with n_1 \in 1(1)20--
 
 if len(method_list) > 1:
     plt.figure()    

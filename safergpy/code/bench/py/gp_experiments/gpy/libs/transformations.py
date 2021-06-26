@@ -1,4 +1,4 @@
-## A thin wrapper around paramz.transformations
+# A thin wrapper around paramz.transformations
 
 import numpy as np
 import logging

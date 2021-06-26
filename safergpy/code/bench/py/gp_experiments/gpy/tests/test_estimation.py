@@ -96,7 +96,7 @@ def plot_model(x, model, x_test, x_train, z_train):
 
     basis_values = np.tile(alpha.reshape(1, -1), reps=[x_test.shape[0], 1]) * model.model.kern.K(x_test, x_train)
 
-    #for i in range(model.model.Y.shape[0]):
+    # for i in range(model.model.Y.shape[0]):
     #    plt.plot(x_test, basis_values[:, i], label = str(i))
 
     plt.plot(x_test, basis_values.sum(1), label='sum basis')

@@ -15,10 +15,10 @@ def plot_paramz_likelihood_path(model, label):
     #param_one = np.array([27.04301504, 83.37540132])
     #param_two = 20 * np.array([8.76182561, 21.70946319])
 
-    #nominal = np.array([1.24231606e+00, 3.03047524e+09, 3.21707863e+08, 5.34079168e+03,
+    # nominal = np.array([1.24231606e+00, 3.03047524e+09, 3.21707863e+08, 5.34079168e+03,
     #        1.15791377e+05, 5.70888239e+03, 1.24363601e+04, 1.43912163e+05])
 
-    #nominal = np.array([7.64947821e-01, 2.13690407e+09, 4.31123155e+15, 3.20290134e+03,
+    # nominal = np.array([7.64947821e-01, 2.13690407e+09, 4.31123155e+15, 3.20290134e+03,
     #   4.80524757e+04, 3.14395278e+03, 8.42492892e+03, 7.63161404e+04])
 
     nominal = np.array([27.04301504, 83.37540132])
@@ -43,9 +43,9 @@ def plot_paramz_likelihood_path(model, label):
         model.kern.lengthscale.optimizer_array = scipy_param.copy()
         model = gpy_estimation_lib.analytical_mean_and_variance_optimization(model)
 
-        #print(model.kern.lengthscale.values)
-        #print(model.kern.optimizer_array)
-        #print("")
+        # print(model.kern.lengthscale.values)
+        # print(model.kern.optimizer_array)
+        # print("")
 
         y_1d.append(model.objective_function())
 
@@ -277,9 +277,9 @@ def plot_taylor(model, idx_param, diagonalize=False, width=1e-2, n=1000):
     hessian, model = gpy_finite_diff.get_hessian(model)
 
     if diagonalize:
-        #print(hessian)
+        # print(hessian)
         v, W = np.linalg.eig(hessian)
-        ## Slow variation direction : array([ 9.99997623e-01, -2.06640309e-03, -4.50014843e-04, -5.31242312e-04])
+        # Slow variation direction : array([ 9.99997623e-01, -2.06640309e-03, -4.50014843e-04, -5.31242312e-04])
         direction = W[:, idx_param]
         eig_value = v[idx_param]
     else:
@@ -346,9 +346,9 @@ def decompose_all(model, idx_param, diagonalize=False, width=1e-2, n=1000):
     hessian, model = gpy_finite_diff.get_hessian(model)
 
     if diagonalize:
-        #print(hessian)
+        # print(hessian)
         v, W = np.linalg.eig(hessian)
-        ## Slow variation direction : array([ 9.99997623e-01, -2.06640309e-03, -4.50014843e-04, -5.31242312e-04])
+        # Slow variation direction : array([ 9.99997623e-01, -2.06640309e-03, -4.50014843e-04, -5.31242312e-04])
         direction = W[:, idx_param]
         eig_value = v[idx_param]
     else:

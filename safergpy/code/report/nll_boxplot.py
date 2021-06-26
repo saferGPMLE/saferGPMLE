@@ -6,15 +6,15 @@ import numpy as np
 import sys
 
 
-#--- README ---
+# --- README ---
 
 '''
 This script generates boxplots for NLL differences of default & healed 
 as obtained with LOO
 '''
-#TODO: not clean! too much copy-pasting, to be fixed
+# TODO: not clean! too much copy-pasting, to be fixed
 
-#--- To Run ---
+# --- To Run ---
 
 '''
 Syntax :
@@ -27,7 +27,7 @@ python3 nll_boxplot.py 2 gpy_mle0133 gpy_mle3021 g10 3d
 '''
 
 
-#--- Methods ---
+# --- Methods ---
 
 bench_num = sys.argv[1]
 method = sys.argv[2]
@@ -35,7 +35,7 @@ method1 = sys.argv[3]
 dataset =  [str(sys.argv[4]), sys.argv[5]]
 print('generating box plots for : \n', [method, method1])
 
-#--- File name parsing utilities ---
+# --- File name parsing utilities ---
 
 
 def get_problem_and_dimension(file):
@@ -46,7 +46,7 @@ def get_problem_and_dimension(file):
 
     return problem, d
 
-#--- Let's do the job ---
+# --- Let's do the job ---
 
 data_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench2', 'data_no_std', str(method1))
 
@@ -57,7 +57,7 @@ data_dir_healed = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'
 data_dir_full_healed = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench1', 'proposed', str(method))
 
 
-##-- Retrieve data from methods ---
+# -- Retrieve data from methods ---
 
 cost_dict = {}
 cost_dict_healed = {}
@@ -123,7 +123,7 @@ ax = fig.add_subplot(111)
 to_plot = []
 to_plot_full = []
 for i in list(df_full['output']):
-    #print('\n\n{}'.format(i))
+    # print('\n\n{}'.format(i))
     temp = np.array(cost_dict[i]) - np.array(cost_dict_healed[i])
     temp = temp[~np.isnan(temp)]
     to_plot.append(temp)
@@ -144,20 +144,20 @@ else:
     bp = ax.boxplot(to_plot)
     bp1  = ax.boxplot(to_plot_full)
 
-    ## change color and linewidth of the medians
+    # change color and linewidth of the medians
     for median in bp['medians']:
         median.set(color='g', linewidth=2)
      
-    ## change outline color, fill color and linewidth of the boxes
+    # change outline color, fill color and linewidth of the boxes
     for box in bp1['boxes']:
         # change outline color
         box.set( color='r', linewidth=2)
 
-    ## change color and linewidth of the whiskers
+    # change color and linewidth of the whiskers
     for whisker in bp1['whiskers']:
         whisker.set(color='r', linewidth=2)
 
-    ## change color and linewidth of the caps
+    # change color and linewidth of the caps
     for cap in bp1['caps']:
         cap.set(color='r', linewidth=2)   
 
