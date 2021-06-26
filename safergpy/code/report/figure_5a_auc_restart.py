@@ -33,7 +33,7 @@ area_all = {}
 time_all = {}
 
 for method in method_list:
-    
+
     print('plotting for method : ', method)
     # --- Reading the restart metrics ---
 
@@ -79,13 +79,13 @@ for method in method_list:
             df_bins.loc[log_lik_diff][b] = prop
 
     # --- Computing the area ---
-      
+
     area_dict = {}
     for b in batch_nll:
         area = np.trapz(df_bins[b], df_bins.index)
         area_dict[int(b.split('_')[-1])] = area
         #print('\nfor batch {} area is {}'.format(b, area))
-      
+
     # --- Computing the total run-time ---
 
     time_dict = {}
@@ -93,7 +93,7 @@ for method in method_list:
         time = np.sum(df[b])
         time_dict[int(b.split('_')[-1])] = time
         #print('\nfor batch {} area is {}'.format(b, area))
-     
+
     # --- Plotting the area ---
 
     keys = list(area_dict.keys())
@@ -106,11 +106,11 @@ for method in method_list:
 
     keys = list(time_dict.keys())
     values = list(time_dict.values())
-    
+
     time_values = values
     time_all[method] = time_values
-    
-    
+
+
 # -- for comparing n_2*[1, _] --
 
 fig = plt.figure(1, figsize=(9, 6))
@@ -118,13 +118,13 @@ fig = plt.figure(1, figsize=(9, 6))
 ax = fig.add_subplot(111)
 
 method_name = {'gpy_mle1220': 'strict', 'gpy_mle2220': 'soft'}
- 
+
 norm = np.float64(388.1727536396725)
 print('max area is {}'.format(np.max(area_all['gpy_mle1220'] + area_all['gpy_mle2220'])))
 
 for method in method_list:
     plt.plot(time_all[method], area_all[method]/norm, linestyle='-', marker='o', label=method_name[method])
-    
+
     words = list(range(1, 21))
     for i in range(len(words)):
         if i%2 == 0:

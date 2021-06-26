@@ -105,7 +105,7 @@ for file in os.listdir(input_data):
     predictors = [a for a in data.columns if 'x' in a]
     outputs = [a for a in data.columns if 'x' not in a]
     data['row'] = range(data.shape[0])
-    
+
     df = pd.DataFrame()
     for output in outputs:
         print('\nWorking on output : ', output)

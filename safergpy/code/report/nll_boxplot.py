@@ -66,30 +66,30 @@ cost_dict_full_healed = {}
 
 for file in os.listdir(data_dir):
     problem, d = get_problem_and_dimension(file)
-    
+
     if [problem, d] == dataset:
 
         data = pd.read_csv(os.path.join(data_dir, file), sep=',', index_col=0)[['cost', 'output']]
         df = pd.DataFrame(data)
-        
+
         for output in list(df['output']):
             cost_dict[output] = list(df.loc[df['output'] == output]['cost'])
 
 for file in os.listdir(data_dir_healed):
     problem, d = get_problem_and_dimension(file)
-    
+
     if [problem, d] == dataset:
 
         data = pd.read_csv(os.path.join(data_dir_healed, file), sep=',', index_col=0)[['cost', 'output']]
         df = pd.DataFrame(data)
-        
+
         for output in list(df['output']):
             cost_dict_healed[output] = list(df.loc[df['output'] == output]['cost'])
 
 
 for file in os.listdir(data_dir_full):
     problem, d = get_problem_and_dimension(file)
-    
+
     if [problem, d] == dataset:
 
         data_full = pd.read_csv(os.path.join(data_dir_full, file), sep=',', index_col=0)[['cost', 'output']]
@@ -100,7 +100,7 @@ for file in os.listdir(data_dir_full):
 
 for file in os.listdir(data_dir_full_healed):
     problem, d = get_problem_and_dimension(file)
-    
+
     if [problem, d] == dataset:
 
         data_full = pd.read_csv(os.path.join(data_dir_full_healed, file), sep=',', index_col=0)[['cost', 'output']]
@@ -140,14 +140,14 @@ if plot_type == 'h':
     plt.show()
 
 else:
-        
+
     bp = ax.boxplot(to_plot)
     bp1 = ax.boxplot(to_plot_full)
 
     # change color and linewidth of the medians
     for median in bp['medians']:
         median.set(color='g', linewidth=2)
-     
+
     # change outline color, fill color and linewidth of the boxes
     for box in bp1['boxes']:
         # change outline color

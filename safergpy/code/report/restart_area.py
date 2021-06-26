@@ -40,7 +40,7 @@ if len(method_list) > 1:
     time_all = {}
 
 for method in method_list:
-    
+
     print('plotting for method : ', method)
     # --- Reading the restart metrics ---
 
@@ -87,13 +87,13 @@ for method in method_list:
             df_bins.loc[log_lik_diff][b] = prop
 
     # --- Computing the area ---
-      
+
     area_dict = {}
     for b in batch_nll:
         area = np.trapz(df_bins[b], df_bins.index)
         area_dict[int(b.split('_')[-1])] = area
         #print('\nfor batch {} area is {}'.format(b, area))
-      
+
     # --- Computing the total run-time ---
 
     time_dict = {}
@@ -101,7 +101,7 @@ for method in method_list:
         time = np.sum(df[b])
         time_dict[int(b.split('_')[-1])] = time
         #print('\nfor batch {} area is {}'.format(b, area))
-     
+
     # --- Plotting the area ---
 
     keys = list(area_dict.keys())
@@ -134,9 +134,9 @@ for method in method_list:
 
     keys = list(time_dict.keys())
     values = list(time_dict.values())
-    
+
     time_all[method] = [keys, values]
-    
+
     time_values = values
     plt.figure(3)
     plt.plot(keys, values)
@@ -183,7 +183,7 @@ if len(method_list) > 1:
     plt.ylabel('area under ECDF', fontsize=15)
     plt.xlabel('runtime', fontsize=15)
     plt.title('improvement over restarts', fontsize=15)
-    
+
     words = list(range(1, 21))
     for i in range(len(words)):
         if i%2 == 0:

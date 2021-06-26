@@ -44,7 +44,7 @@ df = {}
 # -- Retrieve data from methods ---
 
 for method_dir in methods:
-    
+
     df[method_dir] = pd.DataFrame({"post_mean": [], "y_test": [], "ls_dim_1": [], "ls_dim_2": [], "mse": []})
 
     optim_type = method_dir
@@ -59,14 +59,14 @@ for method_dir in methods:
 
             mse_array = np.array(df[method_dir]['mse'])
             mse_array = np.sqrt(mse_array[~np.isnan(mse_array)])
-            
+
             # log-scale transformations of the lengthscales
 
             df[method_dir]['ls_dim_1'] = np.log(df[method_dir]['ls_dim_1'])
             df[method_dir]['ls_dim_2'] = np.log(df[method_dir]['ls_dim_2'])
-            
+
             print('\nLOO MSE for {} is : {}'.format(method_dir, np.mean(mse_array)))
-            
+
 
 ## Scatter plot ##
 methods_to_be_compared = methods

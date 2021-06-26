@@ -15,7 +15,7 @@ time_dict = {}
 args = ['gpy_mle1121', 'gpy_mle1122']
 
 for arg in args:
-    
+
     data_dir = os.path.join(cwd, '../../results/bench1/multistarts/', arg)
 
     df = pd.DataFrame()
@@ -95,8 +95,8 @@ for arg in args:
 
     area_dict[arg] = [results_areas]
     time_dict[arg] = [results_times]
-    
-    
+
+
 fig = plt.figure(1, figsize=(9, 6))
 
 ax = fig.add_subplot(111)
@@ -118,7 +118,7 @@ for arg in args[::-1]:
         linestyle='-',
         marker='o', label=method_name[arg]
     )
-    
+
     if arg == 'gpy_mle1122':
 
         words = list(range(1, 21))
@@ -127,16 +127,16 @@ for arg in args[::-1]:
                 plt.text([np.array(time_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]+0.5,
                          ([np.array(area_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]/norm)-0.0005,
                          str(words[i]), fontsize=14)
-                
+
     else:
-        
+
         words = list(range(1, 21))
         for i in range(len(words)):
             if i%2 == 0:
                 plt.text([np.array(time_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]-30,
                          ([np.array(area_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]/norm)+0.00015,
                          str(words[i]), fontsize=14)
-    
+
 
 plt.ylabel('area under ECDF', fontsize=20)
 plt.xlabel('runtime', fontsize=20)

@@ -56,26 +56,26 @@ ls_dict = {}
 
 for file in os.listdir(data_dir):
     problem, d = get_problem_and_dimension(file)
-    
+
     if [problem, d] == dataset:
 
         data = pd.read_csv(os.path.join(data_dir, file), sep=',', index_col=0)
         df = pd.DataFrame(data)
-        
+
         ls = []
         for i in df.columns:
             if 'ls_dim' in i:
                 ls.append(i)
-        
+
         df = df.loc[df['output'] == output]
 
         for i in ls:
             df[i] = np.log(df[i])
-        
+
 
 for file in os.listdir(data_dir_full):
     problem, d = get_problem_and_dimension(file)
-    
+
     if [problem, d] == dataset:
 
         data_full = pd.read_csv(os.path.join(data_dir_full, file), sep=',', index_col=0)
@@ -85,7 +85,7 @@ for file in os.listdir(data_dir_full):
 
         for i in ls:
             df_full[i] = np.log(df_full[i])
-            
+
 
 ## Box plot ##
 

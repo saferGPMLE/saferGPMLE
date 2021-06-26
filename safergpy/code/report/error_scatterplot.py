@@ -52,7 +52,7 @@ if do_anyway:
     df_pivot = df_pivot.dropna()
 
 if df_pivot['cost'].isnull().any().any():
-    
+
     df_nan = df_pivot[df_pivot['cost'].isnull().any(1)]
 
     if not df_nan[df_nan.columns[1:]].isnull().all(axis=1).all():
