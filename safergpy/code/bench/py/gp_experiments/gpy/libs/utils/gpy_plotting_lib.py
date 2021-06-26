@@ -300,7 +300,7 @@ def plot_taylor(model, idx_param, diagonalize=False, width=1e-2, n=1000):
         y.append(obj)
         model.optimizer_array = array.copy()
         y_order_1.append(obj_value + (d * grad).sum())
-        y_order_2.append(obj_value + (d * grad).sum() + 0.5 * (d.reshape(1, -1) @ hessian @ d.reshape(-1, 1))[0 ,0])
+        y_order_2.append(obj_value + (d * grad).sum() + 0.5 * (d.reshape(1, -1) @ hessian @ d.reshape(-1, 1))[0 , 0])
 
     fig, ax = plt.subplots()
 
@@ -387,7 +387,7 @@ def decompose_all(model, idx_param, diagonalize=False, width=1e-2, n=1000):
 
         model.optimizer_array = array.copy()
 
-    plt.subplots(1,2)
+    plt.subplots(1, 2)
     if diagonalize:
         plt.suptitle("Eigen axis : {}, eigen value : {} \n eigen vector: ({})".format(idx_param,
                                                                                    "{:.4E}".format(eig_value),

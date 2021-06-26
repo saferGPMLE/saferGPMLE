@@ -20,7 +20,7 @@ def trainer(model, options, profiler=None, ipython_notebook=False):
 
 
 def brutal_train(model, n, gtol=10**(-20), bfgs_factor=10, ipython_notebook=False,
-                 log_bounds=[-3,5], profiler=None):
+                 log_bounds=[-3, 5], profiler=None):
 
     log_rho_data = np.random.random((n, model.input_dim)) * (log_bounds[1] - log_bounds[0]) + log_bounds[0]
 
@@ -180,8 +180,8 @@ def analytical_mean_and_variance_optimization(model):
 
         return model
 
-    set_gpy_model_var(model, analytical_variance[0,0])
-    model.constmap.C = analytical_mean[0,0]
+    set_gpy_model_var(model, analytical_variance[0, 0])
+    model.constmap.C = analytical_mean[0, 0]
 
     analytical_parameter_cost = model._objective_grads(model.optimizer_array)[0]
 
@@ -226,8 +226,8 @@ def get_beta_and_var_from_ls(model):
 
     if variance <= 0:
         before_var = variance
-        variance = np.ndarray([1,1])
-        variance[0,0] = 10**(-10)
+        variance = np.ndarray([1, 1])
+        variance[0, 0] = 10**(-10)
         print("Negative variance of {} brought back to {}.".format(before_var, variance))
     return beta, variance
 
@@ -270,7 +270,7 @@ def analytical_zero_mean_variance_optimization(model):
 
     analytical_variance = get_zero_mean_and_var_from_ls(model)
 
-    set_gpy_model_var(model, analytical_variance[0,0])
+    set_gpy_model_var(model, analytical_variance[0, 0])
 
     analytical_parameter_cost = model._objective_grads(model.optimizer_array)[0]
 
@@ -297,7 +297,7 @@ def get_zero_mean_and_var_from_ls(model):
 
     if variance <= 0:
         before_var = variance
-        variance = np.ndarray([1,1])
-        variance[0,0] = 10**(-10)
+        variance = np.ndarray([1, 1])
+        variance[0, 0] = 10**(-10)
         print("Negative variance of {} brought back to {}.".format(before_var, variance))
     return variance

@@ -1,4 +1,4 @@
-import sys,os
+import sys, os
 sys.path.append(os.getcwd())
 
 import pandas as pd
@@ -401,7 +401,7 @@ def get_metrics(
     data['row'] = range(data.shape[0])
 
     metrics = pd.DataFrame(
-     columns=['row', 'output','mse', 'is_alpha_credible', 'log_lik']
+     columns=['row', 'output', 'mse', 'is_alpha_credible', 'log_lik']
      + ['c_mean', 'c_var', 'post_mean', 'cost', 'status', 'post_var', 'y_test']
      + ['ls_dim_{}'.format(x+1) for x in range(len(predictors))])
 

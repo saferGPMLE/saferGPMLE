@@ -85,7 +85,7 @@ for method in method_list:
     ''' 
     ##--- Creating bins for the ECDF ---
 
-    bins = np.linspace(left,right,n)
+    bins = np.linspace(left, right, n)
 
     df_bins = pd.DataFrame(index=bins, columns=batch_nll)
 
@@ -192,7 +192,7 @@ if len(method_list) > 1:
     plt.xlabel('runtime', fontsize=15)
     plt.title('improvement over restarts', fontsize=15)
     
-    words = list(range(1,21))
+    words = list(range(1, 21))
     for i in range(len(words)):
         if i%2 ==0 :
             plt.text(xx[i]+0.1, (yy[i]/norm)-0.0005, str(words[i]))

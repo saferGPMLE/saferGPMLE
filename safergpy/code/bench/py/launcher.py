@@ -14,7 +14,7 @@ import gp_experiments.gpy.libs.utils.gpy_estimation_lib as gpy_estimation_lib
 ##########################################################################
 
 toolbox_index = {'gpy': '0'}
-arg_names = ['script_name', 'benchmark_type', 'toolbox', 'method_index','input_data', 'output_data', 'optional_information']
+arg_names = ['script_name', 'benchmark_type', 'toolbox', 'method_index', 'input_data', 'output_data', 'optional_information']
 
 ##########################################################################
 

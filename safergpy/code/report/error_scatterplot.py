@@ -26,7 +26,7 @@ def get_problem_and_dimension(file):
 
 data_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench'+str(bench_num), 'data_old')
 
-df = pd.DataFrame({"output":[], "cost":[], "problem": [], "optim_type":[], "d":[]})
+df = pd.DataFrame({"output": [], "cost": [], "problem": [], "optim_type": [], "d": []})
 
 ##-- Retrieve data from methods ---
 
@@ -45,7 +45,7 @@ for method_dir in methods:
 
 ##-- Post processing ---
 
-df_pivot = pd.pivot_table(df, values=['cost'], columns=["optim_type"],index=['problem', 'output', 'd'])
+df_pivot = pd.pivot_table(df, values=['cost'], columns=["optim_type"], index=['problem', 'output', 'd'])
 
 do_anyway = False
 if do_anyway:

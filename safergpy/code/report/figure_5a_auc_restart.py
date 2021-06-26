@@ -78,7 +78,7 @@ for method in method_list:
     ''' 
     ##--- Creating bins for the ECDF ---
 
-    bins = np.linspace(left,right,n)
+    bins = np.linspace(left, right, n)
 
     df_bins = pd.DataFrame(index=bins, columns=batch_nll)
 
@@ -134,7 +134,7 @@ print('max area is {}'.format(np.max(area_all['gpy_mle1220'] + area_all['gpy_mle
 for method in method_list:
     plt.plot(time_all[method], area_all[method]/norm, linestyle='-', marker='o', label=method_name[method])
     
-    words = list(range(1,21))
+    words = list(range(1, 21))
     for i in range(len(words)):
         if i%2 ==0 :
             plt.text(time_all[method][i]-5, (area_all[method][i]/norm)-0.0005, str(words[i]), fontsize=14)

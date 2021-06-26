@@ -142,7 +142,7 @@ bp_1 = ax.boxplot(D_1, positions=[10, 11], widths=0.6)
 color_scheme(bp, bp_1)
 
 # set axes limits and labels
-plt.xlim(0,12)
+plt.xlim(0, 12)
 #plt.ylim(0,9)
 ax.set_xticklabels(['1', '2', '3', '4'])
 ax.set_xticks([1.5, 4.5, 7.5, 10.5])

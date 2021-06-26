@@ -203,7 +203,7 @@ print(model_trained.get_objective_value())
 
 #############################
 
-x = np.linspace(0,1,5).reshape(-1, 1)
+x = np.linspace(0, 1, 5).reshape(-1, 1)
 
 np.random.seed(0)
 
@@ -353,7 +353,7 @@ import matplotlib.pyplot as plt
 
 p_0 = 5
 
-p_s = list(range(0,20))
+p_s = list(range(0, 20))
 
 values = [(2*p + 3)**2 / (4*(p-p_0) + 1) for p in p_s]
 #values = [(2*p + 3)**2 / (4*p-2*p_0 + 3) for p in p_s]

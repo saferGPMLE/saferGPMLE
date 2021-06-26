@@ -3,5 +3,5 @@ method_args = {
     "init":                                "classic_profiled",
     "stopping_criterion":                              "soft",
     "do_profiling":                                     False,
-    "optim_scheme":                                 [[1,1.0]],
+    "optim_scheme":                                 [[1, 1.0]],
 }

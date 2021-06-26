@@ -45,7 +45,7 @@ df = {}
 
 for method_dir in methods:
     
-    df[method_dir] = pd.DataFrame({"post_mean":[], "y_test":[], "ls_dim_1": [], "ls_dim_2":[], "mse":[]})
+    df[method_dir] = pd.DataFrame({"post_mean": [], "y_test": [], "ls_dim_1": [], "ls_dim_2": [], "mse": []})
 
     optim_type = method_dir
     for file in os.listdir(os.path.join(data_dir, method_dir)):

@@ -49,7 +49,7 @@ data_optim = gpy_plotting_lib.plot_multistart_optimization(model, n=n,
 data_optim['dist_from_opt'] = data_optim.apply(
     lambda x : math.sqrt((x['rho1'] - optimum[0])**2 + (x['rho2'] - optimum[1])**2), axis=1)
 
-bins = [0.001, 0.01,0.1, 1, 10, 100, 1000]
+bins = [0.001, 0.01, 0.1, 1, 10, 100, 1000]
 
 for thresold in bins:
     print("bin : {}, proportion : {}".format(thresold, (data_optim['dist_from_opt'] < thresold).mean()))

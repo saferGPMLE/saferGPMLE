@@ -62,7 +62,7 @@ def get_problem_and_dimension(file):
 #--- Let's do the job ---
 data_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench1', 'data')
 
-df = pd.DataFrame({"output":[], "cost":[], "problem": [], "optim_type":[], "d":[]})
+df = pd.DataFrame({"output": [], "cost": [], "problem": [], "optim_type": [], "d": []})
 
 ##-- Retrieve data from methods ---
 
@@ -94,7 +94,7 @@ summary = "Summary :\n{} datasets\n{} outputs".format(df.groupby(['problem', 'd'
                                                   df.groupby(['problem', 'd', 'output']).ngroups)
 ##-- Post processing ---
 
-df_pivot = pd.pivot_table(df, values=['cost'], columns=["optim_type"],index=['problem', 'output', 'd'])
+df_pivot = pd.pivot_table(df, values=['cost'], columns=["optim_type"], index=['problem', 'output', 'd'])
 
 # Turn this flag on for comparing methods with different data-sets
 # It will only consider the errors for the common datasets
@@ -116,7 +116,7 @@ cost_best = df_pivot['cost']['best_known']
 
 #######
 
-bins = np.linspace(left,right,n)
+bins = np.linspace(left, right, n)
 
 methods_to_be_compared = methods
 
@@ -139,13 +139,13 @@ color = ['b', 'g', 'r', 'c', 'm']
 i = 0
 if dashed_lines is not None:
     for type in dashed_lines:
-        plt.plot(df_bins.index,df_bins[type], ':', label=type, color=color[i])
+        plt.plot(df_bins.index, df_bins[type], ':', label=type, color=color[i])
         i += 1
 
 i = 0
 if solid_lines is not None:
     for type in solid_lines:
-        plt.plot(df_bins.index,df_bins[type], '-', label=type, color=color[i])
+        plt.plot(df_bins.index, df_bins[type], '-', label=type, color=color[i])
         i += 1
 
 plt.xlabel('l')
@@ -153,5 +153,5 @@ plt.ylabel('Pn(all - all_best < l)')
 plt.title('cdf de all - all_best')
 
 plt.ylim(bottom=bottom, top=top)
-plt.legend(loc="lower right", prop={'size':14})
+plt.legend(loc="lower right", prop={'size': 14})
 plt.show()

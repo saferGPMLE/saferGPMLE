@@ -21,7 +21,7 @@ Exampe :  python3 code/bench/py/restart_metrics.py simple gpy 5021 datasets resu
 ##########################################################################
 
 toolbox_index = {'gpy': '0'}
-arg_names = ['script_name', 'benchmark_type', 'toolbox', 'method_index','input_data', 'output_data', 'optional_information']
+arg_names = ['script_name', 'benchmark_type', 'toolbox', 'method_index', 'input_data', 'output_data', 'optional_information']
 
 ##########################################################################
 

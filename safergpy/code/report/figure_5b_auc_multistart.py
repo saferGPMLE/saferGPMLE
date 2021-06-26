@@ -97,7 +97,7 @@ for arg in args:
     time_dict[arg] = [results_times]
     
     
-fig = plt.figure(1, figsize=(9,6))
+fig = plt.figure(1, figsize=(9, 6))
 
 ax = fig.add_subplot(111)
 
@@ -121,7 +121,7 @@ for arg in args[::-1]:
     
     if arg == 'gpy_mle1122':
 
-        words = list(range(1,21))
+        words = list(range(1, 21))
         for i in range(len(words)):
             if i%2 ==0 :
                 plt.text([np.array(time_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]+0.5, 
@@ -130,7 +130,7 @@ for arg in args[::-1]:
                 
     else:
         
-        words = list(range(1,21))
+        words = list(range(1, 21))
         for i in range(len(words)):
             if i%2 ==0 :
                 plt.text([np.array(time_dict[arg][0][s]).mean() for s in range(N_multistarts)][i]-30, 

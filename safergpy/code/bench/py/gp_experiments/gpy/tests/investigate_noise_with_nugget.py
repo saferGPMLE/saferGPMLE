@@ -40,7 +40,7 @@ model.kern.variance.constrain(Exponent())
 ##################### For general datasets
 model.Mat52.variance = 2437888.1269414485
 model.constmap.C = 149.89436419735705
-model.Mat52.lengthscale = [27.39835089,83.54421333]
+model.Mat52.lengthscale = [27.39835089, 83.54421333]
 
 model.Gaussian_noise.variance = (10 ** (-2)) * model.Mat52.variance.copy()
 
