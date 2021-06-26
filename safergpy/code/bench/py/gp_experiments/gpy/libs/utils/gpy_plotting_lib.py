@@ -211,17 +211,27 @@ def plot_multistart_optimization(model, n, mean_value,
     plt.xlabel("ln(rho_1)")
     plt.ylabel("ln(rho_2)")
 
-    plt.vlines(x=math.log(10) * bounds[0] + math.log10(optimum[0]), ymin=math.log(10) * bounds[0] + math.log10(optimum[1]), ymax=math.log(10) * bounds[1] + math.log10(optimum[1]),
+    plt.vlines(x=math.log(10) * bounds[0] + math.log10(optimum[0]),
+               ymin=math.log(10) * bounds[0] + math.log10(optimum[1]),
+               ymax=math.log(10) * bounds[1] + math.log10(optimum[1]),
                linestyles="--", colors="g")
-    plt.vlines(x=math.log(10) * bounds[1] + math.log10(optimum[0]), ymin=math.log(10) * bounds[0] + math.log10(optimum[1]), ymax=math.log(10) * bounds[1] + math.log10(optimum[1]),
+    plt.vlines(x=math.log(10) * bounds[1] + math.log10(optimum[0]),
+               ymin=math.log(10) * bounds[0] + math.log10(optimum[1]),
+               ymax=math.log(10) * bounds[1] + math.log10(optimum[1]),
                linestyles="--", colors="g")
 
-    plt.hlines(y=math.log(10) * bounds[0] + math.log10(optimum[1]), xmin=math.log(10) * bounds[0] + math.log10(optimum[0]), xmax=math.log(10) * bounds[1] + math.log10(optimum[0]),
+    plt.hlines(y=math.log(10) * bounds[0] + math.log10(optimum[1]),
+               xmin=math.log(10) * bounds[0] + math.log10(optimum[0]),
+               xmax=math.log(10) * bounds[1] + math.log10(optimum[0]),
                linestyles="--", colors="g")
-    plt.hlines(y=math.log(10) * bounds[1] + math.log10(optimum[1]), xmin=math.log(10) * bounds[0] + math.log10(optimum[0]), xmax=math.log(10) * bounds[1] + math.log10(optimum[0]),
+    plt.hlines(y=math.log(10) * bounds[1] + math.log10(optimum[1]),
+               xmin=math.log(10) * bounds[0] + math.log10(optimum[0]),
+               xmax=math.log(10) * bounds[1] + math.log10(optimum[0]),
                linestyles="--", colors="g")
 
-    plt.plot([math.log10(optimum[0]) - 2, math.log10(optimum[0]) + 2],  [math.log10(optimum[1]) - 2, math.log10(optimum[1]) + 2], label='constant anisotropy')
+    plt.plot([math.log10(optimum[0]) - 2, math.log10(optimum[0]) + 2],
+             [math.log10(optimum[1]) - 2, math.log10(optimum[1]) + 2],
+             label='constant anisotropy')
 
     plt.legend()
 

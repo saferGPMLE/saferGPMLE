@@ -67,15 +67,6 @@ for method in method_list:
     batch_nll.sort(key=lambda x: int(x.split('_')[-1]))
     batch_time.sort(key=lambda x: int(x.split('_')[-1]))
 
-    # for debugging:
-    '''
-    for ind in df.index: 
-        print('\nfor df_b : {}, df_best : {},  file is {}'.format(df[batch_nll[-1]][ind], df['best'][ind], df['file'][ind]))
-        if df[batch_nll[0]][ind] < df['best'][ind]:
-            print('++++++++++++++++')
-            print('\n{}{}, b {}, best {}, diff {}'.format(df['problem'][ind], df['d'][ind], df[batch_nll[0]][ind], df['best'][ind],  df[batch_nll[0]][ind] - df['best'][ind]))
-            print('================')
-    '''
     # --- Creating bins for the ECDF ---
 
     bins = np.linspace(left, right, n)
