@@ -52,7 +52,6 @@ def launch_sessions_all_monte_carlo(
         profiler
     ):
 
-    status = 'untrained'
     for scheme in optim_scheme:
         model, l = custom_optimize_restarts_misc(model=model, n_multistarts=scheme[0],
                                                  gtol=gtol, bfgs_factor=bfgs_factor,

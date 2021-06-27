@@ -259,9 +259,7 @@ def plot_taylor(model, idx_param, diagonalize=False, width=1e-2, n=1000):
 
     if diagonalize:
         v, W = np.linalg.eig(hessian)
-        # Slow variation direction : array([ 9.99997623e-01, -2.06640309e-03, -4.50014843e-04, -5.31242312e-04])
         direction = W[:, idx_param]
-        eig_value = v[idx_param]
     else:
         direction = np.zeros([model.optimizer_array.shape[0]])
         direction[idx_param] = 1
