@@ -21,7 +21,7 @@ python3 scatterplot.py 2 gpy_mle0133 gpy_mle3021 g10mod 10d
 
 bench_num = sys.argv[1]
 methods = [sys.argv[2], sys.argv[3]]
-dataset =  [str(sys.argv[4]), sys.argv[5]]
+dataset = [str(sys.argv[4]), sys.argv[5]]
 print('Comparing : \n', methods)
 
 # --- File name parsing utilities ---

@@ -28,7 +28,7 @@ python3 multiple_loo_boxplot.py 2 gpy_mle0133 gpy_mle3021 borehole 20d f_1
 
 bench_num = sys.argv[1]
 method = [sys.argv[2], sys.argv[3]]
-dataset =  [str(sys.argv[4]), sys.argv[5]]
+dataset = [str(sys.argv[4]), sys.argv[5]]
 output = str(sys.argv[6])
 print('generating box plots for : \n', method)
 

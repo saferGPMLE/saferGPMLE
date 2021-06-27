@@ -28,7 +28,7 @@ python3 loo_boxplot.py 2 gpy_mle0133 g10 3d f_1
 
 bench_num = sys.argv[1]
 method = sys.argv[2]
-dataset =  [str(sys.argv[3]), sys.argv[4]]
+dataset = [str(sys.argv[3]), sys.argv[4]]
 output = str(sys.argv[5])
 print('generating box plots for : \n', method)
 

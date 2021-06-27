@@ -32,7 +32,7 @@ python3 nll_boxplot.py 2 gpy_mle0133 gpy_mle3021 g10 3d
 bench_num = sys.argv[1]
 method = sys.argv[2]
 method1 = sys.argv[3]
-dataset =  [str(sys.argv[4]), sys.argv[5]]
+dataset = [str(sys.argv[4]), sys.argv[5]]
 print('generating box plots for : \n', [method, method1])
 
 # --- File name parsing utilities ---
