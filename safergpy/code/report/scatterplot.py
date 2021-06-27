@@ -68,7 +68,8 @@ for method_dir in methods:
             print('\nLOO MSE for {} is : {}'.format(method_dir, np.mean(mse_array)))
 
 
-## Scatter plot ##
+# --- Scatter plot ---
+
 methods_to_be_compared = methods
 
 plt.figure(1, figsize=(9, 6))

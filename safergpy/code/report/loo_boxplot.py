@@ -87,7 +87,7 @@ for file in os.listdir(data_dir_full):
             df_full[i] = np.log(df_full[i])
 
 
-## Box plot ##
+# --- Box plot ---
 
 fig = plt.figure(1, figsize=(9, 6))
 ax = fig.add_subplot(111)
