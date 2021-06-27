@@ -52,14 +52,14 @@ class CustomGPyMonitoredRestarts(CustomGPy):
             else:
                 trainer_profiler = None
 
-            l = gpy_estimation_lib_restarts_experiments.trainer_all(
+            ll = gpy_estimation_lib_restarts_experiments.trainer_all(
                 self.model,
                 options=self.optim_opts,
                 profiler=trainer_profiler,
                 bench_type=self.bench_type
             )
 
-            return l
+            return ll
 
         self.loo_mean = None
         self.loo_var = None

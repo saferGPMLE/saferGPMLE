@@ -5,12 +5,12 @@ import numpy as np
 
 def trainer_all(model, options, profiler=None, ipython_notebook=False, bench_type='single'):
     if bench_type == 'single':
-        l = launch_sessions_all(model=model, ipython_notebook=ipython_notebook, profiler=profiler, **options)
+        ll = launch_sessions_all(model=model, ipython_notebook=ipython_notebook, profiler=profiler, **options)
     elif bench_type == 'monte-carlo':
-        l = launch_sessions_all_monte_carlo(model=model, ipython_notebook=ipython_notebook, profiler=profiler, **options)
+        ll = launch_sessions_all_monte_carlo(model=model, ipython_notebook=ipython_notebook, profiler=profiler, **options)
     else:
         raise ValueError(bench_type)
-    return l
+    return ll
 
 
 def launch_sessions_all(
@@ -22,7 +22,7 @@ def launch_sessions_all(
         profiler
 ):
     status = 'untrained'
-    l = {}
+    ll = {}
     idx = 0
     start = time.time()
     for scheme in optim_scheme:
@@ -37,10 +37,10 @@ def launch_sessions_all(
         end = time.time()
         # For studying the improvements over the restarts
         # print("\nscheme : {}, cost : {}".format(scheme, model.objective_function()))
-        l[str(scheme) + "_nll_" + str(idx)] = model.objective_function()
-        l[str(scheme) + "_time_" + str(idx)] = end - start
+        ll[str(scheme) + "_nll_" + str(idx)] = model.objective_function()
+        ll[str(scheme) + "_time_" + str(idx)] = end - start
 
-    return l
+    return ll
 
 
 def launch_sessions_all_monte_carlo(
@@ -53,15 +53,15 @@ def launch_sessions_all_monte_carlo(
     ):
 
     for scheme in optim_scheme:
-        model, l = custom_optimize_restarts_misc(model=model, n_multistarts=scheme[0],
-                                                 gtol=gtol, bfgs_factor=bfgs_factor,
-                                                 std_perturbations=scheme[1],
-                                                 profiler=profiler,
-                                                 ipython_notebook=ipython_notebook)
+        model, ll = custom_optimize_restarts_misc(model=model, n_multistarts=scheme[0],
+                                                  gtol=gtol, bfgs_factor=bfgs_factor,
+                                                  std_perturbations=scheme[1],
+                                                  profiler=profiler,
+                                                  ipython_notebook=ipython_notebook)
         if profiler is not None:
             model = profiler(model)
 
-    return l
+    return ll
 
 
 def custom_optimize_restarts_misc(model, n_multistarts, gtol, bfgs_factor, std_perturbations, profiler, ipython_notebook):
@@ -81,7 +81,7 @@ def custom_optimize_restarts_misc(model, n_multistarts, gtol, bfgs_factor, std_p
     optimum = []
     statuses = []
     idx = 0
-    l = {}
+    ll = {}
 
     for x in inits:
         assert x.shape == model.optimizer_array.shape, "Shape issue."
@@ -102,11 +102,11 @@ def custom_optimize_restarts_misc(model, n_multistarts, gtol, bfgs_factor, std_p
         statuses.append(status)
 
         idx += 1
-        l["nll_" + str(idx)] = model.objective_function()
-        l["time_" + str(idx)] = end - start
+        ll["nll_" + str(idx)] = model.objective_function()
+        ll["time_" + str(idx)] = end - start
 
     argmin = np.array(scores).argmin()
 
     model.optimizer_array = optimum[argmin]
 
-    return model, l
+    return model, ll

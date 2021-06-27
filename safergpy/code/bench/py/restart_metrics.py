@@ -109,8 +109,8 @@ for file in os.listdir(input_data):
         model_instance.clean()
 
         model_instance.set_data(x_train, y_train)
-        l = model_instance.train()
-        l['output'] = output
-        df = df.append(l, ignore_index=True)
+        ll = model_instance.train()
+        ll['output'] = output
+        df = df.append(ll, ignore_index=True)
 
     df.to_csv(os.path.join(output_data, results_dir_name, file))
