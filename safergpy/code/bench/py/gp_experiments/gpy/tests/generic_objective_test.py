@@ -99,8 +99,8 @@ test_predictions = test_model.predict(x_test)
 
 
 print("Predictions check")
-print(compute_mse(predictions[0], test_predictions[0]) )
-print(compute_mse(predictions[1], test_predictions[1]) )
+print(compute_mse(predictions[0], test_predictions[0]))
+print(compute_mse(predictions[1], test_predictions[1]))
 
 ####################################################
 
