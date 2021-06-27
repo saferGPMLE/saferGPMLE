@@ -383,7 +383,7 @@ class CustomGPy():
         c_diag = np.diag(c)[:, None]
 
         assert isinstance(g, np.ndarray) and isinstance(c_diag, np.ndarray) \
-        and isinstance(y, np.ndarray), 'Type issue'
+            and isinstance(y, np.ndarray), 'Type issue'
         assert g.shape == c_diag.shape and y.shape == g.shape, "Shape issue"
 
         mu = y - g / c_diag

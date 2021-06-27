@@ -428,7 +428,7 @@ def launch_data_set_optimization_evaluations(
                                     in_sample=True, model=model)
 
     column_to_write = ['row', 'output', 'c_mean', 'c_var', 'status', 'cost'] \
-    + [a for a in metrics_in_sample if 'ls_dim' in a]
+        + [a for a in metrics_in_sample if 'ls_dim' in a]
 
     metrics_in_sample['row'] = -1
     full_sample = metrics_in_sample[column_to_write]
