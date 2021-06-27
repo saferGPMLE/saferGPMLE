@@ -9,9 +9,9 @@ import sys
 
 def get_trajectories(x, true_p, true_variance, true_rho, N_traj):
     kernel_function = GPy.kern.RationalMatern(p=true_p, input_dim=x.shape[1],
-                                        variance=true_variance,
-                                        lengthscale=true_rho,
-                                        ARD=True)
+                                              variance=true_variance,
+                                              lengthscale=true_rho,
+                                              ARD=True)
 
     true_K = kernel_function.K(x)
 
@@ -21,7 +21,7 @@ def get_trajectories(x, true_p, true_variance, true_rho, N_traj):
 
 
 x = np.array(np.load(os.path.join(os.getenv("HOME"), 'git-repos', 'gp_param_exp',
-                             'does', 'doe_10_3_unif.npy')))
+                                  'does', 'doe_10_3_unif.npy')))
 
 true_p = 2
 true_variance = 1
@@ -81,9 +81,9 @@ def get_loo(ref_model, x, y):
 
 
 test_kernel_function = GPy.kern.RationalMatern(p=model.p, input_dim=x.shape[1],
-                                variance=model.model.kern.variance.copy(),
-                                lengthscale=model.model.kern.lengthscale.copy(),
-                                ARD=True)
+                                               variance=model.model.kern.variance.copy(),
+                                               lengthscale=model.model.kern.lengthscale.copy(),
+                                               ARD=True)
 
 test_model = GPy.models.GPRegression(x, y, kernel=test_kernel_function,
                                             Y_metadata=None, normalizer=None,
@@ -191,8 +191,8 @@ if criteria == 'log_pred_density_loo':
 
     print(model.model.objective_function())
     print(-gp_experiments.gpy.libs.utils.metrics_computations.get_gaussian_log_lik(y.reshape(-1),
-                                                                                  mu_loo_empirical.reshape(-1),
-                                                                                  var_loo_empirical.reshape(-1)))
+                                                                                   mu_loo_empirical.reshape(-1),
+                                                                                   var_loo_empirical.reshape(-1)))
 
     ###############################################################
 
@@ -206,8 +206,8 @@ if criteria == 'log_pred_density_loo':
 
     print(model.model.objective_function())
     print(-gp_experiments.gpy.libs.utils.metrics_computations.get_gaussian_log_lik(y.reshape(-1),
-                                                                                  mu_loo_empirical.reshape(-1),
-                                                                                  var_loo_empirical.reshape(-1)))
+                                                                                   mu_loo_empirical.reshape(-1),
+                                                                                   var_loo_empirical.reshape(-1)))
 
 #################################################################
 
@@ -243,8 +243,8 @@ if criteria == 'standardized_mse_loo':
 
     print(model.model.objective_function())
     print(gp_experiments.gpy.libs.utils.metrics_computations.get_scaled_mse(mu_loo_empirical.reshape(-1),
-                                                                       var_loo_empirical.reshape(-1),
-                                                                       y.reshape(-1)))
+                                                                            var_loo_empirical.reshape(-1),
+                                                                            y.reshape(-1)))
 
     ###############################################################
 
@@ -258,8 +258,8 @@ if criteria == 'standardized_mse_loo':
 
     print(model.model.objective_function())
     print(gp_experiments.gpy.libs.utils.metrics_computations.get_scaled_mse(mu_loo_empirical.reshape(-1),
-                                                                       var_loo_empirical.reshape(-1),
-                                                                       y.reshape(-1)))
+                                                                            var_loo_empirical.reshape(-1),
+                                                                            y.reshape(-1)))
 
 print(print(model.model.checkgrad(verbose=True, tolerance=10**(-8))))
 

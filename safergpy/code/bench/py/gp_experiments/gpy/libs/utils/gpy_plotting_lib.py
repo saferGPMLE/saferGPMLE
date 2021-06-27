@@ -357,8 +357,8 @@ def decompose_all(model, idx_param, diagonalize=False, width=1e-2, n=1000):
     plt.subplots(1, 2)
     if diagonalize:
         plt.suptitle("Eigen axis : {}, eigen value : {} \n eigen vector: ({})".format(idx_param,
-                                                                                   "{:.4E}".format(eig_value),
-                                                                                   ','.join(["{:.6}".format(x) for x in direction])))
+                                                                                      "{:.4E}".format(eig_value),
+                                                                                      ','.join(["{:.6}".format(x) for x in direction])))
     else:
         plt.suptitle("Axis".format(idx_param))
 

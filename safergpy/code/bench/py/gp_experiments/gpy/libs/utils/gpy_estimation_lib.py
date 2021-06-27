@@ -195,16 +195,16 @@ def analytical_mean_and_variance_optimization(model):
 def optimize_from_start(model, gtol, bfgs_factor, ipython_notebook, messages=False):
     if gtol is not None and bfgs_factor is not None:
         optim = model.optimize(messages=messages, max_iters=1000, start=None, clear_after_finish=False,
-                        ipython_notebook=ipython_notebook, gtol=gtol, bfgs_factor=bfgs_factor)
+                               ipython_notebook=ipython_notebook, gtol=gtol, bfgs_factor=bfgs_factor)
     elif gtol is not None and bfgs_factor is None:
         optim = model.optimize(messages=messages, max_iters=1000, start=None, clear_after_finish=False,
-                       ipython_notebook=ipython_notebook, gtol=gtol)
+                               ipython_notebook=ipython_notebook, gtol=gtol)
     elif gtol is None and bfgs_factor is not None:
         optim = model.optimize(messages=messages, max_iters=1000, start=None, clear_after_finish=False,
-                       ipython_notebook=ipython_notebook, bfgs_factor=bfgs_factor)
+                               ipython_notebook=ipython_notebook, bfgs_factor=bfgs_factor)
     elif gtol is None and bfgs_factor is None:
         optim = model.optimize(messages=messages, max_iters=1000, start=None, clear_after_finish=False,
-                       ipython_notebook=ipython_notebook)
+                               ipython_notebook=ipython_notebook)
     return model, optim.status
 
 

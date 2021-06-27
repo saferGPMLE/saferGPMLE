@@ -18,7 +18,7 @@ z_train = data[outputs].values
 mean_function = GPy.mappings.constant.Constant(input_dim=x_train.shape[1], output_dim=1, value=0.0)
 
 kernel_function_one = GPy.kern.Matern52(input_dim=x_train.shape[1],
-                                variance=1.0, lengthscale=1.0, ARD=True)
+                                        variance=1.0, lengthscale=1.0, ARD=True)
 
 model_one = GPy.models.GPRegression(x_train, z_train, mean_function=mean_function,
                                      Y_metadata=None, normalizer=None,
@@ -27,7 +27,7 @@ model_one = GPy.models.GPRegression(x_train, z_train, mean_function=mean_functio
 model_one.Gaussian_noise.variance.fix()
 
 kernel_function_two = GPy.kern.RationalMatern(p=2, input_dim=x_train.shape[1],
-                                variance=1.0, lengthscale=1.0, ARD=True)
+                                              variance=1.0, lengthscale=1.0, ARD=True)
 
 model_two = GPy.models.GPRegression(x_train, z_train, kernel=kernel_function_two,
                                      Y_metadata=None, normalizer=None,

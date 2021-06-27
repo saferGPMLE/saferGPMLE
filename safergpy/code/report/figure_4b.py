@@ -101,7 +101,7 @@ data = data[['output', 'cost', 'problem', 'optim_type', 'd']]
 
 df = df.append(data, ignore_index=True)
 summary = "Summary :\n{} datasets\n{} outputs".format(df.groupby(['problem', 'd']).ngroups,
-                                                  df.groupby(['problem', 'd', 'output']).ngroups)
+                                                      df.groupby(['problem', 'd', 'output']).ngroups)
 # -- Post processing ---
 
 df_pivot = pd.pivot_table(df, values=['cost'], columns=["optim_type"], index=['problem', 'output', 'd'])

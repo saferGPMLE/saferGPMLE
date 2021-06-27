@@ -58,7 +58,7 @@ def mc_validation(x_train, y_train, ModelClass, n_sample, x_test=None, y_test=No
     sample_vars = np.exp(math.log(10) * ((unit_uniform_draw[:, 1] * (var_range_log10[1] - var_range_log10[0]) + var_range_log10[0]) + math.log10(c_var)))
 
     sample_lengthscales = np.exp(math.log(10) * (np.tile(np.log10(lengthscales), reps=(n_sample, 1)) +
-                                    (unit_uniform_draw[:, 2:] * (scale_range_log10[1] - scale_range_log10[0]) + scale_range_log10[0])))
+                                                 (unit_uniform_draw[:, 2:] * (scale_range_log10[1] - scale_range_log10[0]) + scale_range_log10[0])))
 
     mean_errors = []
     var_errors = []
@@ -252,7 +252,7 @@ def get_objective_improvement_gaussian_likelihood(y_test, previous_min, post_mea
     zero_improvement_log_density = np.log(zero_improvement_density)
 
     non_zero_improvement_log_density = scipy.stats.norm.logpdf(x=previous_min - y_test,
-                                                           loc=post_mean, scale=np.sqrt(post_var))
+                                                               loc=post_mean, scale=np.sqrt(post_var))
 
     assert y_test.shape == zero_improvement_log_density.shape, \
         "Shape issue : {} and {}".format(zero_improvement_log_density.shape, y_test.shape)
@@ -447,7 +447,7 @@ def launch_full_optimization_evaluations(data_dir, destination_dir, models):
             launch_data_set_optimization_evaluations(
                 os.path.join(data_dir, file),
                 os.path.join(destination_dir,
-                model[0], file), model[1])
+                             model[0], file), model[1])
 
 
 def launch_data_set_perf_evaluations(data_path, destination_path, model):

@@ -40,8 +40,8 @@ model.Gaussian_noise.variance.fix()
 # model.kern.variance.constrain(Exponent())
 
 data_optim = gpy_plotting_lib.plot_multistart_optimization(model, n=n,
-                                                mean_value=mean_value, variance_value=variance_value,
-                                                optimum=optimum.copy(), init_type='profiled')
+                                                           mean_value=mean_value, variance_value=variance_value,
+                                                           optimum=optimum.copy(), init_type='profiled')
 
 
 data_optim['dist_from_opt'] = data_optim.apply(
