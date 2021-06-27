@@ -9,7 +9,7 @@ import sys
 # --- README ---
 
 '''
-This script generates boxplots for NLL differences of default & healed 
+This script generates boxplots for NLL differences of default & healed
 as obtained with LOO
 '''
 # TODO: not clean! too much copy-pasting, to be fixed

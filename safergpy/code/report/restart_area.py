@@ -143,7 +143,7 @@ for method in method_list:
 '''
 if len(method_list) > 1:
     ##--- plotting all method dydx
-    plt.figure(4)    
+    plt.figure(4)
     #labels = ['soft', 'intermediate', 'strict']
     labels = ['int & default', 'strict & default', 'int & healed', 'strict & healed']
     types = [':', ':', '-', '-']

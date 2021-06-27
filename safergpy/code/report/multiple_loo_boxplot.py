@@ -20,7 +20,7 @@ python multiple_loo_boxplot.py bench_num scheme1 scheme2 dataset_name dimension 
 
 Example :
 
-python3 multiple_loo_boxplot.py 2 gpy_mle0133 gpy_mle3021 borehole 20d f_1 
+python3 multiple_loo_boxplot.py 2 gpy_mle0133 gpy_mle3021 borehole 20d f_1
 '''
 
 

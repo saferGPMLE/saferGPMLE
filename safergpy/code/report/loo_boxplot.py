@@ -20,7 +20,7 @@ python loo_boxplot.py bench_num scheme dataset_name dimension output
 
 Example :
 
-python3 loo_boxplot.py 2 gpy_mle0133 g10 3d f_1 
+python3 loo_boxplot.py 2 gpy_mle0133 g10 3d f_1
 '''
 
 
