@@ -43,13 +43,7 @@ if toolbox == 'gpy':
     model = CustomGPyMonitoredRestarts.CustomGPyMonitoredRestarts
 else:
     raise ValueError("Unknown toolbox : {}".format(toolbox))
-'''
-if method_index > 999:
-    raise ValueError("Method number if too high.")
-else:
-    arg_file_name = toolbox + '_mle' + toolbox_index[toolbox] + str(method_index).zfill(3)
-    arg_file_path = toolbox + '.' + 'methods' + '.' + arg_file_name
-'''
+
 # alternate for GPy only setup
 
 if method_index > 9999:
@@ -118,5 +112,5 @@ for file in os.listdir(input_data):
         l = model_instance.train()
         l['output'] = output
         df = df.append(l, ignore_index=True)
-        #print('\n\nFile : {}, output :{}\n metrics : {}'.format(file, output, l))
+
     df.to_csv(os.path.join(output_data, results_dir_name, file))

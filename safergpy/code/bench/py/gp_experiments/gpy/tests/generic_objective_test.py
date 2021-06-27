@@ -122,8 +122,6 @@ print(compute_mse(var_loo_analytical, var_loo_empirical))
 
 if criteria == 'mse_loo':
 
-    #model.set_data(x, y)
-
     print("LOO test objective")
 
     print(model.model.objective_function())
@@ -187,8 +185,6 @@ if criteria == 'gcv':
 
 if criteria == 'log_pred_density_loo':
 
-    #model.set_data(x, y)
-
     print("log_pred_density test objective")
 
     print(model.model.objective_function())
@@ -215,8 +211,6 @@ if criteria == 'log_pred_density_loo':
 
 if criteria == 'crps_loo':
 
-    #model.set_data(x, y)
-
     print("crps test objective")
 
     print(model.model.objective_function())
@@ -242,8 +236,6 @@ if criteria == 'crps_loo':
 #################################################################
 
 if criteria == 'standardized_mse_loo':
-
-    #model.set_data(x, y)
 
     print("standardized_mse test objective")
 

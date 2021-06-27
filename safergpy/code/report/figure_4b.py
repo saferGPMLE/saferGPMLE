@@ -132,12 +132,10 @@ methods_to_be_compared = methods
 df_bins = pd.DataFrame(index=bins, columns=methods_to_be_compared)
 
 for type in methods_to_be_compared:
-    # print(type)
     for log_lik_diff in bins:
         prop = ((df_pivot['cost'][type] - cost_best) < log_lik_diff).mean()
-        #print("bin : {}, proportion : {}".format(thresold, prop))
         df_bins.loc[log_lik_diff][type] = prop
-    # print("")
+
 ########
 
 labelss = ['moment', 'profiled', 'grid']

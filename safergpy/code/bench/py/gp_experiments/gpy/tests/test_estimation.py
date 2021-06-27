@@ -14,11 +14,6 @@ outputs = ['f_1']
 x_train = data[predictors].values
 z_train = data[outputs].values
 
-#x_train = np.linspace(0, 10, 5).reshape(-1,1)
-#z_train = np.sin(x_train)
-
-#x_test = np.linspace(-50, 60, 1001).reshape(-1,1)
-
 
 mean_function = GPy.mappings.constant.Constant(input_dim=x_train.shape[1], output_dim=1, value=0.0)
 
@@ -123,7 +118,6 @@ cost = []
 
 for x in log_scale_multi:
     model.model.Mat52.lengthscale = ls*math.exp(x * math.log(10))
-    #model.model = analytical_mean_and_variance_optimization(model.model)
     cost.append(model.get_objective_value())
 
 plt.plot(log_scale_multi[:len(cost)], cost)

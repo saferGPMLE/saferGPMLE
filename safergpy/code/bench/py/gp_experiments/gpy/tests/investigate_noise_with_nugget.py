@@ -18,7 +18,6 @@ x_train = data[[c for c in data.columns if 'x' in c]].values
 z_train = data[['f_1']].values
 
 mean_function = GPy.mappings.constant.Constant(input_dim=x_train.shape[1], output_dim=1, value=0.0)
-#kernel_function = GPy.kern.Matern52(input_dim=x_train.shape[1], variance=1, lengthscale=1, ARD = True)
 kernel_function = GPy.kern.Matern52(input_dim=x_train.shape[1], variance=1, lengthscale=1, ARD=True)
 
 model = GPy.models.GPRegression(x_train, z_train, kernel=kernel_function,
@@ -31,11 +30,6 @@ model.kern.variance.constrain(Exponent())
 
 
 ########################################################################################
-
-# For general datasets
-# model.kern.lengthscale = x_train.std(0).copy() #### Important because GPy standard values can fall in flat regions
-# a=model.optimize()
-# print(a.status)
 
 # For general datasets
 model.Mat52.variance = 2437888.1269414485

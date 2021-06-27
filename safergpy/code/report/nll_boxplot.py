@@ -109,12 +109,8 @@ for file in os.listdir(data_dir_full_healed):
         for output in list(df_full['output']):
             cost_dict_full_healed[output] = list(df_full.loc[df_full['output'] == output]['cost'])
 
-#print('\ncost_dict', cost_dict)
-#print('\ncost_dict_healed', cost_dict_healed)
-#print('\ncost_dict_full', cost_dict_full)
-#print('\ncost_dict_full_healed', cost_dict_full_healed)
-#print('\ndiff', np.array(cost_dict['f_1']) - np.array(cost_dict_healed['f_1']))
-## Box plot ##
+
+# --- Box plot ---
 
 fig = plt.figure(1, figsize=(9, 6))
 

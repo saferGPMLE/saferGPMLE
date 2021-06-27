@@ -105,9 +105,6 @@ norm = np.max([np.array(area_dict['gpy_mle1121'][0][s]).mean() for s in range(N_
 print('max area is {}'.format(norm))
 
 for arg in args[::-1]:
-
-    #norm = np.max([np.array(area_dict[arg][0][s]).mean() for s in range(N_multistarts)])
-    #print('\nmax area for {} is {}'.format(arg, norm))
     plt.plot(
         [np.array(time_dict[arg][0][s]).mean() for s in range(N_multistarts)],
         [np.array(area_dict[arg][0][s]).mean() for s in range(N_multistarts)]/norm,
@@ -136,7 +133,6 @@ for arg in args[::-1]:
 
 plt.ylabel('area under ECDF', fontsize=20)
 plt.xlabel('runtime', fontsize=20)
-#plt.title('improvement over multistarts', fontsize = 20)
 plt.legend(fontsize=20)
 
 ax.set_yticks([0.990, 0.992, 0.994, 0.996, 0.998, 1])

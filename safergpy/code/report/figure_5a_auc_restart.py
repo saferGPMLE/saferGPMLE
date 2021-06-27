@@ -17,8 +17,6 @@ i = 1
 method_list = ['gpy_mle1220', 'gpy_mle2220']
 
 
-#print('\nplotting restart area of : ', method_list)
-
 # --- Plot parameters ---
 
 left = -5
@@ -84,7 +82,6 @@ for method in method_list:
     for b in batch_nll:
         area = np.trapz(df_bins[b], df_bins.index)
         area_dict[int(b.split('_')[-1])] = area
-        #print('\nfor batch {} area is {}'.format(b, area))
 
     # --- Computing the total run-time ---
 
@@ -92,7 +89,6 @@ for method in method_list:
     for b in batch_time:
         time = np.sum(df[b])
         time_dict[int(b.split('_')[-1])] = time
-        #print('\nfor batch {} area is {}'.format(b, area))
 
     # --- Plotting the area ---
 
@@ -131,11 +127,8 @@ for method in method_list:
             plt.text(time_all[method][i]-5, (area_all[method][i]/norm)-0.0005, str(words[i]), fontsize=14)
 
 
-#print('max_area : ', np.max(area_values))
-# print(time_values)
 plt.ylabel('area under ECDF', fontsize=20)
 plt.xlabel('runtime', fontsize=20)
-#plt.title('improvement over restarts', fontsize = 20)
 plt.legend(fontsize=20)
 
 ax.set_yticks([0.990, 0.992, 0.994, 0.996, 0.998, 1])

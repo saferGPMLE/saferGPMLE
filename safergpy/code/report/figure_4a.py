@@ -87,7 +87,8 @@ for method_dir in methods:
         data['d'] = d
 
         df = df.append(data, ignore_index=True)
-# -- Retrieve best known ---
+
+# --- Retrieve best known ---
 
 data = pd.read_csv(os.path.join(data_dir, 'best_known.csv'), sep=',')[['output', 'minimum cost', 'file']]
 data = data.rename(columns={'minimum cost': 'cost'})
@@ -132,12 +133,10 @@ methods_to_be_compared = methods
 df_bins = pd.DataFrame(index=bins, columns=methods_to_be_compared)
 
 for type in methods_to_be_compared:
-    # print(type)
     for log_lik_diff in bins:
         prop = ((df_pivot['cost'][type] - cost_best) < log_lik_diff).mean()
-        #print("bin : {}, proportion : {}".format(thresold, prop))
         df_bins.loc[log_lik_diff][type] = prop
-    # print("")
+
 ########
 
 labelss = ['softplus_moment', 'softplus_std_grid', 'log_grid']
@@ -156,7 +155,7 @@ if solid_lines is not None:
         i += 1
 
         print('\narea of {} is {}'.format(type, np.trapz(df_bins[type], df_bins.index)))
-#plt.legend(loc = "lower right", prop = {'size':20})
+
 i = 1
 if dashed_lines is not None:
     for type in dashed_lines:

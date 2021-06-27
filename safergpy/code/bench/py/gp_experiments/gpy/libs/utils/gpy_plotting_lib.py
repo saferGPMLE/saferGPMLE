@@ -12,21 +12,8 @@ import sklearn.linear_model
 
 def plot_paramz_likelihood_path(model, label):
 
-    #param_one = np.array([27.04301504, 83.37540132])
-    #param_two = 20 * np.array([8.76182561, 21.70946319])
-
-    # nominal = np.array([1.24231606e+00, 3.03047524e+09, 3.21707863e+08, 5.34079168e+03,
-    #        1.15791377e+05, 5.70888239e+03, 1.24363601e+04, 1.43912163e+05])
-
-    # nominal = np.array([7.64947821e-01, 2.13690407e+09, 4.31123155e+15, 3.20290134e+03,
-    #   4.80524757e+04, 3.14395278e+03, 8.42492892e+03, 7.63161404e+04])
-
     nominal = np.array([27.04301504, 83.37540132])
-
-    #nominal = np.array([6.61535648, 13.4517133])
-
     param_one = nominal.copy()
-    #param_two = nominal.copy()/100
     param_two = model.X.std(0)
 
     scipy_param_one = model.kern.lengthscale.constraints.properties()[0].finv(param_one)
@@ -43,25 +30,9 @@ def plot_paramz_likelihood_path(model, label):
         model.kern.lengthscale.optimizer_array = scipy_param.copy()
         model = gpy_estimation_lib.analytical_mean_and_variance_optimization(model)
 
-        # print(model.kern.lengthscale.values)
-        # print(model.kern.optimizer_array)
-        # print("")
-
         y_1d.append(model.objective_function())
 
-    # plt.figure()
-    # plt.tight_layout()
     plt.plot(grid_1d, y_1d, label=label)
-    # plt.title(title)
-    #
-    # plt.axvline(x = 0, color = 'b', label = 'Moment-based-init')
-    # plt.axvline(x = 1, color = 'k', label = 'Optimum')
-    #
-    # plt.legend()
-    #
-    # plt.ylabel("NLL")
-    #
-    # plt.savefig("/Users/sebastien/cache_matplotlib/plot.pgf")
 
 
 def plot_likelihood_path(model, estimate_mean=True, estimate_var=True):
@@ -287,7 +258,6 @@ def plot_taylor(model, idx_param, diagonalize=False, width=1e-2, n=1000):
     hessian, model = gpy_finite_diff.get_hessian(model)
 
     if diagonalize:
-        # print(hessian)
         v, W = np.linalg.eig(hessian)
         # Slow variation direction : array([ 9.99997623e-01, -2.06640309e-03, -4.50014843e-04, -5.31242312e-04])
         direction = W[:, idx_param]
@@ -314,14 +284,7 @@ def plot_taylor(model, idx_param, diagonalize=False, width=1e-2, n=1000):
 
     fig, ax = plt.subplots()
 
-    # if diagonalize:
-    #     plt.title("Eigen axis : {}, eigen value : {} \n eigen vector: ({})".format(idx_param,
-    #                                                                                "{:.4E}".format(eig_value),
-    #                                                                                ','.join(["{:.6}".format(x) for x in direction])))
-    # else:
-    #     plt.title("Axis".format(idx_param))
     plt.plot(dx_vector, y, label="NLL")
-    #plt.plot(dx_vector, y_order_1, label = "order 1 taylor expension at 0.0")
 
     ##############################################
 
@@ -336,12 +299,8 @@ def plot_taylor(model, idx_param, diagonalize=False, width=1e-2, n=1000):
 
     ##############################################
 
-    #fig, ax = plt.subplots()
     ax.ticklabel_format(useOffset=False)
-
     plt.axvline(x=0, color='red', label='')
-
-    #plt.plot(dx_vector, y_order_2, label = "order 2")
     plt.legend()
     plt.show()
 
@@ -356,7 +315,6 @@ def decompose_all(model, idx_param, diagonalize=False, width=1e-2, n=1000):
     hessian, model = gpy_finite_diff.get_hessian(model)
 
     if diagonalize:
-        # print(hessian)
         v, W = np.linalg.eig(hessian)
         # Slow variation direction : array([ 9.99997623e-01, -2.06640309e-03, -4.50014843e-04, -5.31242312e-04])
         direction = W[:, idx_param]
@@ -385,7 +343,6 @@ def decompose_all(model, idx_param, diagonalize=False, width=1e-2, n=1000):
         K = model.kern.K(model.X)
 
         Ky = K.copy()
-        #diag.add(Ky, variance+1e-8)
         diag.add(Ky, variance)
 
         Wi, LW, LWi, W_logdet = pdinv(Ky)

@@ -57,9 +57,6 @@ def grid_init(model, isotropic, profiler, fix_var, is_zero_mean):
 
         scores.append(model._objective_grads(model.optimizer_array)[0])
 
-    #print("grid : {}".format(grid))
-    #print("scores : {}".format(scores))
-
     best_model_index = np.argmin(scores)
 
     set_gpy_model_ls(model, grid_factor[best_model_index] * nominal_scales)

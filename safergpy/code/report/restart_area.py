@@ -13,6 +13,7 @@ Example : python restart_area.py gpy_mle4021
 
 
 # --- Argument parser ---
+
 i = 1
 method_list = []
 while True:
@@ -21,8 +22,6 @@ while True:
         i += 1
     except IndexError:
         break
-
-#print('\nplotting restart area of : ', method_list)
 
 # --- Plot parameters ---
 
@@ -92,7 +91,6 @@ for method in method_list:
     for b in batch_nll:
         area = np.trapz(df_bins[b], df_bins.index)
         area_dict[int(b.split('_')[-1])] = area
-        #print('\nfor batch {} area is {}'.format(b, area))
 
     # --- Computing the total run-time ---
 
@@ -100,7 +98,6 @@ for method in method_list:
     for b in batch_time:
         time = np.sum(df[b])
         time_dict[int(b.split('_')[-1])] = time
-        #print('\nfor batch {} area is {}'.format(b, area))
 
     # --- Plotting the area ---
 
@@ -120,8 +117,6 @@ for method in method_list:
     # --- Plotting the first derivative ---
 
     dydx = np.diff(list(values))/np.diff(list(keys))
-
-    #dydx_dict[method] = [list(keys)[1:], dydx]
 
     plt.figure(2)
     plt.plot(list(keys)[1:], dydx)
@@ -144,8 +139,6 @@ for method in method_list:
     plt.ylabel('cummulative run-time', fontsize=15)
     plt.xlabel('batches of restart/multistart', fontsize=15)
     plt.title('cost over restarts', fontsize=15)
-
-    # plt.show()
 
 '''
 if len(method_list) > 1:

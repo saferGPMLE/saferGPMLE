@@ -11,18 +11,12 @@ true_variance = 1
 true_rhos = 1
 
 n = 100
-
-#x = np.load('/Users/sebastien/git-repos/gp_param_exp/does/doe_10_1_unif.npy')
-#x = np.linspace(0, 1, 10).reshape(-1, 1)
-
 x = np.load('/Users/sebastien/git-repos/gp_param_exp/does/doe_10_3_unif.npy')
 
 np.random.seed(0)
 
 y = sampling.sample.get_gp_trajectories(x, true_p, 10, true_rhos, 1).T
-
 y = 50 * y - 5
-
 x = 3 * x - 4
 
 # criteria = 'mle'
@@ -242,7 +236,6 @@ plt.legend()
 model_trained.train()
 
 np.random.seed(0)
-#x_new = np.random.uniform(size = [10, 5])
 x_new = np.linspace(x.min(), x.max(), 10000).reshape(-1, 1)
 
 
@@ -321,9 +314,9 @@ print(x.std(0))
 
 # model.objective_function_gradients()
 # model._grads(model.optimizer_array)
-#model.checkgrad(verbose = True, tolerance = 10**(-8))
+# model.checkgrad(verbose = True, tolerance = 10**(-8))
 
-#eps = 0.0001
+# eps = 0.0001
 #
 # grad = model._grads(model.optimizer_array)
 # num_grad = []
@@ -356,6 +349,5 @@ p_0 = 5
 p_s = list(range(0, 20))
 
 values = [(2*p + 3)**2 / (4*(p-p_0) + 1) for p in p_s]
-#values = [(2*p + 3)**2 / (4*p-2*p_0 + 3) for p in p_s]
 
 plt.plot(p_s, values)

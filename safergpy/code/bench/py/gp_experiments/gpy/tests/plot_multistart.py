@@ -10,8 +10,8 @@ import numpy as np
 from paramz.transformations import Exponent
 
 n = 100
-#gtol = None
-#bfgs_factor = None
+# gtol = None
+# bfgs_factor = None
 
 mean_value = 1210.55
 
@@ -19,7 +19,7 @@ variance_value = 2277543.94
 
 optimum = np.array([27.04301504, 83.37540132])
 
-###################
+
 try:
     data = pd.read_csv('/Users/sebastien/git-repos/test-functions/data/doe/branin_non_uniform_10d.csv', index_col=0)
 except FileNotFoundError:
@@ -41,8 +41,6 @@ model.Gaussian_noise.variance.fix()
 
 data_optim = gpy_plotting_lib.plot_multistart_optimization(model, n=n,
                                                 mean_value=mean_value, variance_value=variance_value,
-                                                # fix_mean = False, fix_variance = False,
-                                                #gtol = gtol, bfgs_factor = bfgs_factor,
                                                 optimum=optimum.copy(), init_type='profiled')
 
 
