@@ -19,6 +19,7 @@ def get_trajectories(x, true_p, true_variance, true_rho, N_traj):
 
     return y
 
+
 x = np.array(np.load(os.path.join(os.getenv("HOME"), 'git-repos', 'gp_param_exp',
                              'does', 'doe_10_3_unif.npy')))
 
@@ -77,6 +78,7 @@ def get_loo(ref_model, x, y):
     return mu_loo_empirical, var_loo_empirical
 
 ##################################################
+
 
 test_kernel_function = GPy.kern.RationalMatern(p=model.p, input_dim=x.shape[1],
                                 variance=model.model.kern.variance.copy(),

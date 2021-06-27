@@ -24,6 +24,7 @@ def get_problem_and_dimension(file):
 
 # --- Let's do the job ---
 
+
 data_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench'+str(bench_num), 'data_old')
 
 df = pd.DataFrame({"output": [], "cost": [], "problem": [], "optim_type": [], "d": []})

@@ -43,6 +43,7 @@ def get_problem_and_dimension(file):
 
     return problem, d
 
+
 # --- Let's do the job ---
 data_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench2', 'data_no_std', str(method[0]))
 
@@ -83,6 +84,7 @@ def df_generator(data_dir, tag):
 
 # --- generating dataframes ---
 
+
 df = df_generator(data_dir, 'default')
 df_full = df_generator(data_dir_full, 'default')
 df_1 = df_generator(data_dir_1, 'healed')
@@ -117,6 +119,7 @@ def color_scheme(bp, bp_1):
 
     for cap in bp_1['caps']:
         cap.set(color='r', linewidth=2)
+
 
 fig = plt.figure(figsize=(9, 6))
 ax = plt.axes()

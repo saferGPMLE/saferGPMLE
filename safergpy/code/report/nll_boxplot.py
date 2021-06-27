@@ -48,6 +48,7 @@ def get_problem_and_dimension(file):
 
 # --- Let's do the job ---
 
+
 data_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench2', 'data_no_std', str(method1))
 
 data_dir_full = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'results', 'bench1', 'proposed', str(method1))
