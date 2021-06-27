@@ -56,13 +56,13 @@ def brutal_train(model, n, gtol=10**(-20), bfgs_factor=10, ipython_notebook=Fals
 
 
 def launch_sessions(
-        model,
-        optim_scheme,
-        gtol,
-        bfgs_factor,
-        ipython_notebook,
-        profiler
-    ):
+            model,
+            optim_scheme,
+            gtol,
+            bfgs_factor,
+            ipython_notebook,
+            profiler
+        ):
 
     status = 'untrained'
 

@@ -44,13 +44,13 @@ def launch_sessions_all(
 
 
 def launch_sessions_all_monte_carlo(
-        model,
-        optim_scheme,
-        gtol,
-        bfgs_factor,
-        ipython_notebook,
-        profiler
-    ):
+            model,
+            optim_scheme,
+            gtol,
+            bfgs_factor,
+            ipython_notebook,
+            profiler
+        ):
 
     for scheme in optim_scheme:
         model, ll = custom_optimize_restarts_misc(model=model, n_multistarts=scheme[0],

@@ -104,10 +104,10 @@ class CustomGPy():
 
     # --------------------------------------------------------------------------
     def set_parametrization(
-            self,
-            lengthscale_constraint_class,
-            variance_constraint_class,
-        ):
+                self,
+                lengthscale_constraint_class,
+                variance_constraint_class,
+            ):
 
         self.lengthscale_constraint = lengthscale_constraint_class()
         assert (self.lengthscale_constraint.domain == transfo.domains._POSITIVE)
