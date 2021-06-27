@@ -21,8 +21,8 @@ kernel_function_one = GPy.kern.Matern52(input_dim=x_train.shape[1],
                                         variance=1.0, lengthscale=1.0, ARD=True)
 
 model_one = GPy.models.GPRegression(x_train, z_train, mean_function=mean_function,
-                                     Y_metadata=None, normalizer=None,
-                                     noise_var=0, kernel=kernel_function_one)
+                                    Y_metadata=None, normalizer=None,
+                                    noise_var=0, kernel=kernel_function_one)
 
 model_one.Gaussian_noise.variance.fix()
 
@@ -30,8 +30,8 @@ kernel_function_two = GPy.kern.RationalMatern(p=2, input_dim=x_train.shape[1],
                                               variance=1.0, lengthscale=1.0, ARD=True)
 
 model_two = GPy.models.GPRegression(x_train, z_train, kernel=kernel_function_two,
-                                     Y_metadata=None, normalizer=None,
-                                     noise_var=0, mean_function=mean_function)
+                                    Y_metadata=None, normalizer=None,
+                                    noise_var=0, mean_function=mean_function)
 
 model_two.Gaussian_noise.variance.fix()
 

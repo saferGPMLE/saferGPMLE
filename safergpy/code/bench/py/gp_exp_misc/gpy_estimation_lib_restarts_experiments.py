@@ -55,10 +55,10 @@ def launch_sessions_all_monte_carlo(
     status = 'untrained'
     for scheme in optim_scheme:
         model, l = custom_optimize_restarts_misc(model=model, n_multistarts=scheme[0],
-                                                        gtol=gtol, bfgs_factor=bfgs_factor,
-                                                        std_perturbations=scheme[1],
-                                                        profiler=profiler,
-                                                        ipython_notebook=ipython_notebook)
+                                                 gtol=gtol, bfgs_factor=bfgs_factor,
+                                                 std_perturbations=scheme[1],
+                                                 profiler=profiler,
+                                                 ipython_notebook=ipython_notebook)
         if profiler is not None:
             model = profiler(model)
 

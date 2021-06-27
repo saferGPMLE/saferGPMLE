@@ -293,7 +293,7 @@ def get_zero_mean_and_var_from_ls(model):
     assert K_inv.shape[0] == K_inv.shape[1] and K_inv.shape[0] == y.shape[0], "Shape issue"
 
     variance = y.T @ K_inv @ y / \
-               model.X.shape[0]
+    model.X.shape[0]
 
     if variance <= 0:
         before_var = variance

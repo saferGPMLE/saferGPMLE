@@ -304,8 +304,8 @@ var_loo_empirical = np.array(var_loo_empirical)
 model_trained.set_loo_posterior_metrics()
 
 get_scaled_mse(mu_pred=model_trained.get_loo_mean().reshape(-1),
-                   var_pred=model_trained.get_loo_var().reshape(-1),
-                   y=y.reshape(-1))
+               var_pred=model_trained.get_loo_var().reshape(-1),
+               y=y.reshape(-1))
 
 # print(model_trained)
 print(y.mean())

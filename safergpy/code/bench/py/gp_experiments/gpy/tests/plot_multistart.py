@@ -32,8 +32,8 @@ mean_function = GPy.mappings.constant.Constant(input_dim=x_train.shape[1], outpu
 kernel_function = GPy.kern.Matern52(input_dim=x_train.shape[1], variance=1, lengthscale=1, ARD=True)
 
 model = GPy.models.GPRegression(x_train, z_train, kernel=kernel_function,
-                                        Y_metadata=None, normalizer=None,
-                                        noise_var=0, mean_function=mean_function)
+                                Y_metadata=None, normalizer=None,
+                                noise_var=0, mean_function=mean_function)
 
 model.Gaussian_noise.variance.fix()
 # model.kern.lengthscale.constrain(Exponent())

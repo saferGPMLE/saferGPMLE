@@ -42,8 +42,8 @@ rho = np.random.uniform(size=x.shape[1]) + 1
 criteria = sys.argv[1]
 
 model = RationalMaternZeroMean(p=p, criteria=criteria, init='custom', fix_noise=True,
-                                   untrained_variance=variance,
-                                   untrained_lengthscale=rho.copy())
+                               untrained_variance=variance,
+                               untrained_lengthscale=rho.copy())
 
 model.set_data(x, y)
 
@@ -86,8 +86,8 @@ test_kernel_function = GPy.kern.RationalMatern(p=model.p, input_dim=x.shape[1],
                                                ARD=True)
 
 test_model = GPy.models.GPRegression(x, y, kernel=test_kernel_function,
-                                            Y_metadata=None, normalizer=None,
-                                            noise_var=0, mean_function=None)
+                                     Y_metadata=None, normalizer=None,
+                                     noise_var=0, mean_function=None)
 
 ##################################################
 
@@ -170,7 +170,7 @@ if criteria == 'gcv':
     print("GCV")
     print(model.model.objective_function())
     print(gp_experiments.gpy.libs.utils.metrics_computations.get_gcv_test(model.model.posterior._K,
-                                                                                  model.model.Y)[0, 0])
+                                                                          model.model.Y)[0, 0])
 
     print("optimize GCV")
 
@@ -181,7 +181,7 @@ if criteria == 'gcv':
     print("GCV")
     print(model.model.objective_function())
     print(gp_experiments.gpy.libs.utils.metrics_computations.get_gcv_test(model.model.posterior._K,
-                                                                                  model.model.Y)[0, 0])
+                                                                          model.model.Y)[0, 0])
 
 #################################################################
 
