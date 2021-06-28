@@ -14,6 +14,11 @@ from paramz.transformations import (Logexp,
                                     Square,
                                     Logistic)
 
+# Public API
+__all__ = ['domains', 'IdentityPosReals', 'Logexp', 'Logistic',
+           'Exponent', 'NegativeLogexp', 'NegativeExponent',
+           'ReciprocalSquareRoot', 'Square']
+
 logger = logging.getLogger(__name__)
 
 
