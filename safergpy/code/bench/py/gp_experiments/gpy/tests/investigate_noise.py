@@ -6,10 +6,9 @@ import GPy
 import libs.utils.gpy_plotting_lib as gpy_plotting_lib
 from paramz.transformations import Exponent
 
-try:
-    data = pd.read_csv('/Users/sebastien/git-repos/test-functions/data/doe/branin_non_uniform_10d.csv', index_col=0)
-except FileNotFoundError:
-    data = pd.read_csv('/media/subhasish/Professional/L2S/gitlab_repos/test-functions/data/doe/branin_non_uniform_10d.csv', index_col=0)
+path = sys.argv[1]
+
+data = pd.read_csv(path, index_col=0)
 
 x_train = data[[c for c in data.columns if 'x' in c]].values
 z_train = data[['f_1']].values
