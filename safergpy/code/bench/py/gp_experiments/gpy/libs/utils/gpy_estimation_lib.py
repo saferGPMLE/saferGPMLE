@@ -2,7 +2,6 @@ import numpy as np
 import math
 import libs.utils.metrics_computations
 from scipy.stats import truncnorm
-import paramz
 
 
 def trainer(model, options, profiler=None, ipython_notebook=False):

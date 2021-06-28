@@ -5,7 +5,7 @@ import math
 import libs.utils.gpy_finite_diff as gpy_finite_diff
 import libs.utils.gpy_estimation_lib as gpy_estimation_lib
 
-from GPy.util.linalg import pdinv, dpotrs, tdot
+from GPy.util.linalg import pdinv, dpotrs
 from GPy.util import diag
 import sklearn.linear_model
 

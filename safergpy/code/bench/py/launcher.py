@@ -1,5 +1,4 @@
 import sys
-import os
 import numpy as np
 from gp_experiments.gpy.tests.compute_validation_metrics import launch_full_optimization_evaluations, \
     launch_full_perf_evaluations

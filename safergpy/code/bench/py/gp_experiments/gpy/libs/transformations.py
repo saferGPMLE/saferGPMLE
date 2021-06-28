@@ -5,8 +5,9 @@ import logging
 
 import paramz.domains as domains
 
-from paramz.transformations import (Transformation,
-                                    Logexp,
+from paramz.transformations import Transformation
+
+from paramz.transformations import (Logexp,
                                     Exponent,
                                     NegativeLogexp,
                                     NegativeExponent,
