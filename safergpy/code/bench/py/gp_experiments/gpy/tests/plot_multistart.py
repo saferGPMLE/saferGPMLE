@@ -9,6 +9,8 @@ import math
 import numpy as np
 from paramz.transformations import Exponent
 
+path = sys.argv[1]
+
 n = 100
 # gtol = None
 # bfgs_factor = None
@@ -19,11 +21,7 @@ variance_value = 2277543.94
 
 optimum = np.array([27.04301504, 83.37540132])
 
-
-try:
-    data = pd.read_csv('/Users/sebastien/git-repos/test-functions/data/doe/branin_non_uniform_10d.csv', index_col=0)
-except FileNotFoundError:
-    data = pd.read_csv('/media/subhasish/Professional/L2S/gitlab_repos/test-functions/data/doe/branin_non_uniform_10d.csv', index_col=0)
+data = pd.read_csv(path, index_col=0)
 
 x_train = data[['x0', 'x1']].values
 z_train = data[['f_1']].values
