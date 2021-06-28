@@ -77,9 +77,6 @@ if 'input_transform_type' not in method_args.keys():
 if 'output_transform_type' not in method_args.keys():
     method_args['output_transform_type'] = 'None'
 
-# Upto this part is just copy-pasted from launcher.py
-# TODO : it may contain things not needed, have to clean it.
-
 model_instance = model(**method_args)
 
 target_dir = os.path.join(output_data, results_dir_name)
