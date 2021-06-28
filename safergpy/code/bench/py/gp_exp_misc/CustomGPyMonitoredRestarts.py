@@ -1,5 +1,5 @@
 from gp_experiments.gpy.libs.models.CustomGPy import CustomGPy
-import gp_exp_misc.gpy_estimation_lib_restarts_experiments as gpy_estimation_lib_restarts_experiments
+from gp_exp_misc import gpy_estimation_lib_restarts_experiments
 
 
 class CustomGPyMonitoredRestarts(CustomGPy):
