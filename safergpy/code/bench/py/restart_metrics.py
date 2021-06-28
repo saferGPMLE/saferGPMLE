@@ -6,6 +6,8 @@ import importlib.util
 from gp_experiments.gpy.libs.transformations import Logexp
 import gp_experiments.gpy.libs.utils.gpy_estimation_lib as gpy_estimation_lib
 
+sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'gp_experiments', 'gpy'))
+
 # --- To run ---
 '''
 Syntax :  python3 code/bench/py/restart_metrics.py simple gpy <method_num> <input_dir> <output_dir>
