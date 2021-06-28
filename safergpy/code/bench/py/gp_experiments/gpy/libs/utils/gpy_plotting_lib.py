@@ -358,7 +358,7 @@ def decompose_all(model, idx_param, diagonalize=False, width=1e-2, n=1000):
                                                                                       "{:.4E}".format(eig_value),
                                                                                       ','.join(["{:.6}".format(x) for x in direction])))
     else:
-        plt.suptitle("Axis".format(idx_param))
+        plt.suptitle("Axis")
 
     plt.subplot(1, 2, 1)
     plt.title("Data term")
