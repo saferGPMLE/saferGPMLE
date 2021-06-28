@@ -1,7 +1,11 @@
-from libs.utils.scores import Mse, \
-    SideLessMse, StandardizedMse, LogPredDensity, MinusCRPS
-
 import numpy as np
+import scipy.integrate
+import scipy
+from libs.utils.scores import \
+    Mse, SideLessMse, StandardizedMse, LogPredDensity, MinusCRPS
+from libs.utils.metrics_computations import \
+    get_crps, get_mse, get_gaussian_log_lik
+
 
 n = 10000
 
@@ -19,15 +23,6 @@ print("MinusCRPS : {}".format(MinusCRPS().gradient(y=y, mu_pred=mu_test, var_pre
 
 
 ######################################################################################################
-
-from libs.utils.scores import Mse, \
-    SideLessMse, StandardizedMse, LogPredDensity, MinusCRPS
-
-import numpy as np
-from libs.utils.metrics_computations import get_crps, get_mse, get_gaussian_log_lik
-
-import scipy.integrate
-import scipy
 
 y = np.random.uniform(size=[1])
 
