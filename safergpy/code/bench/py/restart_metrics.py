@@ -4,9 +4,10 @@ import numpy as np
 import pandas as pd
 import importlib.util
 from gp_experiments.gpy.libs.transformations import Logexp
-import gp_experiments.gpy.libs.utils.gpy_estimation_lib as gpy_estimation_lib
 
 sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'gp_experiments', 'gpy'))
+
+import gp_experiments.gpy.libs.utils.gpy_estimation_lib as gpy_estimation_lib  # noqa: E402
 
 # --- To run ---
 '''
