@@ -1,18 +1,8 @@
-import matplotlib
 
-# matplotlib.use("pgf")
-# matplotlib.rcParams.update({
-#     "pgf.texsystem": "pdflatex",
-#     'font.family': 'serif',
-#     'text.usetex': True,
-#     'pgf.rcfonts': False,
-# })
 import matplotlib.pyplot as plt
 
-import os
 import sys
 import pandas as pd
-import numpy as np
 import GPy
 import libs.utils.gpy_plotting_lib as gpy_plotting_lib
 from paramz.transformations import Exponent

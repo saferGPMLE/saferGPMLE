@@ -2,8 +2,6 @@ import sys
 import os
 import numpy as np
 import pandas as pd
-from gp_experiments.gpy.tests.compute_validation_metrics import launch_full_optimization_evaluations, \
-    launch_full_perf_evaluations
 import importlib.util
 from gp_experiments.gpy.libs.transformations import Logexp
 import gp_experiments.gpy.libs.utils.gpy_estimation_lib as gpy_estimation_lib

@@ -1,13 +1,5 @@
-import os, sys
-
 from gp_experiments.gpy.libs.models.CustomGPy import CustomGPy
-import GPy
 import gp_exp_misc.gpy_estimation_lib_restarts_experiments as gpy_estimation_lib_restarts_experiments
-import libs.transformations as transfo
-import numpy as np
-import scipy.stats
-import math
-from scipy.stats import norm
 
 
 class CustomGPyMonitoredRestarts(CustomGPy):
