@@ -14,7 +14,7 @@ if "__file__" in globals():
     sys.path.append(os.path.join(
         os.path.dirname(os.path.realpath(__file__)), '..'))
 
-import libs.utils.metrics_computations
+import libs.utils.metrics_computations  # noqa: E402
 
 #######################################################
 
