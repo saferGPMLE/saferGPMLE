@@ -1,11 +1,12 @@
 import sys, os
-sys.path.append(os.getcwd())
 
 import pandas as pd
 import scipy.stats
 import numpy as np
 import math
 import matplotlib.pyplot as plt
+
+sys.path.append(os.getcwd())
 
 # Problably possible to be cleaner with a proper package.
 if "__file__" in globals():
