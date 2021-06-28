@@ -1,4 +1,5 @@
-import sys, os
+import sys
+import os
 
 import pandas as pd
 import scipy.stats
