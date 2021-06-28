@@ -1,7 +1,4 @@
 import os, sys
-currentdir = os.getcwd()
-parentdir = os.path.dirname(currentdir)
-sys.path.insert(0, parentdir)
 import pandas as pd
 import GPy
 import libs.utils.gpy_plotting_lib as gpy_plotting_lib

@@ -14,9 +14,6 @@ import sys
 import pandas as pd
 import numpy as np
 import GPy
-currentdir = os.getcwd()
-parentdir = os.path.dirname(currentdir)
-sys.path.insert(0, parentdir)
 import libs.utils.gpy_plotting_lib as gpy_plotting_lib
 from paramz.transformations import Exponent
 
