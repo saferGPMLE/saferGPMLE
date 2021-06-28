@@ -1,18 +1,18 @@
 import sys, os
-sys.path.append(os.getcwd())
-
 import pandas as pd
 import scipy.stats
 import numpy as np
 import math
 import matplotlib.pyplot as plt
 
+sys.path.append(os.getcwd())
+
 # Problably possible to be cleaner with a proper package.
 if "__file__" in globals():
     sys.path.append(os.path.join(
         os.path.dirname(os.path.realpath(__file__)), '..'))
 
-import libs.utils.metrics_computations
+import libs.utils.metrics_computations  # noqa: E402
 
 #######################################################
 
