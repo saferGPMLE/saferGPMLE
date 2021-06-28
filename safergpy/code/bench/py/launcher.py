@@ -1,9 +1,5 @@
 import sys
 import os
-
-# TODO(): make it an argument ?
-os.environ["OMP_NUM_THREADS"] = str(1)
-
 import numpy as np
 from gp_experiments.gpy.tests.compute_validation_metrics import launch_full_optimization_evaluations, \
     launch_full_perf_evaluations

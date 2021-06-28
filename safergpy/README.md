@@ -54,6 +54,7 @@ toolbox.
 
 Syntax:
 ```
+export OMP_NUM_THREADS=1  # recommended
 python3 code/bench/py/launcher.py type toolbox i input_data_path output_data_path informations
 ```
 
