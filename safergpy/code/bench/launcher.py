@@ -1,22 +1,21 @@
 import sys
 import numpy as np
-from gp_experiments.gpy.tests.compute_validation_metrics import launch_full_optimization_evaluations, \
+from gpy_wrapper.gpy.tests.compute_validation_metrics import launch_full_optimization_evaluations, \
     launch_full_perf_evaluations
 import importlib.util
-from gp_experiments.gpy.libs.transformations import Logexp
-import gp_experiments.gpy.libs.utils.gpy_estimation_lib as gpy_estimation_lib
+from gpy_wrapper.gpy.libs.transformations import Logexp
+import gpy_wrapper.gpy.libs.utils.gpy_estimation_lib as gpy_estimation_lib
+import gpy_wrapper.gpy.libs.models.CustomGPy as CustomGPy
 
 ##########################################################################
 
-toolbox_index = {'gpy': '0'}
-arg_names = ['script_name', 'benchmark_type', 'toolbox', 'method_index', 'input_data', 'output_data', 'optional_information']
+arg_names = ['script_name', 'benchmark_type', 'method_index', 'input_data', 'output_data', 'optional_information']
 
 ##########################################################################
 
 args = dict(zip(arg_names, sys.argv))
 
 benchmark_type = args['benchmark_type']
-toolbox = args['toolbox']
 
 try:
     method_index = int(args['method_index'])
@@ -33,25 +32,13 @@ elif benchmark_type == 'loo':
 else:
     raise ValueError("Unknown benchmark : {}".format(benchmark_type))
 
-if toolbox == 'gpy':
-    import gp_experiments.gpy.libs.models.CustomGPy as CustomGPy
-    model = CustomGPy.CustomGPy
-else:
-    raise ValueError("Unknown toolbox : {}".format(toolbox))
-'''
-if method_index > 999:
-    raise ValueError("Method number if too high.")
-else:
-    arg_file_name = toolbox + '_mle' + toolbox_index[toolbox] + str(method_index).zfill(3)
-    arg_file_path = toolbox + '.' + 'methods' + '.' + arg_file_name
-'''
-# alternate for GPy only setup
+model = CustomGPy.CustomGPy
 
 if method_index > 9999:
     raise ValueError("Method number if too high.")
 else:
-    arg_file_name = toolbox + '_mle' + str(method_index).zfill(4)
-    arg_file_path = toolbox + '.' + 'methods' + '.' + arg_file_name
+    arg_file_name = 'gpy' + '_mle' + str(method_index).zfill(4)
+    arg_file_path = 'exps_config' + '.' + 'methods' + '.' + arg_file_name
 
 
 results_dir_name = arg_file_name

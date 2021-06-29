@@ -1,5 +1,5 @@
 import time
-from gp_experiments.gpy.libs.utils.gpy_estimation_lib import custom_optimize_restarts, gaussian_random_init, optimize_from_start
+from gpy_wrapper.gpy.libs.utils.gpy_estimation_lib import custom_optimize_restarts, gaussian_random_init, optimize_from_start
 import numpy as np
 
 

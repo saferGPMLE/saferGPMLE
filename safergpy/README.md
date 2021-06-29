@@ -9,10 +9,6 @@ This directory provides a framework for producing the other results of
 
 Datasets are supposed to be located under `./datasets`.
 
-They are actually copied from another repo called test-functions.  When new
-datasets are added to `test-functions/data/doe`, the collection datasets in
-this repo can be updated using `python3 update_datasets.py`.
-
 ## Benchmarks
 
 ### First benchmark
@@ -31,43 +27,23 @@ Same model as in the first benchmark.
 
 The results for this benchmark are stored in the folder ./results/bench2.
 
-## Method names and numbers
-
-MLE methods will be given names of the form `BLAH1_BLAH2_mleWXYZ` where
-* the prefix `BLAH1` indicates which toolbox (package, module, etc.) has been
-  used, optionnally with some information about the version number,
-* `BLAH2` optionnally provide some additional information about the software
-  environment,
-* the suffix WXYZ specifies a particular method.
-
-Inside the suffix WXYZ, the first digit indicates the toolbox:
-* `0` for GPy,
-* ... (other will be added progressively).
-
-Remark: there is a little bit of redundency in this convention since the toolbox
-is actually encoded twice, but its seems better than having a single method
-number such as `007` refer to different methods depending on the underlying
-toolbox.
-
-
 ## Running a benchmark
 
 Syntax:
 ```
 export OMP_NUM_THREADS=1  # recommended
-python3 code/bench/py/launcher.py type toolbox i input_data_path output_data_path informations
+python3 code/bench/py/launcher.py type i input_data_path output_data_path informations
 ```
 
 Example:
 ```
-python3 code/bench/py/launcher.py simple gpy 001 datasets results/bench1/data
+python3 code/bench/py/launcher.py simple 001 datasets results/bench1/data
 ```
 
 Input arguments explained:
 * `type`: indicates whether you want to test estimation on each
   dataset (i.e. 'simple') or on each of the (n-1) datasets obtained by
   removing one point from the original dataset (i.e. 'loo').
-* `toolbox`: toolbox that you want to use (gpy for now).
 * `i`: index of the method you want to test.
 * `intput_data_path`: folder where the datasets are stored.
 * `output_data_path`: folder where you want to write the results.

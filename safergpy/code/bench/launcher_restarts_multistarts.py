@@ -3,11 +3,12 @@ import os
 import numpy as np
 import pandas as pd
 import importlib.util
-from gp_experiments.gpy.libs.transformations import Logexp
+from gpy_wrapper.gpy.libs.transformations import Logexp
 
-sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'gp_experiments', 'gpy'))
+sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'gpy_wrapper', 'gpy'))
 
-import gp_experiments.gpy.libs.utils.gpy_estimation_lib as gpy_estimation_lib  # noqa: E402
+import gpy_wrapper.gpy.libs.utils.gpy_estimation_lib as gpy_estimation_lib  # noqa: E402
+import gpy_wrapper_misc.CustomGPyMonitoredRestarts as CustomGPyMonitoredRestarts  # noqa: E402
 
 # --- To run ---
 '''
@@ -18,14 +19,13 @@ Exampe :  python3 code/bench/py/restart_metrics.py simple gpy 5021 datasets resu
 ##########################################################################
 
 toolbox_index = {'gpy': '0'}
-arg_names = ['script_name', 'benchmark_type', 'toolbox', 'method_index', 'input_data', 'output_data', 'optional_information']
+arg_names = ['script_name', 'benchmark_type', 'method_index', 'input_data', 'output_data', 'optional_information']
 
 ##########################################################################
 
 args = dict(zip(arg_names, sys.argv))
 
 benchmark_type = args['benchmark_type']
-toolbox = args['toolbox']
 
 try:
     method_index = int(args['method_index'])
@@ -35,19 +35,13 @@ except ValueError:
 input_data = args['input_data']
 output_data = args['output_data']
 
-if toolbox == 'gpy':
-    import gp_exp_misc.CustomGPyMonitoredRestarts as CustomGPyMonitoredRestarts
-    model = CustomGPyMonitoredRestarts.CustomGPyMonitoredRestarts
-else:
-    raise ValueError("Unknown toolbox : {}".format(toolbox))
-
-# alternate for GPy only setup
+model = CustomGPyMonitoredRestarts.CustomGPyMonitoredRestarts
 
 if method_index > 9999:
     raise ValueError("Method number if too high.")
 else:
-    arg_file_name = toolbox + '_mle' + str(method_index).zfill(4)
-    arg_file_path = toolbox + '.' + 'restart_methods' + '.' + arg_file_name
+    arg_file_name = 'gpy' + '_mle' + str(method_index).zfill(4)
+    arg_file_path = 'exps_config' + '.' + 'restart_methods' + '.' + arg_file_name
 
 
 results_dir_name = arg_file_name
