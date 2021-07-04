@@ -23,7 +23,7 @@ Datasets are supposed to be located under `./datasets`.
 For each dataset, find the MLE for the constant-mean Matérn-5/2 anisotropic
 model.
 
-The results for this benchmark are stored in the folder ./results/bench1.
+The results for this benchmark are stored in the folder `./results/bench1`.
 
 ### Second benchmark
 
@@ -32,7 +32,7 @@ extracted from it.
 
 Same model as in the first benchmark.
 
-The results for this benchmark are stored in the folder ./results/bench2.
+The results for this benchmark are stored in the folder `./results/bench2`.
 
 ## Running a benchmark
 
@@ -64,7 +64,7 @@ Input arguments explained:
 You can plot the empirical CDF of the NLL differences between the
 results of one method and the best known values.
 
-The script is ./code/report/plot_error_cdf_benchmark.py and can be
+The script is `./code/report/plot_error_cdf_benchmark.py` and can be
 used like this :
 
 ```
