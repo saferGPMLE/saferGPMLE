@@ -1,4 +1,4 @@
-# saferGPMLE/expB
+# saferGPMLE/safergpy
 
 ## What you will find in here
 
