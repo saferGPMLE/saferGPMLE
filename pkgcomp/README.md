@@ -2,17 +2,17 @@
 
 A wrapper over python packages implementing GP Regression
 
-### Packages :
+### Packages:
 
 Sklearn, GPy, GPytorch, GPyflow, Openturns
 
-### To run :
+### To run:
 
 Syntax:
 ```
 python3 pkgcomp.py
 ```
 
-### Features :
+### Features:
 
-- Comapares GPR fitting using EMRMSE for different python packages
+- Compares GPR fitting using EMRMSE for different python packages
