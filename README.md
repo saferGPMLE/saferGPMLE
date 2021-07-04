@@ -15,6 +15,16 @@ presented in:
 Subhasish Basak, Sébastien Petit, Julien Bect, Emmanuel Vazquez  
 https://arxiv.org/abs/2101.09747
 
+
+## Table of contents
+
+  * [Citation](#citation)
+  * [Directory layout](#directory-layout)
+  * [Related resources](#related-resources)
+
+
+## Citation
+
 Please refer to this work using the following bibtex entry:
 ```
 @misc{basak:2021:saferGPMLE,
@@ -28,9 +38,6 @@ Please refer to this work using the following bibtex entry:
 }
 ```
 
-In addition, a presentation of this work is available on Zenodo:
-[DOI:10.5281/zenodo.4653845](https://doi.org/10.5281/zenodo.4653845).
-
 
 ## Directory layout
 
@@ -41,3 +48,9 @@ There are two subdirectories in this repository:
 
 * [`safergpy`](./safergpy) provides a framework for reproducing the other results of
   the article, and in particular the results presented in Section 5.
+
+
+## Related resources
+
+A presentation of this work is available on Zenodo:
+[DOI:10.5281/zenodo.4653845](https://doi.org/10.5281/zenodo.4653845).
