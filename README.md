@@ -36,8 +36,8 @@ In addition, a presentation of this work is available on Zenodo:
 
 There are two subdirectories in this repository:
 
-* `pkgcomp` provides a framework for comparing several Python toolboxes,
+* [`pkgcomp`](./pkgcomp/) provides a framework for comparing several Python toolboxes,
   as exemplified by Table 1 in the article.
 
-* `safergpy` provides a framework for reproducing the other results of
+* [`safergpy`](./safergpy) provides a framework for reproducing the other results of
   the article, and in particular the results presented in Section 5.
