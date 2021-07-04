@@ -5,6 +5,13 @@
 This directory provides a framework for producing the other results of
   the article, and in particular the results presented in Section 5.
 
+## Table of contents
+
+  * [Datasets](#datasets)
+  * [Benchmarks](#benchmarks)
+  * [Running a benchmark](#running-a-benchmark)
+  * [Reports](#reports)
+
 ## Datasets
 
 Datasets are supposed to be located under `./datasets`.
