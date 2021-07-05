@@ -44,6 +44,16 @@ Same model as in the first benchmark.
 
 The results for this benchmark are stored in the folder `./results/bench2`.
 
+### Third benchmark
+
+For reproducing the results in Table 2 of the article, the second
+benchmark is repeated with $50$ different datasets of sizes $24$ and
+$40$ respectively, for the Borehole function.
+
+The datasets are located in `./doe_repetition`
+
+The results for this benchmark are stored in the folder `./results/bench2_repetition`.
+
 ## Running a benchmark
 
 Syntax:
