@@ -14,7 +14,7 @@ This directory provides a framework for producing the other results of
 
 ## Datasets
 
-Datasets are supposed to be located under `./datasets`.
+Datasets are located under `./datasets`.
 
 ## Benchmarks
 
