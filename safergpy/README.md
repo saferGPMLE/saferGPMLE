@@ -26,6 +26,9 @@ $d$) we have four datasets of size $n \in \{3d, 5d, 10d, 20d\}$.
   * g10mod function $(d=8)$
   * g10modmod function $(d=8)$
 
+The folder `./doe_repetition` contains datasets corresponding to the
+third benchmark described below.
+
 ## Benchmarks
 
 ### First benchmark
