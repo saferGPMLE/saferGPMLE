@@ -16,6 +16,16 @@ This directory provides a framework for producing the other results of
 
 Datasets are located under `./datasets`.
 
+Corresponding to each of the following test functions (input dimension 
+$d$) we have four datasets of size $n \in \{3d, 5d, 10d, 20d\}$.
+
+  * Branin function $(d=2)$
+  * Borehole function $(d=8)$
+  * WeldedBeam Design function $(d=4)$
+  * g10 function $(d=8)$
+  * g10mod function $(d=8)$
+  * g10modmod function $(d=8)$
+
 ## Benchmarks
 
 ### First benchmark
