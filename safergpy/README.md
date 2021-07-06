@@ -83,7 +83,7 @@ Input arguments explained:
 
 ## Reports
 
-### Plot absolute difference NLL CDF
+### Plotting empirical CDFs of NLL differences
 
 You can plot the empirical CDF of the NLL differences between the
 results of one method and the best known values.
@@ -115,3 +115,7 @@ Name: (branin, f, 10d), dtype: float64
 
 means that results are missing for methods gpy_mle00{00, 10, 11} for
 output 'f' of the size 10d branin dataset.
+
+### Reproducing the figures from the article
+
+More details in [`code/report/README.md`](./code/report/README.md).
