@@ -14,9 +14,10 @@ This directory provides a framework for producing the other results of
 
 ## Datasets
 
-Datasets are located under `./datasets`.
+All the datasets used for experiments are located under `./datasets`, divided in two subdirectories 
+`/single_doe` and `/repetitions`.
 
-Corresponding to each of the following test functions (input dimension 
+Inside `/single_doe`, corresponding to each of the following test functions (input dimension 
 d) we have four datasets of sizes 3d, 5d, 10d and 20d, respectively.
 
   * Branin function (d=2)
@@ -26,8 +27,7 @@ d) we have four datasets of sizes 3d, 5d, 10d and 20d, respectively.
   * g10mod function (d=8)
   * g10modmod function (d=8)
 
-The folder `./doe_repetition` contains datasets corresponding to the
-third benchmark described below.
+Inside `/repetitions`, we have the datasets corresponding to the third benchmark described below.
 
 ## Benchmarks
 
@@ -55,7 +55,7 @@ benchmark is repeated with 50 different datasets of sizes 3d=24 and
 5d=40 respectively, for the Borehole function (d=8).
 
 
-The datasets are located in `./doe_repetition`
+The datasets are located in `./datasets/repetitions`
 
 The results for this benchmark are stored in the folder `./results/bench2_repetition`.
 
