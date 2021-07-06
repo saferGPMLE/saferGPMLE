@@ -13,7 +13,7 @@ import gpy_wrapper_misc.CustomGPyMonitoredRestarts as CustomGPyMonitoredRestarts
 # --- To run ---
 '''
 Syntax :  python3 code/bench/py/restart_metrics.py simple gpy <method_num> <input_dir> <output_dir>
-Exampe :  python3 code/bench/py/restart_metrics.py simple gpy 5021 datasets results/bench1/restart
+Exampe :  python3 code/bench/py/restart_metrics.py simple gpy 5021 datasets/single_doe results/bench1/restart
 '''
 
 ##########################################################################
