@@ -1,0 +1,26 @@
+name: reproduce-plots
+
+on: [push, pull_request]
+
+jobs:
+  reproduce-figure-4a:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-10.15, windows-2019, ubuntu-20.04]
+        py: ["3.7", "3.8", "3.9"]
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v2
+      - name: Set up Python environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.py }}
+      - name: Install packages
+        run: |
+          pip3 install --upgrade pip
+          pip3 install numpy scipy pandas matplotlib
+          pip3 list
+      - name: Run Python script
+        run: python3 figure_4a.py --solid-lines gpy_mle0121 gpy_mle0143 gpy_mle0133
+        working-directory: safergpy/code/report
