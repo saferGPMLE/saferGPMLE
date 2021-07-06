@@ -4,10 +4,9 @@ on: [push, pull_request]
 
 jobs:
   reproduce-figure-4a:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [macos-10.15, windows-2019, ubuntu-20.04]
         py: ["3.7", "3.8", "3.9"]
     steps:
       - name: Check out source repository
