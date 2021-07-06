@@ -69,7 +69,7 @@ python3 code/bench/py/launcher.py type i input_data_path output_data_path inform
 
 Example:
 ```
-python3 code/bench/py/launcher.py simple 001 datasets results/bench1/data
+python3 code/bench/py/launcher.py simple 001 datasets/single_doe results/bench1/data
 ```
 
 Input arguments explained:
