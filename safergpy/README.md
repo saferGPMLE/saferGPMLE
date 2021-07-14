@@ -92,7 +92,7 @@ The script is `./code/report/plot_error_cdf_benchmark.py` and can be
 used like this :
 
 ```
-python3 plot_error_cdf_benchmark.py --solid-lines gpy_mle0000 stk261_matR2019b_mle1000 --dashed-lines gpy_mle0010 gpy_mle001
+python3 plot_error_cdf_benchmark.py --solid-lines gpy_mle0121 gpy_mle0122 --dashed-lines gpy_mle0131 gpy_mle0132
 ```
 
 The script fails if the methods have not been run on the exact
