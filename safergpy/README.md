@@ -95,26 +95,8 @@ used like this :
 python3 plot_error_cdf_benchmark.py --solid-lines gpy_mle0000 stk261_matR2019b_mle1000 --dashed-lines gpy_mle0010 gpy_mle001
 ```
 
-The script has a sanity check. It will fail if it's run for methods
-that don't have exactly the same (dataset, output) entries set. For
-example, this message :
-
-```
-Traceback (most recent call last):
-  File "plot_error_cdf_benchmark.py", line 57, in <module>
-    df_pivot[df_pivot['cost'].isnull().any(1)].iloc[0]))
-ValueError: Comparison not done on same datasets. First example : 
-       optim_type              
-cost  best_known                  40.389083
-      gpy_mle0000                       NaN
-      gpy_mle0010                       NaN
-      gpy_mle0011                       NaN
-      stk261_matR2019b_mle1000    87.222710
-Name: (branin, f, 10d), dtype: float64
-```
-
-means that results are missing for methods gpy_mle00{00, 10, 11} for
-output 'f' of the size 10d branin dataset.
+The script fails if the methods have not been run on the exact
+same collection of datasets.
 
 ### Reproducing the figures from the article
 
