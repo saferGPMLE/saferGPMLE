@@ -3,7 +3,7 @@ name: reproduce-plots
 on: [push, pull_request]
 
 jobs:
-  reproduce-figure-4a:
+  reproduce-plots:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -20,6 +20,9 @@ jobs:
           pip3 install --upgrade pip
           pip3 install numpy scipy pandas matplotlib
           pip3 list
-      - name: Run Python script
+      - name: Create figure 4a
         run: python3 figure_4a.py --solid-lines gpy_mle0121 gpy_mle0143 gpy_mle0133
+        working-directory: safergpy/code/report
+      - name: Create figure 4b
+        run: python3 figure_4b.py --solid-lines gpy_mle0131 gpy_mle0132 gpy_mle0133
         working-directory: safergpy/code/report
