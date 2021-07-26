@@ -15,10 +15,6 @@ jobs:
           - pkg: openturns==1.16
             pkgadd: ''
           - pkg: openturns==1.17
-            os: windows-2019
-            pkgadd: ''
-          - pkg: openturns==1.17
-            os: ubuntu-20.04
             pkgadd: ''
           - pkg: gpy==1.9.9
             pkgadd: matplotlib
