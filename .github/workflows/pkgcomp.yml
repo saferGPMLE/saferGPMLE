@@ -8,25 +8,28 @@ jobs:
     strategy:
       matrix:
         os: [macos-10.15, windows-2019, ubuntu-20.04]
-        pkg: [scikit-learn==0.24.2, openturns==1.16, gpy==1.9.9, gpy==1.10.0, gpflow==1.5.1, gpytorch==1.4.1]
+        pkg: [scikit-learn==0.24.2, openturns==1.16, openturns==1.17, gpy==1.9.9, gpy==1.10.0, gpflow==1.5.1, gpytorch==1.4.1]
         include:
           - pkg: scikit-learn==0.24.2
+            pyver: 3.8
             pkgadd: ''
           - pkg: openturns==1.16
+            pyver: 3.8
             pkgadd: ''
           - pkg: openturns==1.17
-            os: windows-2019
-            pkgadd: ''
-          - pkg: openturns==1.17
-            os: ubuntu-20.04
+            pyver: 3.8
             pkgadd: ''
           - pkg: gpy==1.9.9
+            pyver: 3.8
             pkgadd: matplotlib
           - pkg: gpy==1.10.0
+            pyver: 3.8
             pkgadd: matplotlib
           - pkg: gpflow==1.5.1
+            pyver: 3.7
             pkgadd: tensorflow==1.*
           - pkg: gpytorch==1.4.1
+            pyver: 3.8
             pkgadd: ''
     steps:
       - name: Check out source repository
@@ -34,7 +37,7 @@ jobs:
       - name: Set up Python environment
         uses: actions/setup-python@v2
         with:
-          python-version: "3.7"
+          python-version: ${{ matrix.pyver }}
       - name: Install packages
         run: |
           pip3 install --upgrade pip
