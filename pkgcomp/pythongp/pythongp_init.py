@@ -17,6 +17,9 @@ def select_package(pkg):
     elif pkg == 'openturns':
         from pythongp.wrappers import openturns_wrapper
         pgp = openturns_wrapper.openturns_wrapper()
+    elif pkg == 'pylibkriging':
+        from pythongp.wrappers import pylibkriging_wrapper
+        pgp = pylibkriging_wrapper.pylibkriging_wrapper()
     else:
         raise ValueError('Unexpected package name : {}'.format(pkg))
     return pgp

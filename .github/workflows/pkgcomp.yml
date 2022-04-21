@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
-        pkg: [scikit-learn==0.24.2, openturns==1.16, openturns==1.17, gpy==1.9.9, gpy==1.10.0, gpflow==1.5.1, gpytorch==1.4.1]
+        pkg: [scikit-learn==0.24.2, openturns==1.16, openturns==1.17, gpy==1.9.9, gpy==1.10.0, gpflow==1.5.1, gpytorch==1.4.1, pylibkriging==0.7.2]
         include:
           - pkg: scikit-learn==0.24.2
             pyver: 3.8
@@ -37,6 +37,9 @@ jobs:
             pyver: 3.7
             pkgadd: numpy tensorflow==1.* protobuf==3.20.0
           - pkg: gpytorch==1.4.1
+            pyver: 3.8
+            pkgadd: numpy
+          - pkg: pylibkriging==0.7.2
             pyver: 3.8
             pkgadd: numpy
     steps:
