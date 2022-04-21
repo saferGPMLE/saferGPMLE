@@ -42,7 +42,7 @@ jobs:
         with:
           python-version: ${{ matrix.pyver }}
       - name: Set up R environment (for DiceKriging)
-        uses: actions/setup-r@v1
+        uses: r-lib/actions/setup-r@master
       - name: Install packages
         run: |
           pip3 install --upgrade pip
