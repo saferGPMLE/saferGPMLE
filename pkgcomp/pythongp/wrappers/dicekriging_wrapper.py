@@ -118,7 +118,7 @@ class dicekriging_wrapper():
             return ("Not sure whether this library supports the specified Parameter optimizer")
 
     def get_NLL(self):
-        return -self.model.slots['logLik']
+        return -self.model.slots['logLik'][0]
 
     def predict(self, x_test):
         '''
