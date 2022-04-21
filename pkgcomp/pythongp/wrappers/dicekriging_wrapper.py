@@ -90,9 +90,6 @@ class dicekriging_wrapper():
         if self.mean_function is None:
             self.mean_function = '~1'
 
-        print(ro.r.dim(ro.r.matrix(self.x_train)))
-        print(ro.r.dim(ro.r.matrix(self.z_train)))
-
         self.model = ro.r.km(
             design=ro.r.matrix(self.x_train,nrow=self.x_train.shape[0]), response=ro.r.matrix(self.z_train), covtype=self.kernel_function,
             formula=ro.r['as.formula'](self.mean_function), 
