@@ -2,7 +2,10 @@ def select_package(pkg):
 
     pkg = pkg.lower()
 
-    if pkg == 'dicekriging':
+    if pkg == 'libkriging':
+        from pythongp.wrappers import libkriging_wrapper
+        pgp = libkriging_wrapper.libkriging_wrapper()
+    elif pkg == 'dicekriging':
         from pythongp.wrappers import dicekriging_wrapper
         pgp = dicekriging_wrapper.dicekriging_wrapper()
     elif pkg == 'scikit-learn':
