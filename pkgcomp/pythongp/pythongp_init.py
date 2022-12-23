@@ -2,9 +2,9 @@ def select_package(pkg):
 
     pkg = pkg.lower()
 
-    if pkg == 'libkriging':
-        from pythongp.wrappers import libkriging_wrapper
-        pgp = libkriging_wrapper.libkriging_wrapper()
+    if pkg == 'pylibkriging':
+        from pythongp.wrappers import pylibkriging_wrapper
+        pgp = pylibkriging_wrapper.pylibkriging_wrapper()
     elif pkg == 'dicekriging':
         from pythongp.wrappers import dicekriging_wrapper
         pgp = dicekriging_wrapper.dicekriging_wrapper()

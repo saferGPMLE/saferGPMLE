@@ -2,13 +2,13 @@
     Wrapper functions
     Author: Y.Richet
     Description: The following code contains the necessary wrapper functions
-    which implements Gaussian Process regression the libKriging library
+    which implements Gaussian Process regression the pylibkriging library
 '''
 import numpy as np
 import math
 import pylibkriging as lk
 
-class libkriging_wrapper():
+class pylibkriging_wrapper():
 
     def __init__(self):
 
@@ -84,9 +84,7 @@ class libkriging_wrapper():
         if self.mean_function is None:
             self.mean_function = 'constant'
 
-        #par = lk.KrigingParameters(1, True, False, np.array([.5,.5]), True, False, np.array([0,0]), True, False)
-        #par.theta = np.array([.5,.5])
-        self.model = lk.Kriging(X=self.x_train, y=self.z_train, kernel=self.kernel_function, optim="BFGS")#"none", parameters=par)
+        self.model = lk.Kriging(self.kernel_function)
 
         print('\nBefore optimization : \n', self.model.summary())
 
@@ -94,7 +92,9 @@ class libkriging_wrapper():
 
         if param_opt in ['MLE']:
             if param_opt == 'MLE':
-                self.model = lk.Kriging(X=self.x_train, y=self.z_train, kernel=self.kernel_function, optim="Newton")
+                self.model.fit(self.z_train, self.x_train, 
+                "constant", False, 
+                "BFGS10", "LL", {})
                 
             print('\nAfter optimization : \n', self.model.summary())
 
@@ -118,7 +118,7 @@ class libkriging_wrapper():
         if type(self.model) == str:
             return
         
-        pred = self.model.predict(np.array(self.x_test), True, False)
+        pred = self.model.predict(np.array(self.x_test), True, False, False)
         self.z_postmean = pred[0][:,0]
         self.z_postvar = pred[1][:,0]**2
 
