@@ -6,6 +6,7 @@ jobs:
   pkgcomp-test-package:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [macos-10.15, windows-2019, ubuntu-20.04]
         pkg: [scikit-learn==0.24.2, openturns==1.16, openturns==1.17, gpy==1.9.9, gpy==1.10.0, gpflow==1.5.1, gpytorch==1.4.1, dicekriging, pylibkriging==0.7.2]
