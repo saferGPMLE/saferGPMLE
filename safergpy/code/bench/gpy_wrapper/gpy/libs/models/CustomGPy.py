@@ -435,9 +435,9 @@ class CustomGPy():
     # ---------------------------------------------------------------------------
     def __str__(self):
         if self.model is not None:
-            return(self.model.__str__() + "\n" + self.model.kern.lengthscale.__str__())
+            return self.model.__str__() + "\n" + self.model.kern.lengthscale.__str__()
         else:
-            return("Model unset for now.")
+            return "Model unset for now."
 
     # ---------------------------------------------------------------------------
     def get_c_mean(self):
