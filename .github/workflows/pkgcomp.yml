@@ -2,47 +2,55 @@ name: pkgcomp
 
 on: [push, pull_request]
 
+# Notes:
+#
+# GPy 1.9 and 1.10: numpy < 1.24 to solve "AttributeError: module 'numpy' has no attribute 'float'"
+#       (https://stackoverflow.com/questions/74844262/how-to-solve-error-numpy-has-no-attribute-float-in-python)
+#
+# GPflow 1.5.1: protobuf==3.20.0 to solve "TypeError: Descriptors cannot not be created directly."
+#
+
 jobs:
   pkgcomp-test-package:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-10.15, windows-2019, ubuntu-20.04]
-        pkg: [scikit-learn==0.24.2, openturns==1.16, openturns==1.17, gpy==1.9.9, gpy==1.10.0, gpflow==1.5.1, gpytorch==1.4.1, dicekriging, pylibkriging==0.7.2]
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        pkg: [scikit-learn==0.24.2, openturns==1.16, openturns==1.17, gpy==1.9.9, gpy==1.10.0, gpflow==1.5.1, gpytorch==1.4.1, dicekriging, pylibkriging==0.7.4]
         include:
-          - pkg: pylibkriging==0.7.2
+          - pkg: pylibkriging==0.7.4
             pyver: 3.8
-            pkgadd: ''
+            pkgadd: numpy
           - pkg: dicekriging
             pyver: 3.8
-            pkgadd: 'rpy2'
+            pkgadd: rpy2
           - pkg: scikit-learn==0.24.2
             pyver: 3.8
-            pkgadd: ''
+            pkgadd: numpy
           - pkg: openturns==1.16
             pyver: 3.8
-            pkgadd: ''
+            pkgadd: numpy
           - pkg: openturns==1.17
             pyver: 3.8
-            pkgadd: ''
+            pkgadd: numpy
           - pkg: gpy==1.9.9
             pyver: 3.8
-            pkgadd: matplotlib
+            pkgadd: numpy==1.23 matplotlib
           - pkg: gpy==1.10.0
             pyver: 3.8
-            pkgadd: matplotlib
+            pkgadd: numpy==1.23 matplotlib
           - pkg: gpflow==1.5.1
             pyver: 3.7
-            pkgadd: tensorflow==1.*
+            pkgadd: numpy tensorflow==1.* protobuf==3.20.0
           - pkg: gpytorch==1.4.1
             pyver: 3.8
-            pkgadd: ''
+            pkgadd: numpy
     steps:
       - name: Check out source repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up Python environment
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.pyver }}
       - name: Set up R environment (for DiceKriging)
@@ -50,7 +58,7 @@ jobs:
       - name: Install packages
         run: |
           pip3 install --upgrade pip
-          pip3 install numpy scipy pandas ${{ matrix.pkg }} ${{ matrix.pkgadd }}
+          pip3 install scipy pandas ${{ matrix.pkg }} ${{ matrix.pkgadd }}
           pip3 list
         if: matrix.pkg != 'dicekriging'
       - name: Install packages
@@ -64,7 +72,7 @@ jobs:
         run: python3 pkgcomp.py --pkg ${{ matrix.pkg }} --output result.csv
         working-directory: pkgcomp
       - name: Upload result file
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: result_${{ matrix.os }}_${{ matrix.pkg }}
           path: pkgcomp/result.csv
@@ -73,7 +81,7 @@ jobs:
     needs: pkgcomp-test-package
     steps:
       - name: Download result files
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
       - name: List result files
         run: find . -name "result.csv"
       - name: Concatenate result files
@@ -83,7 +91,7 @@ jobs:
       - name: Pretty-print csv outpt
         run: column -t -s, results.csv
       - name: Upload concatenated results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: results
           path: results.csv
